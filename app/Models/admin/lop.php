@@ -10,12 +10,14 @@ class lop extends Model
     /** @use HasFactory<\Database\Factories\LopFactory> */
     use HasFactory;
 
-    protected $filltable = [
+    protected $fillable = [
         'tenLop',
         'id_khoa'
     ];
     protected function khoa(){
         return $this->belongsTo(khoa::class);
+    }
+    protected function sinhVien(){
         return $this->hasMany(sinhVien::class);
     }
 }

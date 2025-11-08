@@ -10,7 +10,7 @@ class hocPhi extends Model
     /** @use HasFactory<\Database\Factories\HocPhiFactory> */
     use HasFactory;
 
-    protected $filltable = [
+    protected $fillable = [
         ' id_sinh_vien',
         ' id_hoc_ky',
         ' soTienHocPhi',

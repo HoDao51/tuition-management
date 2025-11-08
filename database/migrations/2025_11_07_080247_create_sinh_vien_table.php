@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('email', 100)->notnullable();
             $table->unsignedBigInteger('id_lop')->notnullable();
             $table->string('tinhTrang')->notnullable();
+            $table->string('anhDaiDien')->nullable();
             $table->timestamps();
             $table->foreign('id_lop')->references('id')->on('lop');
         });

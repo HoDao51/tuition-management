@@ -5,26 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class nhanVien extends Model
+class sinhVien extends Model
 {
-    /** @use HasFactory<\Database\Factories\NhanVienFactory> */
+    /** @use HasFactory<\Database\Factories\SinhVienFactory> */
     use HasFactory;
 
-    protected $filltable = [
-        'ma_nv',
+    protected $fillable = [
+        'ma_sv',
         'hoTen',
-        'chucVu',
-        'email',
+        'ngaySinh',
+        'gioiTinh',
+        'diaChi',
         'soDienThoai',
+        'email',
+        'id_lop',
+        'anhDaiDien',
         'tinhTrang'
     ];
-
+    protected function lop(){
+        return $this->belongsTo(lop::class);
+    }
     protected function hocPhi(){
         return $this->hasMany(hocPhi::class);
     }
     protected function bienLai(){
         return $this->hasMany(bienLai::class);
     }
-
-
 }

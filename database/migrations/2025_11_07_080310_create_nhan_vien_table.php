@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('chucVu')->notnullable();
             $table->string('email', 100)->notnullable();
             $table->string('soDienThoai', 20)->notnullable();
+            $table->string('anhDaiDien')->nullable();
             $table->string('tinhTrang')->notnullable();
             $table->timestamps();
         });
