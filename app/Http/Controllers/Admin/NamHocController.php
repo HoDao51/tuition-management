@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\hocPhi;
-use App\Http\Requests\StorehocPhiRequest;
-use App\Http\Requests\UpdatehocPhiRequest;
+use App\Models\Admin\namHoc;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorenamHocRequest;
+use App\Http\Requests\UpdatenamHocRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
-class HocPhiController extends Controller
+class NamHocController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admins.layouts.main');
     }
 
     /**
@@ -27,7 +31,7 @@ class HocPhiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorehocPhiRequest $request)
+    public function store(StorenamHocRequest $request)
     {
         //
     }
@@ -35,7 +39,7 @@ class HocPhiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(hocPhi $hocPhi)
+    public function show(namHoc $namHoc)
     {
         //
     }
@@ -43,7 +47,7 @@ class HocPhiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(hocPhi $hocPhi)
+    public function edit(namHoc $namHoc)
     {
         //
     }
@@ -51,7 +55,7 @@ class HocPhiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatehocPhiRequest $request, hocPhi $hocPhi)
+    public function update(UpdatenamHocRequest $request, namHoc $namHoc)
     {
         //
     }
@@ -59,7 +63,7 @@ class HocPhiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(hocPhi $hocPhi)
+    public function destroy(namHoc $namHoc)
     {
         //
     }

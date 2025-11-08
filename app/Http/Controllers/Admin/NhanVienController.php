@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\namHoc;
-use App\Http\Requests\StorenamHocRequest;
-use App\Http\Requests\UpdatenamHocRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\nhanVien;
+use App\Http\Requests\StorenhanVienRequest;
+use App\Http\Requests\UpdatenhanVienRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
-class NamHocController extends Controller
+class NhanVienController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admins.layouts.main');
     }
 
     /**
@@ -27,7 +31,7 @@ class NamHocController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorenamHocRequest $request)
+    public function store(StorenhanVienRequest $request)
     {
         //
     }
@@ -35,7 +39,7 @@ class NamHocController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(namHoc $namHoc)
+    public function show(nhanVien $nhanVien)
     {
         //
     }
@@ -43,7 +47,7 @@ class NamHocController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(namHoc $namHoc)
+    public function edit(nhanVien $nhanVien)
     {
         //
     }
@@ -51,7 +55,7 @@ class NamHocController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatenamHocRequest $request, namHoc $namHoc)
+    public function update(UpdatenhanVienRequest $request, nhanVien $nhanVien)
     {
         //
     }
@@ -59,7 +63,7 @@ class NamHocController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(namHoc $namHoc)
+    public function destroy(nhanVien $nhanVien)
     {
         //
     }

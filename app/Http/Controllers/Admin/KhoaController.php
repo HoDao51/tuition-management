@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\hocKy;
-use App\Http\Requests\StorehocKyRequest;
-use App\Http\Requests\UpdatehocKyRequest;
+use App\Models\Admin\khoa;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorekhoaRequest;
+use App\Http\Requests\UpdatekhoaRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
-class HocKyController extends Controller
+class KhoaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admins.layouts.main');
     }
 
     /**
@@ -27,7 +31,7 @@ class HocKyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorehocKyRequest $request)
+    public function store(StorekhoaRequest $request)
     {
         //
     }
@@ -35,7 +39,7 @@ class HocKyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(hocKy $hocKy)
+    public function show(khoa $khoa)
     {
         //
     }
@@ -43,7 +47,7 @@ class HocKyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(hocKy $hocKy)
+    public function edit(khoa $khoa)
     {
         //
     }
@@ -51,7 +55,7 @@ class HocKyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatehocKyRequest $request, hocKy $hocKy)
+    public function update(UpdatekhoaRequest $request, khoa $khoa)
     {
         //
     }
@@ -59,7 +63,7 @@ class HocKyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(hocKy $hocKy)
+    public function destroy(khoa $khoa)
     {
         //
     }

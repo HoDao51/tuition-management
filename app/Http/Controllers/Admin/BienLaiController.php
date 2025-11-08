@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\nhanVien;
-use App\Http\Requests\StorenhanVienRequest;
-use App\Http\Requests\UpdatenhanVienRequest;
+use App\Models\Admin\bienLai;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorebienLaiRequest;
+use App\Http\Requests\UpdatebienLaiRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
-class NhanVienController extends Controller
+class BienLaiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admins.layouts.main');
     }
 
     /**
@@ -27,7 +31,7 @@ class NhanVienController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorenhanVienRequest $request)
+    public function store(StorebienLaiRequest $request)
     {
         //
     }
@@ -35,7 +39,7 @@ class NhanVienController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(nhanVien $nhanVien)
+    public function show(bienLai $bienLai)
     {
         //
     }
@@ -43,7 +47,7 @@ class NhanVienController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(nhanVien $nhanVien)
+    public function edit(bienLai $bienLai)
     {
         //
     }
@@ -51,7 +55,7 @@ class NhanVienController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatenhanVienRequest $request, nhanVien $nhanVien)
+    public function update(UpdatebienLaiRequest $request, bienLai $bienLai)
     {
         //
     }
@@ -59,7 +63,7 @@ class NhanVienController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(nhanVien $nhanVien)
+    public function destroy(bienLai $bienLai)
     {
         //
     }

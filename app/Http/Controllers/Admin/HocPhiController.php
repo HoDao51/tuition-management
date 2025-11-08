@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\sinhVien;
-use App\Http\Requests\StoresinhVienRequest;
-use App\Http\Requests\UpdatesinhVienRequest;
+use App\Models\Admin\hocPhi;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorehocPhiRequest;
+use App\Http\Requests\UpdatehocPhiRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
-class SinhVienController extends Controller
+class HocPhiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admins.layouts.main');
     }
 
     /**
@@ -27,7 +31,7 @@ class SinhVienController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoresinhVienRequest $request)
+    public function store(StorehocPhiRequest $request)
     {
         //
     }
@@ -35,7 +39,7 @@ class SinhVienController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(sinhVien $sinhVien)
+    public function show(hocPhi $hocPhi)
     {
         //
     }
@@ -43,7 +47,7 @@ class SinhVienController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(sinhVien $sinhVien)
+    public function edit(hocPhi $hocPhi)
     {
         //
     }
@@ -51,7 +55,7 @@ class SinhVienController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatesinhVienRequest $request, sinhVien $sinhVien)
+    public function update(UpdatehocPhiRequest $request, hocPhi $hocPhi)
     {
         //
     }
@@ -59,7 +63,7 @@ class SinhVienController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(sinhVien $sinhVien)
+    public function destroy(hocPhi $hocPhi)
     {
         //
     }

@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\lop;
-use App\Http\Requests\StorelopRequest;
-use App\Http\Requests\UpdatelopRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\sinhVien;
+use App\Http\Requests\StoresinhVienRequest;
+use App\Http\Requests\UpdatesinhVienRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
-class LopController extends Controller
+class SinhVienController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admins.layouts.main');
     }
 
     /**
@@ -27,7 +31,7 @@ class LopController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorelopRequest $request)
+    public function store(StoresinhVienRequest $request)
     {
         //
     }
@@ -35,7 +39,7 @@ class LopController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(lop $lop)
+    public function show(sinhVien $sinhVien)
     {
         //
     }
@@ -43,7 +47,7 @@ class LopController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(lop $lop)
+    public function edit(sinhVien $sinhVien)
     {
         //
     }
@@ -51,7 +55,7 @@ class LopController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatelopRequest $request, lop $lop)
+    public function update(UpdatesinhVienRequest $request, sinhVien $sinhVien)
     {
         //
     }
@@ -59,7 +63,7 @@ class LopController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(lop $lop)
+    public function destroy(sinhVien $sinhVien)
     {
         //
     }

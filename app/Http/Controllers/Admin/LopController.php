@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\bienLai;
-use App\Http\Requests\StorebienLaiRequest;
-use App\Http\Requests\UpdatebienLaiRequest;
+use App\Models\Admin\lop;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorelopRequest;
+use App\Http\Requests\UpdatelopRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
-class BienLaiController extends Controller
+class LopController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admins.layouts.main');
     }
 
     /**
@@ -27,7 +31,7 @@ class BienLaiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorebienLaiRequest $request)
+    public function store(StorelopRequest $request)
     {
         //
     }
@@ -35,7 +39,7 @@ class BienLaiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(bienLai $bienLai)
+    public function show(lop $lop)
     {
         //
     }
@@ -43,7 +47,7 @@ class BienLaiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(bienLai $bienLai)
+    public function edit(lop $lop)
     {
         //
     }
@@ -51,7 +55,7 @@ class BienLaiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatebienLaiRequest $request, bienLai $bienLai)
+    public function update(UpdatelopRequest $request, lop $lop)
     {
         //
     }
@@ -59,7 +63,7 @@ class BienLaiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(bienLai $bienLai)
+    public function destroy(lop $lop)
     {
         //
     }

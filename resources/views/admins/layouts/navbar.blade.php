@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Header</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+<script src="https://cdn.tailwindcss.com"></script>
 <body>
   <header class="flex items-center justify-between border-b border-[E5E6E6] px-6 py-3">
     
@@ -46,8 +39,6 @@
       </a>
     </div>
   </div>
-  
-  </header>
+</header>
 </body>
 @vite('resources/js/profile_dropdown.js')
-</html>
