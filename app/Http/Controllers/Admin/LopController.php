@@ -17,7 +17,7 @@ class LopController extends Controller
      */
     public function index()
     {
-        return view('admins.layouts.main');
+        return view('admins.Class.index');
     }
 
     /**

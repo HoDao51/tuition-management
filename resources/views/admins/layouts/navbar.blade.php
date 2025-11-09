@@ -7,7 +7,26 @@
         <span class="font-bold text-4xl mr-3 bg-gradient-to-tr from-blue-400 to-blue-600 bg-clip-text text-transparent">RSCEP</span>
     </div>
     <div class="flex items-center gap-4 grow flex items-center lg:ml-36">
-        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">Tổng quan hệ thống</span>
+      @if (Route::currentRouteName() == 'admins.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Tổng quan hệ thống
+        </span>
+      @elseif (Route::currentRouteName() == 'nhanVien.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý nhân viên
+        </span>
+      @elseif (Route::currentRouteName() == 'nhanVien.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin nhân viên
+        </span>
+      @elseif (Route::currentRouteName() == 'nhanVien.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm nhân viên
+        </span>
+      @endif
+      
+    </a>
+
     </div>
 
     <div class="relative inline-block text-left">

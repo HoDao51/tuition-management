@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('hoc_phi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_sinh_vien')->unique()->notnullable();
-            $table->unsignedBigInteger('id_hoc_ky')->unique()->notnullable();
-            $table->unsignedBigInteger('nguoiTao')->unique()->notnullable();
+            $table->unsignedBigInteger('id_sinh_vien')->unique();
+            $table->unsignedBigInteger('id_hoc_ky')->unique();
+            $table->unsignedBigInteger('nguoiTao')->unique();
             $table->integer('tongTien')->notnullable();
-            $table->integer('tinhTrang')->notnullable();
+            $table->integer('tinhTrang')->default('0');
             $table->timestamps();
             $table->foreign('id_sinh_vien')->references('id')->on('sinh_vien');
             $table->foreign('id_hoc_ky')->references('id')->on('hoc_ky');

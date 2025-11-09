@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('hoc_ky', function (Blueprint $table) {
             $table->id();
             $table->string('tenHocKy', 20)->unique()->notnullable();
-            $table->unsignedBigInteger('id_nam_hoc')->notnullable();
+            $table->unsignedBigInteger('id_nam_hoc');
             $table->timestamps();
             $table->foreign('id_nam_hoc')->references('id')->on('nam_hoc');
         });

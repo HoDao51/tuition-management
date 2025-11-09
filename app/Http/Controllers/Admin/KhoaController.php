@@ -17,7 +17,7 @@ class KhoaController extends Controller
      */
     public function index()
     {
-        return view('admins.layouts.main');
+        return view('admins.Department.index');
     }
 
     /**

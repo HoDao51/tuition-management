@@ -17,7 +17,7 @@ class BienLaiController extends Controller
      */
     public function index()
     {
-        return view('admins.layouts.main');
+        return view('admins.Receipt.index');
     }
 
     /**

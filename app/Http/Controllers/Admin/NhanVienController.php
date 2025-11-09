@@ -17,7 +17,8 @@ class NhanVienController extends Controller
      */
     public function index()
     {
-        return view('admins.layouts.main');
+        $data = nhanVien::all();
+        return view('admins.Employee.index', compact('data'));
     }
 
     /**
@@ -25,7 +26,8 @@ class NhanVienController extends Controller
      */
     public function create()
     {
-        //
+        $data = nhanVien::all();
+        return view('admins.Employee.create', compact('data'));
     }
 
     /**
@@ -33,15 +35,44 @@ class NhanVienController extends Controller
      */
     public function store(StorenhanVienRequest $request)
     {
-        //
+    $hoTen = $request->hoTen;
+    $chucVu = $request->chucVu;
+    $email = $request->email;
+    $soDienThoai = $request->soDienThoai;
+    // xử lý ảnh đại diện
+    $path = null;
+    if ($request->hasFile('anhDaiDien')) {
+        $file = $request->file('anhDaiDien');
+        //tạo vị trí lưu CSDL và thư mục
+        $fileName = time() . "-" . $file->getClientOriginalName();
+        //lưu trữ vào thư mục và CSDL
+        $path = $file->store('nhanVien', $fileName, 'public');
     }
+
+    // Tạo nhân viên và gán vào biến
+    $nhanVien = nhanVien::create([
+        'hoTen' => $hoTen,
+        'chucVu' => $chucVu,
+        'email' => $email,
+        'soDienThoai' => $soDienThoai,
+        'anhDaiDien' => $path
+    ]);
+
+    // Tự sinh ma_nv theo id
+    $ma_nv = 'NV' . str_pad($nhanVien->id, 3, '0', STR_PAD_LEFT);
+
+    // Cập nhật ma_nv
+    $nhanVien->update(['ma_nv' => $ma_nv]);
+
+    return redirect::route('nhanVien.index');
+}
 
     /**
      * Display the specified resource.
      */
     public function show(nhanVien $nhanVien)
     {
-        //
+        return view('admins.Employee.employeeDetail', compact('nhanVien'));
     }
 
     /**
@@ -49,16 +80,41 @@ class NhanVienController extends Controller
      */
     public function edit(nhanVien $nhanVien)
     {
-        //
+        return view('admins.Employee.edit', compact('nhanVien'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdatenhanVienRequest $request, nhanVien $nhanVien)
-    {
-        //
+{
+    $hoTen = $request->hoTen;
+    $chucVu = $request->chucVu;
+    $email = $request->email;
+    $soDienThoai = $request->soDienThoai;
+    $tinhTrang = $request->tinhTrang;
+
+    // Xử lý ảnh đại diện
+    $path = $nhanVien->anhDaiDien; // giữ ảnh cũ nếu không upload mới
+    if ($request->hasFile('anhDaiDien')) {
+        $file = $request->file('anhDaiDien');
+        $fileName = time() . "-" . $file->getClientOriginalName();
+        $path = $file->storeAs('nhanVien', $fileName, 'public');
     }
+
+    // Cập nhật thông tin nhân viên
+    $nhanVien->update([
+        'hoTen' => $hoTen,
+        'chucVu' => $chucVu,
+        'email' => $email,
+        'soDienThoai' => $soDienThoai,
+        'tinhTrang' => $tinhTrang,
+        'anhDaiDien' => $path
+    ]);
+
+    return redirect()->route('nhanVien.index');
+}
+
 
     /**
      * Remove the specified resource from storage.
@@ -68,3 +124,4 @@ class NhanVienController extends Controller
         //
     }
 }
+

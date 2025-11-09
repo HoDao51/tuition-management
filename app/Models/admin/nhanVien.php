@@ -10,6 +10,8 @@ class nhanVien extends Model
     /** @use HasFactory<\Database\Factories\NhanVienFactory> */
     use HasFactory;
 
+    protected $table = 'nhan_vien';
+
     protected $fillable = [
         'ma_nv',
         'hoTen',

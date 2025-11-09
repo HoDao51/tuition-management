@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('nhan_vien', function (Blueprint $table) {
             $table->id();
-            $table->string('ma_nv', 20)->unique()->notnullable();
+            $table->string('ma_nv', 20)->unique()->nullable();
             $table->string('hoTen', 100)->notnullable();
             $table->integer('chucVu')->notnullable();
             $table->string('email', 100)->notnullable();
             $table->string('soDienThoai', 20)->notnullable();
             $table->string('anhDaiDien')->nullable();
-            $table->string('tinhTrang')->notnullable();
+            $table->string('tinhTrang')->default('0');
             $table->timestamps();
         });
     }

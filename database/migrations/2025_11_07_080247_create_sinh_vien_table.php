@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('sinh_vien', function (Blueprint $table) {
             $table->id();
-            $table->string('ma_sv', 20)->unique()->notnullable();
+            $table->string('ma_sv', 20)->unique()->nullable();
             $table->string('hoTen', 100)->notnullable();
             $table->date('ngaySinh')->notnullable();
             $table->string('gioiTinh', 10)->notnullable();
             $table->string('diaChi', 255)->notnullable();
             $table->string('soDienThoai', 20)->notnullable();
             $table->string('email', 100)->notnullable();
-            $table->unsignedBigInteger('id_lop')->notnullable();
-            $table->string('tinhTrang')->notnullable();
+            $table->unsignedBigInteger('id_lop');
+            $table->string('tinhTrang')->default('0');
             $table->string('anhDaiDien')->nullable();
             $table->timestamps();
             $table->foreign('id_lop')->references('id')->on('lop');
