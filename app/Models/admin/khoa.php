@@ -10,6 +10,8 @@ class khoa extends Model
     /** @use HasFactory<\Database\Factories\KhoaFactory> */
     use HasFactory;
 
+    protected $table = 'khoa';
+
     protected $fillable = [
         'tenKhoa'
     ];

@@ -82,8 +82,8 @@
 
         <!-- Nút submit -->
         <div class="flex space-x-3 pt-4">
-            <a href="{{ route('nhanVien.index') }}" class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition">Quay lại</a>
-            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition">Cập nhật</button>
+            <a href="{{ route('nhanVien.index') }}" class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition text-[18px]">Quay lại</a>
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition text-[18px]">Cập nhật</button>
         </div>
     </form>
 </div>

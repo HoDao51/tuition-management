@@ -11,6 +11,7 @@
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Tổng quan hệ thống
         </span>
+      <!-- tiêu đề nhân viên -->
       @elseif (Route::currentRouteName() == 'nhanVien.index')
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Quản lý nhân viên
@@ -22,6 +23,25 @@
       @elseif (Route::currentRouteName() == 'nhanVien.create')
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Thêm nhân viên
+        </span>
+      <!-- tiêu đề sinh viên -->
+      @elseif (Route::currentRouteName() == 'sinhVien.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý sinh viên
+        </span>
+      <!-- tiêu đề khoa -->
+      @elseif (Route::currentRouteName() == 'khoa.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quan lý khoa
+        </span>
+      @elseif (Route::currentRouteName() == 'khoa.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm khoa
+        </span>
+      <!-- tiêu đề lớp -->
+      @elseif (Route::currentRouteName() == 'lop.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quan lý lớp học
         </span>
       @endif
       

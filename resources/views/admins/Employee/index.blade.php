@@ -57,10 +57,10 @@
         @foreach($data as $item)
         <tbody>
           <tr class="hover:bg-gray-50">
-            <td class="px-4 py-2 border">{{($item->ma_nv)}}</td>
-            <td class="px-4 py-2 border">{{($item->hoTen)}}</td>
-            <td class="px-4 py-2 border">{{($item->ngaySinh)}}</td>
-            <td class="px-4 py-2 border">
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px]">{{($item->ma_nv)}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px]">{{($item->hoTen)}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px]">{{($item->ngaySinh)}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px]">
                 @if(($item->chucVu) == 0)
                     Quản trị viên
                 @else
@@ -69,10 +69,10 @@
             </td>
             <td class="px-4 py-2 border text-center">
               <a href="{{ route('nhanVien.show', $item->id) }}">
-                <button type="button" class="bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700">Xem thêm</button>
+                <button type="button" class="bg-blue-600 text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-blue-700">Xem thêm</button>
               </a>
             </td>
-            <td class="px-4 py-2 border">
+            <td class="px-4 py-2 border text-[17px]">
                 @if(($item->tinhTrang) == 0)
                 <div class="text-green-600 font-medium text-center">
                     Đang hoạt động
@@ -85,7 +85,7 @@
             </td>
             <td class="px-4 py-2 border text-center">
                 <a href="{{ route('nhanVien.edit', $item->id) }}">
-                    <button type="button" class="bg-[#10B981] text-white px-3 py-1 rounded-md hover:bg-green-700">Sửa</button>
+                    <button type="button" class="bg-[#10B981] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-[#1D8F6A]">Sửa</button>
                 </a>
             </td>
           </tr>

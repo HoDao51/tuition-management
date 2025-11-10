@@ -10,6 +10,8 @@ class sinhVien extends Model
     /** @use HasFactory<\Database\Factories\SinhVienFactory> */
     use HasFactory;
 
+    protected $table = 'sinh_vien';
+
     protected $fillable = [
         'ma_sv',
         'hoTen',

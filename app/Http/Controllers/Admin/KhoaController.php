@@ -17,7 +17,8 @@ class KhoaController extends Controller
      */
     public function index()
     {
-        return view('admins.Department.index');
+        $data = khoa::orderBy('id', 'desc')->get();
+        return view('admins.Department.index', compact('data'));
     }
 
     /**
@@ -25,7 +26,8 @@ class KhoaController extends Controller
      */
     public function create()
     {
-        //
+        $data = khoa::orderBy('id', 'desc')->get();
+        return view('admins.Department.create', compact('data'));
     }
 
     /**
@@ -33,7 +35,12 @@ class KhoaController extends Controller
      */
     public function store(StorekhoaRequest $request)
     {
-        //
+        $tenKhoa = $request->tenKhoa;
+        $tenKhoa = khoa::create([
+            'tenKhoa' => $tenKhoa,
+        ]);
+
+        return redirect::route('khoa.index');
     }
 
     /**
@@ -49,7 +56,7 @@ class KhoaController extends Controller
      */
     public function edit(khoa $khoa)
     {
-        //
+        return view('admins.Department.edit', compact('khoa'));
     }
 
     /**
@@ -57,7 +64,12 @@ class KhoaController extends Controller
      */
     public function update(UpdatekhoaRequest $request, khoa $khoa)
     {
-        //
+        $tenKhoa = $request->tenKhoa;
+        $khoa->update([
+            'tenKhoa' => $tenKhoa,
+        ]);
+
+        return redirect::route('khoa.index');
     }
 
     /**
@@ -65,6 +77,7 @@ class KhoaController extends Controller
      */
     public function destroy(khoa $khoa)
     {
-        //
+        $khoa->delete();
+        return redirect::route('khoa.index');
     }
 }

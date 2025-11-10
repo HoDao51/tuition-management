@@ -10,6 +10,8 @@ class hocKy extends Model
     /** @use HasFactory<\Database\Factories\HocKyFactory> */
     use HasFactory;
 
+    protected $table = 'hoc_ky';
+
     protected $fillable = [
         'tenNamHoc',
         'id_nam_hoc'

@@ -10,6 +10,8 @@ class lop extends Model
     /** @use HasFactory<\Database\Factories\LopFactory> */
     use HasFactory;
 
+    protected $table = 'lop';
+
     protected $fillable = [
         'tenLop',
         'id_khoa'

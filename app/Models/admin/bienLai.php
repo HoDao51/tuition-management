@@ -10,6 +10,8 @@ class bienLai extends Model
     /** @use HasFactory<\Database\Factories\BienLaiFactory> */
     use HasFactory;
 
+    protected $table = 'bien_lai';
+
     protected $fillable = [
         'soBienLai',
         'id_sinh_vien',

@@ -10,6 +10,8 @@ class namHoc extends Model
     /** @use HasFactory<\Database\Factories\NamHocFactory> */
     use HasFactory;
 
+    protected $table = 'nam_hoc';
+
     protected $fillable = [
         'tenNamHoc',
         'ngayBatDau',
