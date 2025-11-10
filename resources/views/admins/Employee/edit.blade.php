@@ -20,6 +20,23 @@
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
         </div>
 
+        <!-- Ngày sinh -->
+        <div>
+            <label for="ngaySinh" class="block text-lg text-[#4B5563] mb-1">Ngày sinh</label>
+            <input type="date" name="ngaySinh" id="ngaySinh" value="{{ \Carbon\Carbon::parse($nhanVien->getRawOriginal('ngaySinh'))->format('Y-m-d') }}" required
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400" max="{{ date('Y-m-d', strtotime('-18 years')) }}">
+        </div>
+
+        <!-- Giới tính -->
+        <div>
+            <label for="gioiTinh" class="block text-lg text-[#4B5563] mb-1">Giới tính</label>
+            <select name="gioiTinh" id="gioiTinh" required
+                class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
+                <option value="0" {{ $nhanVien->gioiTinh == 0 ? 'selected' : '' }}>Nam</option>
+                <option value="1" {{ $nhanVien->gioiTinh == 1 ? 'selected' : '' }}>Nữ</option>
+            </select>
+        </div>
+
         <!-- Chức vụ -->
         <div>
             <label for="chucVu" class="block text-lg text-[#4B5563] mb-1">Chức vụ</label>

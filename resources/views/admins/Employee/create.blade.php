@@ -14,6 +14,24 @@
             >
         </div>
 
+        <!-- Ngày sinh -->
+        <div>
+            <label class="block text-lg text-[#4B5563] mb-1" for="ngaySinh">Ngày sinh</label>
+            <input 
+                type="date" name="ngaySinh" id="ngaySinh" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"  max="{{ date('Y-m-d', strtotime('-18 years')) }}" >
+        </div>
+
+        <!-- Giới tính -->
+        <div>
+            <label class="block text-lg text-[#4B5563] mb-1" for="gioiTinh">Giới tính</label>
+            <select 
+                name="gioiTinh" id="gioiTinh" required class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
+                <option value="" disabled selected>-- Chọn giới tính --</option>
+                <option value="0">Nam</option>
+                <option value="1">Nữ</option>
+            </select>
+        </div>
+
         <!-- Chức vụ -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="chucVu">Chức vụ</label>

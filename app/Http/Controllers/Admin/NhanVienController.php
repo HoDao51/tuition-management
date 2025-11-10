@@ -17,7 +17,7 @@ class NhanVienController extends Controller
      */
     public function index()
     {
-        $data = nhanVien::all();
+        $data = nhanVien::orderBy('id', 'desc')->get();
         return view('admins.Employee.index', compact('data'));
     }
 
@@ -36,6 +36,8 @@ class NhanVienController extends Controller
     public function store(StorenhanVienRequest $request)
     {
     $hoTen = $request->hoTen;
+    $ngaySinh = $request->ngaySinh;
+    $gioiTinh = $request->gioiTinh;
     $chucVu = $request->chucVu;
     $email = $request->email;
     $soDienThoai = $request->soDienThoai;
@@ -52,6 +54,8 @@ class NhanVienController extends Controller
     // Tạo nhân viên và gán vào biến
     $nhanVien = nhanVien::create([
         'hoTen' => $hoTen,
+        'ngaySinh' => $ngaySinh,
+        'gioiTinh' => $gioiTinh,
         'chucVu' => $chucVu,
         'email' => $email,
         'soDienThoai' => $soDienThoai,
@@ -89,6 +93,8 @@ class NhanVienController extends Controller
     public function update(UpdatenhanVienRequest $request, nhanVien $nhanVien)
 {
     $hoTen = $request->hoTen;
+    $ngaySinh = $request->ngaySinh;
+    $gioiTinh = $request->gioiTinh;
     $chucVu = $request->chucVu;
     $email = $request->email;
     $soDienThoai = $request->soDienThoai;
@@ -105,6 +111,8 @@ class NhanVienController extends Controller
     // Cập nhật thông tin nhân viên
     $nhanVien->update([
         'hoTen' => $hoTen,
+        'ngaySinh' => $ngaySinh,
+        'gioiTinh' => $gioiTinh,
         'chucVu' => $chucVu,
         'email' => $email,
         'soDienThoai' => $soDienThoai,

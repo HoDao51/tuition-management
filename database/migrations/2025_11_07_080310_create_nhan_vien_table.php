@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('ma_nv', 20)->unique()->nullable();
             $table->string('hoTen', 100)->notnullable();
+            $table->date('ngaySinh')->nullable();
+            $table->integer('gioiTinh')->nullable();
             $table->integer('chucVu')->notnullable();
             $table->string('email', 100)->notnullable();
             $table->string('soDienThoai', 20)->notnullable();

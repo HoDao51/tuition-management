@@ -29,7 +29,7 @@
           <tr class="border-b border-gray-200">
             <td class="px-3 py-2 font-semibold border border-gray-200">Chức vụ:</td>
             <td class="px-3 py-2 ">
-                @if ($nhanVien->ma_nv == 0)
+                @if ($nhanVien->chucVu == 0)
                     Quản trị viên
                 @else
                     Tài vụ

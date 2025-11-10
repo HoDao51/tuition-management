@@ -47,6 +47,7 @@
           <tr>
             <th class="px-4 py-2 border">Mã NV</th>
             <th class="px-4 py-2 border">Họ tên</th>
+            <th class="px-4 py-2 border">Ngày sinh</th>
             <th class="px-4 py-2 border">Chức vụ</th>
             <th class="px-4 py-2 border text-center">Xem chi tiết</th>
             <th class="px-4 py-2 border text-center">Tình trạng</th>
@@ -58,6 +59,7 @@
           <tr class="hover:bg-gray-50">
             <td class="px-4 py-2 border">{{($item->ma_nv)}}</td>
             <td class="px-4 py-2 border">{{($item->hoTen)}}</td>
+            <td class="px-4 py-2 border">{{($item->ngaySinh)}}</td>
             <td class="px-4 py-2 border">
                 @if(($item->chucVu) == 0)
                     Quản trị viên
