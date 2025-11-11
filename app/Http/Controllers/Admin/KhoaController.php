@@ -18,7 +18,7 @@ class KhoaController extends Controller
     public function index()
     {
         $data = khoa::orderBy('id', 'desc')->get();
-        return view('admins.Department.index', compact('data'));
+        return view('admins.department.index', compact('data'));
     }
 
     /**
@@ -26,8 +26,7 @@ class KhoaController extends Controller
      */
     public function create()
     {
-        $data = khoa::orderBy('id', 'desc')->get();
-        return view('admins.Department.create', compact('data'));
+        return view('admins.department.create');
     }
 
     /**
@@ -56,7 +55,7 @@ class KhoaController extends Controller
      */
     public function edit(khoa $khoa)
     {
-        return view('admins.Department.edit', compact('khoa'));
+        return view('admins.department.edit', compact('khoa'));
     }
 
     /**

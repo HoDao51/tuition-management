@@ -18,7 +18,7 @@ class NhanVienController extends Controller
     public function index()
     {
         $data = nhanVien::orderBy('id', 'desc')->get();
-        return view('admins.Employee.index', compact('data'));
+        return view('admins.employee.index', compact('data'));
     }
 
     /**
@@ -27,7 +27,7 @@ class NhanVienController extends Controller
     public function create()
     {
         $data = nhanVien::all();
-        return view('admins.Employee.create', compact('data'));
+        return view('admins.employee.create', compact('data'));
     }
 
     /**

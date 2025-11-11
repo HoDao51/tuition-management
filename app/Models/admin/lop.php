@@ -16,10 +16,10 @@ class lop extends Model
         'tenLop',
         'id_khoa'
     ];
-    protected function khoa(){
-        return $this->belongsTo(khoa::class);
+    public function khoa(){
+        return $this->belongsTo(khoa::class, 'id_khoa');
     }
-    protected function sinhVien(){
+    public function sinhVien(){
         return $this->hasMany(sinhVien::class);
     }
 }

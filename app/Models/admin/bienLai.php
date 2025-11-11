@@ -20,10 +20,10 @@ class bienLai extends Model
         'tinhTrang',
         'nguoiThu'
     ];
-    protected function sinhVien(){
+    public function sinhVien(){
         return $this->belongsTo(sinhVien::class);
     }
-    protected function nhanVien(){
+    public function nhanVien(){
         return $this->belongsTo(nhanVien::class);
     }
 }

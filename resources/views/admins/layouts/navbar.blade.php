@@ -38,10 +38,22 @@
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Thêm khoa
         </span>
+      @elseif (Route::currentRouteName() == 'khoa.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin khoa
+        </span>
       <!-- tiêu đề lớp -->
       @elseif (Route::currentRouteName() == 'lop.index')
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
-          Quan lý lớp học
+          Quản lý lớp học
+        </span>
+      @elseif (Route::currentRouteName() == 'lop.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm lớp học
+        </span>
+      @elseif (Route::currentRouteName() == 'lop.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin lớp học
         </span>
       @endif
       

@@ -6,6 +6,7 @@ use App\Models\Admin\lop;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorelopRequest;
 use App\Http\Requests\UpdatelopRequest;
+use App\Models\Admin\khoa;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class LopController extends Controller
      */
     public function index()
     {
-        return view('admins.Class.index');
+        $data = lop::with('khoa')->orderBy('id', 'desc')->get();
+        return view('admins.class.index', compact('data'));
     }
 
     /**
@@ -25,7 +27,8 @@ class LopController extends Controller
      */
     public function create()
     {
-        //
+        $khoa = khoa::all();
+        return view('admins.class.create', compact('khoa'));
     }
 
     /**
@@ -33,7 +36,14 @@ class LopController extends Controller
      */
     public function store(StorelopRequest $request)
     {
-        //
+        $tenLop = $request->tenLop;
+        $id_khoa = $request->id_khoa;
+        $tenLop = lop::create([
+            'tenLop' => $tenLop,
+            'id_khoa' => $id_khoa,
+        ]);
+
+        return redirect::route('lop.index');
     }
 
     /**
@@ -49,7 +59,8 @@ class LopController extends Controller
      */
     public function edit(lop $lop)
     {
-        //
+        $khoa = khoa::all();
+        return view('admins.class.edit', compact('lop', 'khoa'));
     }
 
     /**
@@ -57,7 +68,15 @@ class LopController extends Controller
      */
     public function update(UpdatelopRequest $request, lop $lop)
     {
-        //
+        $tenLop = $request->tenLop;
+        $id_khoa = $request->id_khoa;
+
+        $lop->update([
+            'tenLop' => $tenLop,
+            'id_khoa' => $id_khoa,
+        ]);
+
+        return redirect::route('lop.index');
     }
 
     /**

@@ -17,7 +17,7 @@ class NamHocController extends Controller
      */
     public function index()
     {
-        return view('admins.SchoolYear.index');
+        return view('admins.schoolYear.index');
     }
 
     /**
