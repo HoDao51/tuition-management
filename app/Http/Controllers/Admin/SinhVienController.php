@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\sinhVien;
+use App\Models\Admin\lop;
 use App\Http\Requests\StoresinhVienRequest;
 use App\Http\Requests\UpdatesinhVienRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
+
 use Illuminate\Http\Request;
 
 class SinhVienController extends Controller
@@ -17,7 +19,8 @@ class SinhVienController extends Controller
      */
     public function index()
     {
-        return view('admins.Student.index');
+        $data = sinhVien::with('lop')->orderBy('id', 'desc')->get();
+        return view('admins.student.index', compact('data'));
     }
 
     /**
@@ -25,7 +28,8 @@ class SinhVienController extends Controller
      */
     public function create()
     {
-        //
+        $lop = lop::where('deleted', false)->get();
+        return view('admins.student.create', compact('lop'));
     }
 
     /**
@@ -33,7 +37,41 @@ class SinhVienController extends Controller
      */
     public function store(StoresinhVienRequest $request)
     {
-        //
+        $hoTen = $request->hoTen;
+        $ngaySinh = $request->ngaySinh;
+        $gioiTinh = $request->gioiTinh;
+        $diaChi = $request->diaChi;
+        $soDienThoai = $request->soDienThoai;
+        $email = $request->email;
+        $id_lop = $request->id_lop;
+        // xử lý ảnh đại diện
+        $path = null;
+        if ($request->hasFile('anhDaiDien')) {
+            $file = $request->file('anhDaiDien');
+            //tạo vị trí lưu CSDL và thư mục
+            $fileName = time() . "-" . $file->getClientOriginalName();
+            //lưu trữ vào thư mục và CSDL
+            $path = $file->storeAs('sinhVien', $fileName, 'public');
+        }
+        // Tạo sinh viên và gán vào biến
+        $sinhVien = sinhVien::create([
+            'hoTen' => $hoTen,
+            'ngaySinh' => $ngaySinh,
+            'gioiTinh' => $gioiTinh,
+            'diaChi' => $diaChi,
+            'soDienThoai' => $soDienThoai,
+            'email' => $email,
+            'id_lop' => $id_lop,
+            'anhDaiDien' => $path
+        ]);
+
+        // Tự sinh ma_nv theo id
+        $ma_sv = 'SV' . str_pad($sinhVien->id, 3, '0', STR_PAD_LEFT);
+
+        // Cập nhật ma_nv
+        $sinhVien->update(['ma_sv' => $ma_sv]);
+
+        return redirect::route('sinhVien.index');
     }
 
     /**
@@ -49,7 +87,8 @@ class SinhVienController extends Controller
      */
     public function edit(sinhVien $sinhVien)
     {
-        //
+        $lop = lop::where('deleted', false)->get();
+        return view('admins.student.edit', compact('sinhVien', 'lop'));
     }
 
     /**
@@ -57,7 +96,37 @@ class SinhVienController extends Controller
      */
     public function update(UpdatesinhVienRequest $request, sinhVien $sinhVien)
     {
-        //
+        $hoTen = $request->hoTen;
+        $ngaySinh = $request->ngaySinh;
+        $gioiTinh = $request->gioiTinh;
+        $diaChi = $request->diaChi;
+        $soDienThoai = $request->soDienThoai;
+        $email = $request->email;
+        $tinhTrang = $request->tinhTrang;
+        $id_lop = $request->id_lop;
+
+        // Xử lý ảnh đại diện
+        $path = $sinhVien->anhDaiDien; // giữ ảnh cũ nếu không upload mới
+        if ($request->hasFile('anhDaiDien')) {
+            $file = $request->file('anhDaiDien');
+            $fileName = time() . "-" . $file->getClientOriginalName();
+            $path = $file->storeAs('sinhVien', $fileName, 'public');
+        }
+
+        // Tạo sinh viên và gán vào biến
+        $sinhVien->update([
+            'hoTen' => $hoTen,
+            'ngaySinh' => $ngaySinh,
+            'gioiTinh' => $gioiTinh,
+            'diaChi' => $diaChi,
+            'soDienThoai' => $soDienThoai,
+            'email' => $email,
+            'id_lop' => $id_lop,
+            'tinhTrang' => $tinhTrang,
+            'anhDaiDien' => $path
+        ]);
+
+        return redirect::route('sinhVien.index');
     }
 
     /**

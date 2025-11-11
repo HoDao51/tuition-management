@@ -8,7 +8,6 @@ use App\Http\Requests\StorenhanVienRequest;
 use App\Http\Requests\UpdatenhanVienRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Http\Request;
 
 class NhanVienController extends Controller
 {
@@ -48,7 +47,7 @@ class NhanVienController extends Controller
         //tạo vị trí lưu CSDL và thư mục
         $fileName = time() . "-" . $file->getClientOriginalName();
         //lưu trữ vào thư mục và CSDL
-        $path = $file->store('nhanVien', $fileName, 'public');
+        $path = $file->storeAs('nhanVien', $fileName, 'public');
     }
 
     // Tạo nhân viên và gán vào biến
@@ -120,7 +119,7 @@ class NhanVienController extends Controller
         'anhDaiDien' => $path
     ]);
 
-    return redirect()->route('nhanVien.index');
+    return redirect::route('nhanVien.index');
 }
 
 

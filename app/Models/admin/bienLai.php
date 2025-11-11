@@ -21,9 +21,9 @@ class bienLai extends Model
         'nguoiThu'
     ];
     public function sinhVien(){
-        return $this->belongsTo(sinhVien::class);
+        return $this->belongsTo(sinhVien::class, 'id_sinh_vien');
     }
     public function nhanVien(){
-        return $this->belongsTo(nhanVien::class);
+        return $this->belongsTo(nhanVien::class, 'nguoiThu');
     }
 }

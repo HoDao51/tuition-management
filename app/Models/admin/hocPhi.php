@@ -19,13 +19,13 @@ class hocPhi extends Model
         ' tinhTrang',
         ' nguoiTao'
     ];
-    protected function sinhVien(){
-        return $this->belongsTo(sinhVien::class);
+    public function sinhVien(){
+        return $this->belongsTo(sinhVien::class, 'id_sinh_vien');
     }
-    protected function hocKy(){
-        return $this->belongsTo(hocKy::class);
+    public function hocKy(){
+        return $this->belongsTo(hocKy::class, 'id_hoc_ky');
     }
-    protected function nhanVien(){
-        return $this->belongsTo(nhanVien::class);
+    public function nhanVien(){
+        return $this->belongsTo(nhanVien::class, 'nguoiTao');
     }
 }

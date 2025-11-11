@@ -17,10 +17,10 @@ class hocKy extends Model
         'id_nam_hoc'
     ];
 
-    protected function namHoc(){
-        return $this->belongsTo(namHoc::class);
+    public function namHoc(){
+        return $this->belongsTo(namHoc::class, 'id_nam_hoc');
     }
-    protected function hocPhi(){
+    public function hocPhi(){
         return $this->hasMany(hocPhi::class);
     }
 }

@@ -7,7 +7,7 @@
     <div class="flex flex-col items-center space-y-3  p-4">
       <div class="w-50 h-60 bg-gray-300 rounded-lg flex flex-col items-center justify-center space-y-6">
         @if($nhanVien->anhDaiDien == null)
-            <img src="{{ asset('images/sbcf-default-avatar.png') }}" alt="Ảnh đại diện" class="mt-2 w-50 h-36 object-cover rounded">
+            <img src="{{ asset('images/sbcf-default-avatar.png') }}" alt="Ảnh đại diện" class="mt-2 w-36 h-36 object-cover rounded">
         @else
             <img src="{{ asset('storage/'.$nhanVien->anhDaiDien) }}" alt="Ảnh đại diện" class="mt-2 w-36 h-36 object-cover rounded">
         @endif
@@ -58,7 +58,7 @@
               @if ($nhanVien->tinhTrang == 0)
                 <span class="px-3 py-2 text-green-600">Đang hoạt động</span>
               @else
-                <span class="px-3 py-2 text-green-600">Ngưng hoạt động</span>
+                <span class="px-3 py-2 text-red-600">Ngưng hoạt động</span>
               @endif
           </td>
           </tr>

@@ -5,13 +5,25 @@
 <div class="max-w-md bg-white">
     <form action="{{ route('sinhVien.store') }}" method="POST" enctype="multipart/form-data" class="space-y-3">
         @csrf
-        <!-- Tên nhân viên -->
+        <!-- Tên sinh viên -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="hoTen">Tên sinh viên</label>
             <input 
                 type="text" name="hoTen" id="hoTen" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
                 placeholder="Nhập tên nhân viên"
             >
+        </div>
+
+        <!-- lớp -->
+        <div>
+            <label class="block text-lg text-[#4B5563] mb-1" for="id_lop">Lớp</label>
+            <select 
+                name="id_lop" id="id_lop" required class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
+                <option value="" disabled selected>-- Chọn lớp --</option>
+                @foreach ($lop as $item)
+                    <option value="{{ $item->id }}">{{ $item->tenLop }}</option>
+                @endforeach
+            </select>
         </div>
 
         <!-- Ngày sinh -->
@@ -32,7 +44,13 @@
             </select>
         </div>
 
-        
+        <!-- địa chỉ -->
+        <div>
+            <label class="block text-lg text-[#4B5563] mb-1" for="diaChi">Địa chỉ</label>
+            <input 
+                type="text" name="diaChi" id="diaChi" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
+                placeholder="Nhập địa chỉ">
+        </div>
 
         <!-- Số điện thoại -->
         <div>
@@ -61,7 +79,7 @@
 
         <!-- Buttons -->
         <div class="flex space-x-3 pt-2">
-            <a href="{{ route('nhanVien.index') }}" class="bg-[#828282] text-white px-4 py-2 rounded-md hover:bg-gray-700 text-md font-semibold">
+            <a href="{{ route('sinhVien.index') }}" class="bg-[#828282] text-white px-4 py-2 rounded-md hover:bg-gray-700 text-md font-semibold">
                 Quay lại
             </a>
             <button 

@@ -15,7 +15,7 @@ class khoa extends Model
     protected $fillable = [
         'tenKhoa'
     ];
-    protected function lop(){
+    public function lop(){
         return $this->hasMany(lop::class);
     }
 }

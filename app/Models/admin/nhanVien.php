@@ -30,10 +30,10 @@ class nhanVien extends Model
     }
 
 
-    protected function hocPhi(){
+    public function hocPhi(){
         return $this->hasMany(hocPhi::class);
     }
-    protected function bienLai(){
+    public function bienLai(){
         return $this->hasMany(bienLai::class);
     }
 

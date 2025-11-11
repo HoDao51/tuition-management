@@ -5,6 +5,7 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class namHoc extends Model
 {
     /** @use HasFactory<\Database\Factories\NamHocFactory> */
@@ -18,7 +19,7 @@ class namHoc extends Model
         'ngayKetThuc'
     ];
 
-    protected function hocKy(){
+    public function hocKy(){
         return $this->hasMany(hocKy::class);
     }
 }

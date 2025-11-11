@@ -15,7 +15,7 @@
 
         <!-- tên khoa -->
         <div>
-            <label for="tenLop" class="block text-lg text-[#4B5563] mb-1">Họ tên</label>
+            <label for="tenLop" class="block text-lg text-[#4B5563] mb-1">Tên lớp</label>
             <input type="text" name="tenLop" id="tenLop" value="{{ $lop->tenLop }}" required
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
         </div>
@@ -32,7 +32,7 @@
 
         <!-- Nút submit -->
         <div class="flex space-x-3 pt-4">
-            <a href="{{ route('khoa.index') }}" class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition text-[18px]">Quay lại</a>
+            <a href="{{ route('lop.index') }}" class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition text-[18px]">Quay lại</a>
             <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition text-[18px]">Cập nhật</button>
         </div>
     </form>

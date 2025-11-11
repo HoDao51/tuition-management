@@ -49,7 +49,7 @@
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{ $lop->khoa->tenKhoa }}</td>
             <td class="px-4 py-2 border text-center">
                 {{-- Nút sửa --}}
-                <a href="{{ route('lop.edit', ['lop' => $lop->id]) }}">
+                <a href="{{ route('lop.edit', $lop->id) }}">
                     <button type="button"
                         class="bg-[#10B981] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-[#1D8F6A]">
                         Sửa

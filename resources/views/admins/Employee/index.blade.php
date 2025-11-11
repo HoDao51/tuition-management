@@ -34,8 +34,8 @@
           <tr>
             <th class="px-4 py-2 border">Mã NV</th>
             <th class="px-4 py-2 border">Họ tên</th>
-            <th class="px-4 py-2 border">Ngày sinh</th>
-            <th class="px-4 py-2 border">Chức vụ</th>
+            <th class="px-4 py-2 border text-center">Ngày sinh</th>
+            <th class="px-4 py-2 border text-center">Chức vụ</th>
             <th class="px-4 py-2 border text-center">Xem chi tiết</th>
             <th class="px-4 py-2 border text-center">Tình trạng</th>
             <th class="px-4 py-2 border text-center">Hành động</th>
@@ -46,8 +46,8 @@
           <tr class="hover:bg-gray-50">
             <td class="px-4 py-2 border text-[#4B5563] text-[17px]">{{($item->ma_nv)}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px]">{{($item->hoTen)}}</td>
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px]">{{($item->ngaySinh)}}</td>
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px]">
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{($item->ngaySinh)}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">
                 @if(($item->chucVu) == 0)
                     Quản trị viên
                 @else

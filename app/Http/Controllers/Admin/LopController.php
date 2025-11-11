@@ -59,7 +59,7 @@ class LopController extends Controller
      */
     public function edit(lop $lop)
     {
-        $khoa = khoa::all();
+        $khoa = khoa::where('deleted', false)->get();
         return view('admins.class.edit', compact('lop', 'khoa'));
     }
 
