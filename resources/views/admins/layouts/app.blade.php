@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hệ thống quản trị</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/sk-telecom-t1-logo-png_seeklogo-362284.png')}}">
+</head>
 <body class="min-h-screen flex flex-col">
     <div class="">
         @include('admins.layouts.navbar')
@@ -11,3 +20,4 @@
         </main>
     </div>
 </body>
+</html>

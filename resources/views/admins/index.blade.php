@@ -2,6 +2,6 @@
 
 @section('content')
     @if (Route::currentRouteName() == 'admins.index')
-        @include('admins.Dashboard.index')
+        @include('admins.dashboard.index')
     @endif
 @endsection

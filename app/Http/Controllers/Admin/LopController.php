@@ -18,7 +18,7 @@ class LopController extends Controller
      */
     public function index()
     {
-        $data = lop::with('khoa')->orderBy('id', 'desc')->get();
+        $data = lop::with('khoa')->orderBy('id', 'desc')->where('deleted', 0)->get();
         return view('admins.class.index', compact('data'));
     }
 
@@ -27,7 +27,7 @@ class LopController extends Controller
      */
     public function create()
     {
-        $khoa = khoa::all();
+        $khoa = khoa::where('deleted', false)->get();
         return view('admins.class.create', compact('khoa'));
     }
 
@@ -84,6 +84,8 @@ class LopController extends Controller
      */
     public function destroy(lop $lop)
     {
-        //
+        $lop->deleted = true;
+        $lop->save(); 
+        return redirect::route('khoa.index');
     }
 }

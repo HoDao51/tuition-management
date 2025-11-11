@@ -17,7 +17,7 @@ class KhoaController extends Controller
      */
     public function index()
     {
-        $data = khoa::orderBy('id', 'desc')->get();
+        $data = khoa::orderBy('id', 'desc')->where('deleted', 0)->get();
         return view('admins.department.index', compact('data'));
     }
 
@@ -76,7 +76,8 @@ class KhoaController extends Controller
      */
     public function destroy(khoa $khoa)
     {
-        $khoa->delete();
+        $khoa->deleted = true;
+        $khoa->save(); 
         return redirect::route('khoa.index');
     }
 }

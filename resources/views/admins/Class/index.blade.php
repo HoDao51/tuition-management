@@ -57,7 +57,7 @@
                 </a>
 
                 {{-- Nút xóa --}}
-                <form action="" method="POST" class="inline-block">
+                <form action="{{route('lop.destroy', $lop->id)}}" method="POST" class="inline-block">
                     @csrf
                     @method('DELETE')
                     <button type="submit"

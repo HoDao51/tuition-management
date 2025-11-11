@@ -17,7 +17,7 @@
             <select name="id_khoa" id="id_khoa" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
                 <option value="" disabled selected>Chọn khoa</option>
                 @foreach($khoa as $khoa)
-                    <option value="{{ $khoa->id }}">{{ $khoa->tenKhoa }}</option>
+                        <option value="{{ $khoa->id }}">{{ $khoa->tenKhoa }}</option>
                 @endforeach
             </select>
         </div>

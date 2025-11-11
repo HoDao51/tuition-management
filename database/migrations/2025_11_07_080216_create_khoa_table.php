@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('khoa', function (Blueprint $table) {
             $table->id();
             $table->string('tenKhoa', 100)->notnullable();
+            $table->boolean('deleted')->default(false);
             $table->timestamps();
         });
     }
