@@ -44,7 +44,7 @@
           <tr class="hover:bg-gray-50">
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->id}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->tenKhoa}}</td>
-            <td class="px-4 py-2 border text-center">
+            <td class="px-4 py-2 border text-center pt-5">
                 {{-- Nút sửa --}}
                 <a href="{{ route('khoa.edit', $item->id) }}">
                     <button type="button"

@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 
 class namHoc extends Model
@@ -18,6 +19,16 @@ class namHoc extends Model
         'ngayBatDau',
         'ngayKetThuc'
     ];
+
+    public function getNgayBatDauAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getNgayKetThucAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
 
     public function hocKy(){
         return $this->hasMany(hocKy::class);

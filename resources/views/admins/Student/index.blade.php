@@ -49,7 +49,7 @@
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->ngaySinh}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->lop->tenLop}}</td>
             <td class="px-4 py-2 border text-center">
-              <a href="">
+              <a href="{{route('sinhVien.show', $item->id)}}">
                 <button type="button" class="bg-blue-600 text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-blue-700">Xem thêm</button>
               </a>
             </td>

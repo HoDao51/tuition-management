@@ -25,6 +25,10 @@
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Chỉnh sửa thông tin nhân viên
         </span>
+      @elseif (Route::currentRouteName() == 'nhanVien.show')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý nhân viên
+        </span>
 
       <!-- tiêu đề sinh viên -->
       @elseif (Route::currentRouteName() == 'sinhVien.index')
@@ -38,6 +42,10 @@
       @elseif (Route::currentRouteName() == 'sinhVien.edit')
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Chỉnh sửa thông tin sinh viên
+        </span>
+      @elseif (Route::currentRouteName() == 'sinhVien.show')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý sinh viên
         </span>
 
       <!-- tiêu đề khoa -->
@@ -66,6 +74,20 @@
       @elseif (Route::currentRouteName() == 'lop.edit')
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Chỉnh sửa thông tin lớp học
+        </span>
+
+      <!-- tiêu đề năm học -->
+      @elseif (Route::currentRouteName() == 'namHoc.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý năm học
+        </span>
+      @elseif (Route::currentRouteName() == 'namHoc.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm năm học
+        </span>
+      @elseif (Route::currentRouteName() == 'namHoc.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin năm học
         </span>
       @endif
       

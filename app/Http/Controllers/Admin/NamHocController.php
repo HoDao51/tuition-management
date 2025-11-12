@@ -17,7 +17,8 @@ class NamHocController extends Controller
      */
     public function index()
     {
-        return view('admins.schoolYear.index');
+        $data = namHoc::orderBy('id', 'desc')->where('deleted', false)->get();
+        return view('admins.schoolYear.index', compact('data'));
     }
 
     /**
@@ -25,7 +26,7 @@ class NamHocController extends Controller
      */
     public function create()
     {
-        //
+        return view('admins.schoolYear.create');
     }
 
     /**
@@ -33,7 +34,17 @@ class NamHocController extends Controller
      */
     public function store(StorenamHocRequest $request)
     {
-        //
+        $tenNamHoc = $request->tenNamHoc;
+        $ngayBatDau = $request->ngayBatDau;
+        $ngayKetThuc = $request->ngayKetThuc;
+
+        $namHoc = namHoc::create([
+            'tenNamHoc' => $tenNamHoc,
+            'ngayBatDau' => $ngayBatDau,
+            'ngayKetThuc' => $ngayKetThuc
+        ]);
+
+        return Redirect::route('namHoc.index');
     }
 
     /**
@@ -49,7 +60,7 @@ class NamHocController extends Controller
      */
     public function edit(namHoc $namHoc)
     {
-        //
+        return view('admins.schoolYear.edit', compact('namHoc'));
     }
 
     /**
@@ -57,7 +68,17 @@ class NamHocController extends Controller
      */
     public function update(UpdatenamHocRequest $request, namHoc $namHoc)
     {
-        //
+        $tenNamHoc = $request->tenNamHoc;
+        $ngayBatDau = $request->ngayBatDau;
+        $ngayKetThuc = $request->ngayKetThuc;
+
+        $namHoc->update([
+            'tenNamHoc' => $tenNamHoc,
+            'ngayBatDau' => $ngayBatDau,
+            'ngayKetThuc' => $ngayKetThuc
+        ]);
+
+        return Redirect::route('namHoc.index');
     }
 
     /**
@@ -65,6 +86,8 @@ class NamHocController extends Controller
      */
     public function destroy(namHoc $namHoc)
     {
-        //
+        $namHoc->deleted = true;
+        $namHoc->save(); 
+        return redirect::route('namHoc.index');
     }
 }

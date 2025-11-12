@@ -47,7 +47,7 @@
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$lop->id}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$lop->tenLop}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{ $lop->khoa->tenKhoa }}</td>
-            <td class="px-4 py-2 border text-center">
+            <td class="px-4 py-2 border text-center pt-5">
                 {{-- Nút sửa --}}
                 <a href="{{ route('lop.edit', $lop->id) }}">
                     <button type="button"

@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Models\Admin\sinhVien;
 use App\Models\Admin\lop;
@@ -9,7 +7,7 @@ use App\Http\Requests\StoresinhVienRequest;
 use App\Http\Requests\UpdatesinhVienRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class SinhVienController extends Controller
@@ -79,7 +77,8 @@ class SinhVienController extends Controller
      */
     public function show(sinhVien $sinhVien)
     {
-        //
+        $sinhVien->load('lop.khoa');
+        return view('admins.student.studentDetail', compact('sinhVien'));
     }
 
     /**

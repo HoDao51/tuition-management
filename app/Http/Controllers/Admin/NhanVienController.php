@@ -75,7 +75,7 @@ class NhanVienController extends Controller
      */
     public function show(nhanVien $nhanVien)
     {
-        return view('admins.Employee.employeeDetail', compact('nhanVien'));
+        return view('admins.employee.employeeDetail', compact('nhanVien'));
     }
 
     /**

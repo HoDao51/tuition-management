@@ -34,17 +34,6 @@ class sinhVien extends Model
     public function lop(){
         return $this->belongsTo(lop::class, 'id_lop');
     }
-    public function khoa()
-    {
-    return $this->hasOneThrough(
-        khoa::class,  // Model đích
-        lop::class,   // Model trung gian
-        'id',         // Khóa chính của lop
-        'id',         // Khóa chính của khoa
-        'id_lop',     // Khóa ngoại trong sinhVien
-        'id_khoa'     // Khóa ngoại trong lop
-    );
-    }
     public function hocPhi(){
         return $this->hasMany(hocPhi::class);
     }
