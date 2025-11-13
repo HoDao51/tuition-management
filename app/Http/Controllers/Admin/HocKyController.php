@@ -17,7 +17,7 @@ class HocKyController extends Controller
      */
     public function index()
     {
-        return view('admins.Semester.index');
+        return view('admins.semester.index');
     }
 
     /**

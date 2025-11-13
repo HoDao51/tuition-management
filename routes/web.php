@@ -26,3 +26,4 @@ Route::resource('admins/namHoc', NamHocController::class);
 Route::resource('admins/hocKy', HocKyController::class);
 Route::resource('admins/hocPhi', HocPhiController::class);
 Route::resource('admins/bienLai', BienLaiController::class);
+

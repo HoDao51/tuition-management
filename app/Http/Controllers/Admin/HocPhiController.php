@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin\hocPhi;
+use App\Models\Admin\hocKy;
+use App\Models\Admin\sinhVien;
+use App\Models\Admin\namHoc;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorehocPhiRequest;
 use App\Http\Requests\UpdatehocPhiRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
+
 use Illuminate\Http\Request;
 
 class HocPhiController extends Controller
@@ -17,23 +21,28 @@ class HocPhiController extends Controller
      */
     public function index()
     {
-        return view('admins.Tuition.index');
+        return view('admins.tuition.index');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $sinhVienId = $request->query('sinhVien');
+        $sinhVien = SinhVien::find($sinhVienId);
+        $namHoc = namHoc::where('deleted', false)->get();
+        $hocKy = hocKy::all();
+        return view('admins.tuition.create', compact('sinhVien', 'namHoc', 'hocKy'));
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StorehocPhiRequest $request)
     {
-        //
+        
     }
 
     /**

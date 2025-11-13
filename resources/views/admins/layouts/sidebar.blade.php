@@ -55,7 +55,8 @@
       </a>
 
       <!-- Quản lý năm học -->
-      <a href="{{ route('namHoc.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]">
+      <a href="{{ route('namHoc.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+      {{ request()->routeIs('namHoc.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="#222C3A" viewBox="0 0 2048 2048" stroke="currentColor" stroke-width="0">
             <path fill="currentColor" d="M1664 512h256v1536H256V512h256V384h128v128h896V384h128zm128 128h-128v128h128zm-256 0H640v128h896zm-1024 0H384v128h128zM384 1920h1408V896H384zM256 384V256H128v1408H0V128h256V0h128v128h896V0h128v128h256v128h-256v128h-128V256H384v128zm384 1024v-128h128v128zm256 0v-128h128v128zm256 0v-128h128v128zm256 0v-128h128v128zm-768 256v-128h128v128zm256 0v-128h128v128zm256 0v-128h128v128zm-256-512v-128h128v128zm256 0v-128h128v128zm256 0v-128h128v128z"/>
         </svg>
@@ -71,7 +72,8 @@
       </a>
 
       <!-- Quản lý học phí -->
-      <a href="{{ route('hocPhi.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]">
+      <a href="{{ route('hocPhi.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+      {{ request()->routeIs('hocPhi.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0">
             <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1">
                 <path stroke-linecap="round" d="m5.5 11l-.5-.5L7 7L4.5 8L2 7l2 3.5l-3.5 5v3l2.5 2h.5m-1-10H6m11.5.5l.5-.5L16 7l2.5 1L21 7l-2 3.5l3.5 5v3l-2.5 2h-.5m1-10H17m-4.5 4h-2l-.5 1l.5 1h2l.5 1l-.5 1h-2m1-4v-1m0 6v-1"/>

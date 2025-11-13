@@ -89,6 +89,20 @@
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Chỉnh sửa thông tin năm học
         </span>
+
+      <!-- tiêu đề học phí -->
+      @elseif (Route::currentRouteName() == 'hocPhi.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý học phí
+        </span>
+      @elseif (Route::currentRouteName() == 'hocPhi.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm học phí
+        </span>
+      @elseif (Route::currentRouteName() == 'hocPhi.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin học phí
+        </span>
       @endif
       
     </a>

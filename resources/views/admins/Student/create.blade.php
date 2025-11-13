@@ -10,7 +10,7 @@
             <label class="block text-lg text-[#4B5563] mb-1" for="hoTen">Tên sinh viên</label>
             <input 
                 type="text" name="hoTen" id="hoTen" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
-                placeholder="Nhập tên nhân viên"
+                placeholder="Nhập tên sinh viên"
             >
         </div>
 
