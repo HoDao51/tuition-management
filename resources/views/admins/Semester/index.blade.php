@@ -21,9 +21,9 @@
         </button>
     </div>
       <div class="flex items-center space-x-2 mb-1">
-        <a href="{{ route('lop.create') }}">
+        <a href="{{ route('hocKy.create') }}">
             <button type="button" class="bg-[#4B5563] text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">
-                Thêm lớp
+                Thêm học kỳ
             </button>
         </a>
       </div>
@@ -34,22 +34,21 @@
       <table class="min-w-full border border-gray-200 text-sm text-left">
         <thead class="bg-[#D9D9D9] text-gray-700 uppercase">
           <tr>
-            <th class="px-4 py-2 border w-[150px] text-center">Mã lớp</th>
-            <th class="px-4 py-2 border text-center">Tên lớp</th>
-            <th class="px-4 py-2 border text-center">Tên khoa</th>
+            <th class="px-4 py-2 border w-[150px] text-center">Mã học kỳ</th>
+            <th class="px-4 py-2 border text-center">Tên học kỳ</th>
+            <th class="px-4 py-2 border text-center">Tên năm học</th>
             <th class="px-4 py-2 border w-[300px] text-center">Hành động</th>
           </tr>
         </thead>
-        @foreach ($data as $lop)
-          
+        @foreach ($data as $item)
         <tbody>
           <tr class="hover:bg-gray-50">
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$lop->id}}</td>
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$lop->tenLop}}</td>
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{ $lop->khoa->tenKhoa }}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->id}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->tenHocKy}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->namHoc->tenNamHoc}}</td>
             <td class="px-4 py-2 border text-center pt-5">
                 {{-- Nút sửa --}}
-                <a href="{{ route('lop.edit', $lop->id) }}">
+                <a href="{{route('hocKy.edit', $item->id)}}">
                     <button type="button"
                         class="bg-[#10B981] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-[#1D8F6A]">
                         Sửa
@@ -57,7 +56,7 @@
                 </a>
 
                 {{-- Nút xóa --}}
-                <form action="{{route('lop.destroy', $lop->id)}}" method="POST" class="inline-block">
+                <form action="{{route('hocKy.destroy', $item->id)}}" method="POST" class="inline-block">
                     @csrf
                     @method('DELETE')
                     <button type="submit"
@@ -66,10 +65,9 @@
                     </button>
                 </form>
             </td>
-          @endforeach
           </tr>
         </tbody>
-        
+        @endforeach
       </table>
     </div>
   </div>

@@ -13,7 +13,7 @@ class hocKy extends Model
     protected $table = 'hoc_ky';
 
     protected $fillable = [
-        'tenNamHoc',
+        'tenHocKy',
         'id_nam_hoc'
     ];
 

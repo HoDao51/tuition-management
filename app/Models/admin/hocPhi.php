@@ -13,11 +13,11 @@ class hocPhi extends Model
     protected $table = 'hoc_phi';
 
     protected $fillable = [
-        ' id_sinh_vien',
-        ' id_hoc_ky',
-        ' soTienHocPhi',
-        ' tinhTrang',
-        ' nguoiTao'
+        'id_sinh_vien',
+        'id_hoc_ky',
+        'tongTien',
+        'tinhTrang',
+        'nguoiTao'
     ];
     public function sinhVien(){
         return $this->belongsTo(sinhVien::class, 'id_sinh_vien');

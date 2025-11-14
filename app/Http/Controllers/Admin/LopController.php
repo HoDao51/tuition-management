@@ -38,7 +38,7 @@ class LopController extends Controller
     {
         $tenLop = $request->tenLop;
         $id_khoa = $request->id_khoa;
-        $tenLop = lop::create([
+        $Lop = lop::create([
             'tenLop' => $tenLop,
             'id_khoa' => $id_khoa,
         ]);

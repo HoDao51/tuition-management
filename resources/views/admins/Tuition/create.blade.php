@@ -13,7 +13,15 @@
             <input type="hidden" name="id_sinh_vien" value="{{ $sinhVien->id }}">
         </div>
 
-        <!-- Học kỳ (lấy theo năm học của sinh viên) -->
+        <!-- năm học -->
+        <div>
+            <label class="block text-sm text-gray-600 mb-1">Năm học</label>
+            <input type="text" value="{{ $sinhVien->namHoc->tenNamHoc }}" readonly
+                   class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100">
+            <input type="hidden" name="" value="{{ $sinhVien->id }}">
+        </div>
+
+        <!-- Học kỳ -->
         <div>
             <label class="block text-sm text-gray-600 mb-1">Học kỳ</label>
             <select name="id_hoc_ky" required
@@ -30,15 +38,6 @@
             <label class="block text-sm text-gray-600 mb-1">Tổng tiền</label>
             <input type="number" name="tongTien" required
                    class="w-full border border-gray-300 rounded-md px-3 py-2">
-        </div>
-
-        <!-- Tình trạng -->
-        <div>
-            <label class="block text-sm text-gray-600 mb-1">Tình trạng</label>
-            <select name="tinhTrang" class="w-full border border-gray-300 rounded-md px-3 py-2">
-                <option value="0" selected>Đang hoạt động</option>
-                <option value="1">Ngưng hoạt động</option>
-            </select>
         </div>
 
         <div class="flex space-x-3 pt-4">

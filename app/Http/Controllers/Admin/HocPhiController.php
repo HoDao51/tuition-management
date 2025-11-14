@@ -21,7 +21,8 @@ class HocPhiController extends Controller
      */
     public function index()
     {
-        return view('admins.tuition.index');
+         $data = hocPhi::orderBy('id', 'desc')->get();
+        return view('admins.tuition.index', compact('data'));
     }
 
     /**
@@ -30,7 +31,7 @@ class HocPhiController extends Controller
     public function create(Request $request)
     {
         $sinhVienId = $request->query('sinhVien');
-        $sinhVien = SinhVien::with('namHoc')->find($sinhVienId); // lấy luôn năm học
+        $sinhVien = SinhVien::with('namHoc')->find($sinhVienId);
         $hocKy = hocKy::where('id_nam_hoc', $sinhVien->id_nam_hoc)->where('deleted', false)->get();
 
         return view('admins.tuition.create', compact('sinhVien', 'hocKy'));
@@ -42,8 +43,18 @@ class HocPhiController extends Controller
      */
     public function store(StorehocPhiRequest $request)
     {
-        
-    }
+        $id_sinh_vien = $request->id_sinh_vien;
+        $id_hoc_ky = $request->id_hoc_ky;
+        $tongTien = $request->tongTien;
+
+        $hocPhi = hocPhi::create([
+            'id_sinh_vien' => $id_sinh_vien,
+            'id_hoc_ky' => $id_hoc_ky,
+            'tongTien' => $tongTien,
+        ]);
+
+        return redirect::route('hocPhi.index');
+        }
 
     /**
      * Display the specified resource.

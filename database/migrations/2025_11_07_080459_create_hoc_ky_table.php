@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('hoc_ky', function (Blueprint $table) {
             $table->id();
-            $table->string('tenHocKy', 20)->unique()->notnullable();
+            $table->string('tenHocKy', 50);
             $table->unsignedBigInteger('id_nam_hoc');
             $table->boolean('deleted')->default(false);
             $table->timestamps();

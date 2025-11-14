@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_sinh_vien')->unique();
             $table->unsignedBigInteger('id_hoc_ky')->unique();
-            $table->unsignedBigInteger('nguoiTao')->unique();
+            $table->unsignedBigInteger('nguoiTao')->unique()->nullable();
             $table->integer('tongTien')->notnullable();
             $table->integer('tinhTrang')->default('0');
             $table->timestamps();

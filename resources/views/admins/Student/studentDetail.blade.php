@@ -68,9 +68,9 @@
             <td class="px-3 py-2 font-semibold border border-[#D4D4D4]">Tình trạng:</td>
             <td >
               @if ($sinhVien->tinhTrang == 0)
-                <span class="px-3 py-2 text-green-600 font-semibold">Đang hoạt động</span>
+                <span class="px-3 py-2 text-green-600 font-semibold">Đang học</span>
               @else
-                <span class="px-3 py-2 text-red-600 font-semibold">Ngưng hoạt động</span>
+                <span class="px-3 py-2 text-red-600 font-semibold">Đã nghỉ học</span>
               @endif
           </td>
           </tr>

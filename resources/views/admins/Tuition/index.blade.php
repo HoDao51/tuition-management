@@ -41,6 +41,7 @@
             <th class="px-4 py-2 border w-[300px] text-center">Hành động</th>
           </tr>
         </thead>
+        @foreach ($data as $item)
         <tbody>
           <tr class="hover:bg-gray-50">
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center"></td>
@@ -68,6 +69,7 @@
             </td>
           </tr>
         </tbody>
+        @endforeach
       </table>
     </div>
   </div>
