@@ -21,10 +21,12 @@ return new class extends Migration
             $table->string('soDienThoai', 20)->notnullable();
             $table->string('email', 100)->notnullable();
             $table->unsignedBigInteger('id_lop');
+            $table->unsignedBigInteger('id_nam_hoc');
             $table->string('tinhTrang')->default('0');
             $table->string('anhDaiDien')->nullable();
             $table->timestamps();
             $table->foreign('id_lop')->references('id')->on('lop');
+            $table->foreign('id_nam_hoc')->references('id')->on('nam_hoc');
         });
     }
 

@@ -30,10 +30,10 @@ class HocPhiController extends Controller
     public function create(Request $request)
     {
         $sinhVienId = $request->query('sinhVien');
-        $sinhVien = SinhVien::find($sinhVienId);
-        $namHoc = namHoc::where('deleted', false)->get();
-        $hocKy = hocKy::all();
-        return view('admins.tuition.create', compact('sinhVien', 'namHoc', 'hocKy'));
+        $sinhVien = SinhVien::with('namHoc')->find($sinhVienId); // lấy luôn năm học
+        $hocKy = hocKy::where('id_nam_hoc', $sinhVien->id_nam_hoc)->where('deleted', false)->get();
+
+        return view('admins.tuition.create', compact('sinhVien', 'hocKy'));
     }
 
 

@@ -33,4 +33,7 @@ class namHoc extends Model
     public function hocKy(){
         return $this->hasMany(hocKy::class, 'id_nam_hoc');
     }
+    public function sinhVien(){
+        return $this->hasMany(sinhVien::class, 'id_nam_hoc');
+    }
 }

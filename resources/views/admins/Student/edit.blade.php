@@ -48,6 +48,17 @@
             </select>
         </div>
 
+        <!-- năm học -->
+        <div>
+            <label class="block text-lg text-[#4B5563] mb-1" for="id_nam_hoc">Chọn năm học</label>
+            <select name="id_nam_hoc" id="id_nam_hoc" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+                <option value="" disabled>Chọn năm học</option>
+                @foreach($namHoc as $namHoc)
+                    <option value="{{ $namHoc->id }}" {{ $sinhVien->id_nam_hoc == $namHoc->id ? 'selected' : '' }}>{{ $namHoc->tenNamHoc }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <!-- Địa chỉ -->
         <div>
             <label for="diaChi" class="block text-lg text-[#4B5563] mb-1">Địa chỉ</label>

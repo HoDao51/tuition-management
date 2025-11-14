@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class KhoaSeeder extends Seeder
@@ -12,6 +13,10 @@ class KhoaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('khoa')->insert([
+            'tenKhoa' => 'Thanh Hoa',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

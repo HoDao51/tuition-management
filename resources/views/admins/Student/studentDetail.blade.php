@@ -56,7 +56,7 @@
 
           <tr class="border-b border-[#D4D4D4]">
             <td class="px-3 py-2 font-semibold border border-[#D4D4D4]">Năm học:</td>
-            <td class="px-3 py-2"></td>
+            <td class="px-3 py-2">{{$sinhVien->namHoc->tenNamHoc}}</td>
           </tr>
           
           <tr class="border-b border-[#D4D4D4]">

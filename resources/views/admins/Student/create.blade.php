@@ -26,6 +26,18 @@
             </select>
         </div>
 
+        <!-- Năm học -->
+        <div>
+            <label class="block text-lg text-[#4B5563] mb-1" for="id_nam_hoc">Năm học</label>
+            <select 
+                name="id_nam_hoc" id="id_nam_hoc" required class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
+                <option value="" disabled selected>-- Chọn năm học --</option>
+                @foreach ($namHoc as $item)
+                    <option value="{{ $item->id }}">{{ $item->tenNamHoc }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <!-- Ngày sinh -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="ngaySinh">Ngày sinh</label>

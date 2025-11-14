@@ -5,6 +5,7 @@ use App\Models\Admin\sinhVien;
 use App\Models\Admin\lop;
 use App\Http\Requests\StoresinhVienRequest;
 use App\Http\Requests\UpdatesinhVienRequest;
+use App\Models\Admin\namHoc;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -27,7 +28,8 @@ class SinhVienController extends Controller
     public function create()
     {
         $lop = lop::where('deleted', false)->get();
-        return view('admins.student.create', compact('lop'));
+        $namHoc = namHoc::where('deleted', false)->get();
+        return view('admins.student.create', compact('lop', 'namHoc'));
     }
 
     /**
@@ -42,6 +44,7 @@ class SinhVienController extends Controller
         $soDienThoai = $request->soDienThoai;
         $email = $request->email;
         $id_lop = $request->id_lop;
+        $id_nam_hoc = $request->id_nam_hoc;
         // xử lý ảnh đại diện
         $path = null;
         if ($request->hasFile('anhDaiDien')) {
@@ -60,6 +63,7 @@ class SinhVienController extends Controller
             'soDienThoai' => $soDienThoai,
             'email' => $email,
             'id_lop' => $id_lop,
+            'id_nam_hoc' => $id_nam_hoc,
             'anhDaiDien' => $path
         ]);
 
@@ -78,7 +82,8 @@ class SinhVienController extends Controller
     public function show(sinhVien $sinhVien)
     {
         $sinhVien->load('lop.khoa');
-        return view('admins.student.studentDetail', compact('sinhVien'));
+        $namHoc = namHoc::where('deleted', false)->get();
+        return view('admins.student.studentDetail', compact('sinhVien', 'namHoc'));
     }
 
     /**
@@ -87,7 +92,8 @@ class SinhVienController extends Controller
     public function edit(sinhVien $sinhVien)
     {
         $lop = lop::where('deleted', false)->get();
-        return view('admins.student.edit', compact('sinhVien', 'lop'));
+        $namHoc = namHoc::where('deleted', false)->get();
+        return view('admins.student.edit', compact('sinhVien', 'lop', 'namHoc'));
     }
 
     /**
@@ -103,6 +109,7 @@ class SinhVienController extends Controller
         $email = $request->email;
         $tinhTrang = $request->tinhTrang;
         $id_lop = $request->id_lop;
+        $id_nam_hoc = $request->id_nam_hoc;
 
         // Xử lý ảnh đại diện
         $path = $sinhVien->anhDaiDien; // giữ ảnh cũ nếu không upload mới
@@ -121,6 +128,7 @@ class SinhVienController extends Controller
             'soDienThoai' => $soDienThoai,
             'email' => $email,
             'id_lop' => $id_lop,
+            'id_nam_hoc' => $id_nam_hoc,
             'tinhTrang' => $tinhTrang,
             'anhDaiDien' => $path
         ]);

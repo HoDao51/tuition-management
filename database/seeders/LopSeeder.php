@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class LopSeeder extends Seeder
 {
@@ -12,6 +14,9 @@ class LopSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('lop')->insert([
+            'tenLop' => 'TH36K36',
+            'id_khoa' => 1,
+        ]);
     }
 }
