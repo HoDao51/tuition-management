@@ -34,23 +34,33 @@
       <table class="min-w-full border border-gray-200 text-sm text-left">
         <thead class="bg-[#D9D9D9] text-gray-700 uppercase">
           <tr>
-            <th class="px-4 py-2 border w-[150px] text-center">Mã năm học</th>
-            <th class="px-4 py-2 border text-center">Năm học</th>
-            <th class="px-4 py-2 border text-center">ngày bắt đầu</th>
-            <th class="px-4 py-2 border text-center">ngày kết thúc</th>
-            <th class="px-4 py-2 border w-[300px] text-center">Hành động</th>
+            <th class="px-4 py-2 border w-[100px] text-center">Mã SV</th>
+            <th class="px-4 py-2 border text-center">Tên sinh viên</th>
+            <th class="px-4 py-2 border text-center">Học kỳ</th>
+            <th class="px-4 py-2 border text-center">Năm Học</th>
+            <th class="px-4 py-2 border text-center">Tổng tiền</th>
+            <th class="px-4 py-2 border text-center">Tình Trạng</th>
+            <th class="px-4 py-2 border w-[200px] text-center">Hành động</th>
           </tr>
         </thead>
         @foreach ($data as $item)
         <tbody>
           <tr class="hover:bg-gray-50">
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center"></td>
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center"></td>
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center"></td>
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center"></td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->sinhVien->ma_sv}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->sinhVien->hoTen}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->hocKy->tenHocKy}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->hocKy->namHoc->tenNamHoc}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center text-red-600 font-semibold">{{number_format($item->tongTien, 0, ',', '.')}}đ</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">
+              @if ($item->tinhTrang == 0)
+                <span class="px-3 py-2 text-red-600 font-semibold">Chưa thanh toán</span>
+              @else
+                <span class="px-3 py-2 text-green-600 font-semibold">Đã thanh toán</span>
+              @endif
+            </td>
             <td class="px-4 py-2 border text-center pt-5">
                 {{-- Nút sửa --}}
-                <a href="">
+                <a href="{{route('hocPhi.edit', $item->id)}}">
                     <button type="button"
                         class="bg-[#10B981] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-[#1D8F6A]">
                         Sửa
@@ -58,7 +68,7 @@
                 </a>
 
                 {{-- Nút xóa --}}
-                <form action="" method="POST" class="inline-block">
+                <form action="{{route('hocPhi.destroy', $item->id)}}" method="POST" class="inline-block">
                     @csrf
                     @method('DELETE')
                     <button type="submit"

@@ -19,10 +19,11 @@ class HocPhiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(hocPhi $hocPhi)
     {
-         $data = hocPhi::orderBy('id', 'desc')->get();
-        return view('admins.tuition.index', compact('data'));
+        $data = hocPhi::orderBy('id', 'desc')->where('deleted', false)->get();
+        $hocPhi->load('hocKy.namHoc');
+        return view('admins.tuition.index', compact('data', 'hocPhi'));
     }
 
     /**
@@ -69,7 +70,10 @@ class HocPhiController extends Controller
      */
     public function edit(hocPhi $hocPhi)
     {
-        //
+        $sinhVien = sinhVien::with('namHoc')->find($hocPhi->id_sinh_vien);
+        $hocKy = hocKy::where('id_nam_hoc', $sinhVien->id_nam_hoc)->where('deleted', false)->get();
+
+        return view('admins.tuition.edit', compact('hocPhi', 'sinhVien', 'hocKy'));
     }
 
     /**
@@ -77,7 +81,17 @@ class HocPhiController extends Controller
      */
     public function update(UpdatehocPhiRequest $request, hocPhi $hocPhi)
     {
-        //
+        $id_hoc_ky = $request->id_hoc_ky;
+        $tongTien = $request->tongTien;
+        $tinhTrang = $request->tinhTrang;
+
+        $hocPhi->update([
+            'id_hoc_ky' => $id_hoc_ky,
+            'tongTien' => $tongTien,
+            'tinhTrang' => $tinhTrang
+        ]);
+
+        return Redirect::route('hocPhi.index');
     }
 
     /**
@@ -85,6 +99,8 @@ class HocPhiController extends Controller
      */
     public function destroy(hocPhi $hocPhi)
     {
-        //
+        $hocPhi->deleted = true;
+        $hocPhi->save(); 
+        return redirect::route('hocPhi.index');
     }
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('nguoiTao')->unique()->nullable();
             $table->integer('tongTien')->notnullable();
             $table->integer('tinhTrang')->default('0');
+            $table->boolean('deleted')->default(false);
             $table->timestamps();
             $table->foreign('id_sinh_vien')->references('id')->on('sinh_vien');
             $table->foreign('id_hoc_ky')->references('id')->on('hoc_ky');

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         KhoaSeeder::class,
         LopSeeder::class,
         SinhVienSeeder::class,
+        HocKySeeder::class,
     ]);
     }
 }
