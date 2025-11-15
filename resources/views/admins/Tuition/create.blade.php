@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="max-w-md bg-white p-4">
+    @if ($errors->has('duplicated'))
+        <div class="alert alert-danger text-red-600 font-semibold text-[20px]">
+            {{ $errors->first('duplicated') }}
+        </div>
+    @endif
     <form action="{{ route('hocPhi.store') }}" method="POST" class="space-y-4">
         @csrf
 
@@ -36,12 +41,15 @@
         <!-- Tổng tiền -->
         <div>
             <label class="block text-sm text-gray-600 mb-1">Tổng tiền</label>
-            <input type="number" name="tongTien" required
+            <input type="number" name="tongTien" required min="0" max="100000000"
                    class="w-full border border-gray-300 rounded-md px-3 py-2">
+                <p class="text-sm text-gray-500 mt-1">
+                    Tối đa: <strong>100.000.000đ</strong>
+                </p>
         </div>
 
         <div class="flex space-x-3 pt-4">
-            <a href="{{ route('hocPhi.index') }}" class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition">Quay lại</a>
+            <a href="{{ route('sinhVien.index') }}" class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition">Quay lại</a>
             <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition">Thêm học phí</button>
         </div>
     </form>

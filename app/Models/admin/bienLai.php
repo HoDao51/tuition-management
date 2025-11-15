@@ -14,16 +14,17 @@ class bienLai extends Model
 
     protected $fillable = [
         'soBienLai',
-        'id_sinh_vien',
         'ngayThu',
         'soTienThu',
+        'id_hoc_phi',
         'tinhTrang',
         'nguoiThu'
     ];
-    public function sinhVien(){
-        return $this->belongsTo(sinhVien::class, 'id_sinh_vien');
-    }
     public function nhanVien(){
         return $this->belongsTo(nhanVien::class, 'nguoiThu');
+    }
+
+    public function hocPhi(){
+        return $this->belongsTo(HocPhi::class, 'id_hoc_phi');
     }
 }

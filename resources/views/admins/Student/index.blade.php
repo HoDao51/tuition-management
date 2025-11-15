@@ -64,6 +64,12 @@
                 <a href="{{route('sinhVien.edit', $item->id)}}">
                     <button type="button" class="bg-[#10B981] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-[#1D8F6A]">Sửa</button>
                 </a>
+
+                <a href="{{ route('hocPhi.create') }}?sinhVien={{ $item->id }}">
+                  <button type="button" class="bg-[#F97316] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-[#C55E17]">
+                    Thêm học phí
+                  </button>
+                </a>
             </td>
           </tr>
         </tbody>

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         LopSeeder::class,
         SinhVienSeeder::class,
         HocKySeeder::class,
+        HocPhiSeeder::class
     ]);
     }
 }

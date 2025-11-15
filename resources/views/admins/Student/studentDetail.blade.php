@@ -92,7 +92,7 @@
         </a>
 
         <a href="{{ route('hocPhi.create') }}?sinhVien={{ $sinhVien->id }}">
-          <button type="button" class="bg-[#2563EB] text-white px-4 py-2 rounded hover:bg-[#1F4CAE] transition">
+          <button type="button" class="bg-[#F97316] text-white px-4 py-2 rounded hover:bg-[#C55E17] transition">
             Thêm học phí
           </button>
         </a>

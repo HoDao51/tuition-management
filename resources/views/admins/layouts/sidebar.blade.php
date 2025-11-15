@@ -86,7 +86,8 @@
       </a>
 
       <!-- Quản lý biên lai -->
-      <a href="{{ route('bienLai.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]">
+      <a href="{{ route('bienLai.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+      {{ request()->routeIs('bienLai.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="1 0 24 24" stroke="currentColor" stroke-width="0">
             <g fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M16.755 2h-9.51c-1.159 0-1.738 0-2.206.163a3.05 3.05 0 0 0-1.881 1.936C3 4.581 3 5.177 3 6.37v14.004c0 .858.985 1.314 1.608.744a.946.946 0 0 1 1.284 0l.483.442a1.657 1.657 0 0 0 2.25 0a1.657 1.657 0 0 1 2.25 0a1.657 1.657 0 0 0 2.25 0a1.657 1.657 0 0 1 2.25 0a1.657 1.657 0 0 0 2.25 0l.483-.442a.946.946 0 0 1 1.284 0c.623.57 1.608.114 1.608-.744V6.37c0-1.193 0-1.79-.158-2.27a3.05 3.05 0 0 0-1.881-1.937C18.493 2 17.914 2 16.755 2Z"/>

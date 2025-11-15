@@ -118,6 +118,20 @@
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Chỉnh sửa thông tin học phí
         </span>
+
+      <!-- tiêu đề biên lai -->
+      @elseif (Route::currentRouteName() == 'bienLai.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý biên lai
+        </span>
+      @elseif (Route::currentRouteName() == 'bienLai.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm học biên lai
+        </span>
+      @elseif (Route::currentRouteName() == 'bienLai.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin biên lai
+        </span>
       @endif
       
     </a>

@@ -11,6 +11,7 @@ use App\Http\Requests\StorehocPhiRequest;
 use App\Http\Requests\UpdatehocPhiRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Database\QueryException;
 
 use Illuminate\Http\Request;
 
@@ -21,9 +22,8 @@ class HocPhiController extends Controller
      */
     public function index(hocPhi $hocPhi)
     {
-        $data = hocPhi::orderBy('id', 'desc')->where('deleted', false)->get();
-        $hocPhi->load('hocKy.namHoc');
-        return view('admins.tuition.index', compact('data', 'hocPhi'));
+        $data = hocPhi::with('hocKy.namHoc', 'sinhVien')->where('deleted', false)->orderBy('id', 'desc')->get();
+        return view('admins.tuition.index', compact('data'));
     }
 
     /**
@@ -32,7 +32,7 @@ class HocPhiController extends Controller
     public function create(Request $request)
     {
         $sinhVienId = $request->query('sinhVien');
-        $sinhVien = SinhVien::with('namHoc')->find($sinhVienId);
+        $sinhVien = sinhVien::with('namHoc')->find($sinhVienId);
         $hocKy = hocKy::where('id_nam_hoc', $sinhVien->id_nam_hoc)->where('deleted', false)->get();
 
         return view('admins.tuition.create', compact('sinhVien', 'hocKy'));
@@ -47,6 +47,16 @@ class HocPhiController extends Controller
         $id_sinh_vien = $request->id_sinh_vien;
         $id_hoc_ky = $request->id_hoc_ky;
         $tongTien = $request->tongTien;
+
+        $exists = hocPhi::where('id_sinh_vien', $request->id_sinh_vien)
+                    ->where('id_hoc_ky', $request->id_hoc_ky)
+                    ->exists();
+
+        if ($exists) {
+            return back()->withErrors([
+                'duplicated' => 'Sinh viên này đã có học phí trong học kỳ này!'
+            ])->withInput();
+        }
 
         $hocPhi = hocPhi::create([
             'id_sinh_vien' => $id_sinh_vien,

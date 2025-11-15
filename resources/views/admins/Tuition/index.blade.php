@@ -38,7 +38,8 @@
             <th class="px-4 py-2 border text-center">Tên sinh viên</th>
             <th class="px-4 py-2 border text-center">Học kỳ</th>
             <th class="px-4 py-2 border text-center">Năm Học</th>
-            <th class="px-4 py-2 border text-center">Tổng tiền</th>
+            <th class="px-4 py-2 border text-center">Tổng tiền (VNĐ)</th>
+            <th class="px-4 py-2 border text-center">Số tiền đã đóng (VNĐ)</th>
             <th class="px-4 py-2 border text-center">Tình Trạng</th>
             <th class="px-4 py-2 border w-[200px] text-center">Hành động</th>
           </tr>
@@ -51,6 +52,7 @@
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->hocKy->tenHocKy}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->hocKy->namHoc->tenNamHoc}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center text-red-600 font-semibold">{{number_format($item->tongTien, 0, ',', '.')}}đ</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center text-red-600 font-semibold">{{number_format($item->soTienDaThanhToan, 0, ',', '.')}}đ</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">
               @if ($item->tinhTrang == 0)
                 <span class="px-3 py-2 text-red-600 font-semibold">Chưa thanh toán</span>
@@ -76,6 +78,13 @@
                         Xóa
                     </button>
                 </form>
+                {{-- thêm biên lai --}}
+                <a href="{{route('bienLai.create')}}?hocPhi={{$item->id}}">
+                    <button type="button"
+                        class="bg-[#F97316] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-[#C55E17]">
+                        Thêm biên lai
+                    </button>
+                </a>
             </td>
           </tr>
         </tbody>

@@ -16,6 +16,7 @@ class hocPhi extends Model
         'id_sinh_vien',
         'id_hoc_ky',
         'tongTien',
+        'soTienDaThanhToan',
         'tinhTrang',
         'nguoiTao'
     ];
@@ -27,5 +28,8 @@ class hocPhi extends Model
     }
     public function nhanVien(){
         return $this->belongsTo(nhanVien::class, 'nguoiTao');
+    }
+    public function bienLai(){
+        return $this->hasMany(bienLai::class, 'id_hoc_phi');
     }
 }
