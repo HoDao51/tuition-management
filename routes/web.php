@@ -21,16 +21,4 @@ Route::post('login', [AuthController::class, 'postLogin'])->name('postLogin');
 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth'])->group(function () {
-    // Trang chính admin
-    Route::get('/admins', [DashboardController::class, 'index'])->name('admins.index');
 
-    Route::resource('admins/nhanVien', NhanVienController::class);
-    Route::resource('admins/sinhVien', SinhVienController::class);
-    Route::resource('admins/khoa', KhoaController::class);
-    Route::resource('admins/lop', LopController::class);
-    Route::resource('admins/namHoc', NamHocController::class);
-    Route::resource('admins/hocKy', HocKyController::class);
-    Route::resource('admins/hocPhi', HocPhiController::class);
-    Route::resource('admins/bienLai', BienLaiController::class);
-});

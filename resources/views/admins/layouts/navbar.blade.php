@@ -156,20 +156,22 @@
             @endif 
           </p>
         </div>
-        <div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-gray-500 text-3xl select-none">
-          @php
-          $user = auth()->user();
-          $avatar = asset('images/sbcf-default-avatar.png');
-          if($user) {
-            if(isset($user->nhanVien) && $user->nhanVien->anhDaiDien) {
-              $avatar = asset('storage/'.$user->nhanVien->anhDaiDien);
-            } elseif(isset($user->sinhVien) && $user->sinhVien->anhDaiDien) {
-              $avatar = asset('storage/'.$user->sinhVien->anhDaiDien);
-            }
-          }
-        @endphp
-        <img src="{{ $avatar }}" alt="Ảnh đại diện" class="w-12 h-12 rounded-full bg-gray-300 object-cover">
-        </div>
+        @php
+    $user = auth()->user();
+    $avatar = asset('images/sbcf-default-avatar.png');
+
+    if ($user) {
+        if ($user->nhanVien && $user->nhanVien->anhDaiDien) {
+            $avatar = asset('storage/' . $user->nhanVien->anhDaiDien);
+        } elseif ($user->sinhVien && $user->sinhVien->anhDaiDien) {
+            $avatar = asset('storage/' . $user->sinhVien->anhDaiDien);
+        }
+    }
+    @endphp
+
+    <div class="w-12 h-12 rounded-full overflow-hidden">
+        <img src="{{ $avatar }}" alt="Avatar" class="w-full h-full object-cover">
+    </div>
       </button>
       <!-- Dropdown -->
       <div id="profileDropdown" 
