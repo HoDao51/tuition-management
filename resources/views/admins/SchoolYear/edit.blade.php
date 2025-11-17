@@ -1,0 +1,50 @@
+@extends('admins.layouts.app')
+@section('content')
+<div class="max-w-md bg-white">
+
+    <form action="{{ route('namHoc.update', $namHoc->id) }}" method="POST" enctype="multipart/form-data" class="space-y-3">
+        @csrf
+        @method('PUT')
+
+        <!-- Mã năm học -->
+        <div>
+            <label for="id" class="block text-lg text-[#4B5563] mb-1">Mã năm học:</label>
+            <input type="text" name="id" id="id" value="{{ $namHoc->id }}" readonly
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+        </div>
+
+        <!-- tên Năm học -->
+        <div>
+            <label for="tenNamHoc" class="block text-lg text-[#4B5563] mb-1">Tên năm học</label>
+            <input type="text" name="tenNamHoc" id="tenNamHoc" value="{{ $namHoc->tenNamHoc }}" required
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+        </div>
+
+        <!-- Ngày bắt đầu -->
+        <div>
+            <label for="ngayBatDau" class="block text-lg text-[#4B5563] mb-1">Ngày bắt đầu</label>
+            <input type="date" name="ngayBatDau" id="ngayBatDau" value="{{ \Carbon\Carbon::parse($namHoc->getRawOriginal('ngayBatDau'))->format('Y-m-d') }}" required
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+        </div>
+
+        <!-- Ngày Kết thúc -->
+        <div>
+            <label for="ngayKetThuc" class="block text-lg text-[#4B5563] mb-1">Ngày kết thúc</label>
+            <input type="date" name="ngayKetThuc" id="ngayKetThuc" value="{{ \Carbon\Carbon::parse($namHoc->getRawOriginal('ngayKetThuc'))->format('Y-m-d') }}" required
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+        </div>
+
+        <!-- Nút submit -->
+        <div class="flex space-x-3 pt-4">
+            <a href="{{ route('namHoc.index') }}" 
+                class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition text-[18px]">
+                Quay lại
+            </a>
+            <button type="submit"
+                class="bg-[#10B981] text-white px-4 py-2 rounded-md hover:bg-[#1D8F6A] transition text-[18px]">
+                Cập nhật
+            </button>
+        </div>
+    </form>
+</div>
+@endsection

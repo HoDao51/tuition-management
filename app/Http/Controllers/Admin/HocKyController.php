@@ -1,0 +1,121 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Models\Admin\hocKy;
+use App\Models\Admin\namHoc;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorehocKyRequest;
+use App\Http\Requests\UpdatehocKyRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+
+class HocKyController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $data = hocKy::with('namHoc')->orderBy('id', 'desc')->where('deleted', 0)->get();
+        return view('admins.semester.index', compact('data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $namHoc = namHoc::where('deleted', false)->get();
+        return view('admins.semester.create', compact('namHoc'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StorehocKyRequest $request)
+    {
+        $tenHocKy = $request->tenHocKy;
+        $id_nam_hoc = $request->id_nam_hoc;
+
+        if ($tenHocKy == 0) {
+            $tenHocKy = 'Học Kỳ 1';
+        }elseif ($tenHocKy == 1){
+            $tenHocKy = 'Học Kỳ 2';
+        }elseif ($tenHocKy == 2){
+            $tenHocKy = 'Học Kỳ 3';
+        }elseif ($tenHocKy == 3){
+            $tenHocKy = 'Học Kỳ 4';
+        }elseif ($tenHocKy == 4){
+            $tenHocKy = 'Học Kỳ 5';
+        }elseif ($tenHocKy == 5){
+            $tenHocKy = 'Học Kỳ 6';
+        }
+
+
+        $hocKy = hocKy::create([
+            'tenHocKy' => $tenHocKy,
+            'id_nam_hoc' => $id_nam_hoc,
+        ]);
+
+        return redirect::route('hocKy.index');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(hocKy $hocKy)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(hocKy $hocKy)
+    {
+        $namHoc = namHoc::where('deleted', false)->get();
+        return view('admins.semester.edit', compact('hocKy', 'namHoc'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdatehocKyRequest $request, hocKy $hocKy)
+    {
+        $tenHocKy = $request->tenHocKy;
+        $id_nam_hoc = $request->id_nam_hoc;
+
+        if ($tenHocKy == 0) {
+            $tenHocKy = 'Học Kỳ 1';
+        }elseif ($tenHocKy == 1){
+            $tenHocKy = 'Học Kỳ 2';
+        }elseif ($tenHocKy == 2){
+            $tenHocKy = 'Học Kỳ 3';
+        }elseif ($tenHocKy == 3){
+            $tenHocKy = 'Học Kỳ 4';
+        }elseif ($tenHocKy == 4){
+            $tenHocKy = 'Học Kỳ 5';
+        }elseif ($tenHocKy == 5){
+            $tenHocKy = 'Học Kỳ 6';
+        }
+
+        $hocKy->update([
+            'tenHocKy' => $tenHocKy,
+            'id_nam_hoc' => $id_nam_hoc,
+        ]);
+
+        return redirect::route('hocKy.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(hocKy $hocKy)
+    {
+        $hocKy->deleted = true;
+        $hocKy->save(); 
+        return redirect::route('hocKy.index');
+    }
+}

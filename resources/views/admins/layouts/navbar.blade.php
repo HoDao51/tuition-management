@@ -1,0 +1,182 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<body>
+  <header class="flex items-center justify-between border-b border-[E5E6E6] px-6 py-3">
+    
+    <!-- Logo + tên -->
+    <div class="flex items-center space-x-4 ">
+        <span class="font-bold text-4xl mr-3 bg-gradient-to-tr from-blue-400 to-blue-600 bg-clip-text text-transparent">RSCEP</span>
+    </div>
+    <div class="flex items-center gap-4 grow flex items-center lg:ml-36">
+      @if (Route::currentRouteName() == 'admins.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Tổng quan hệ thống
+        </span>
+
+      <!-- tiêu đề nhân viên -->
+      @elseif (Route::currentRouteName() == 'nhanVien.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý nhân viên
+        </span>
+      @elseif (Route::currentRouteName() == 'nhanVien.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm nhân viên
+        </span>
+      @elseif (Route::currentRouteName() == 'nhanVien.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin nhân viên
+        </span>
+      @elseif (Route::currentRouteName() == 'nhanVien.show')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý nhân viên
+        </span>
+
+      <!-- tiêu đề sinh viên -->
+      @elseif (Route::currentRouteName() == 'sinhVien.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý sinh viên
+        </span>
+      @elseif (Route::currentRouteName() == 'sinhVien.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm nhân sinh viên
+        </span>
+      @elseif (Route::currentRouteName() == 'sinhVien.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin sinh viên
+        </span>
+      @elseif (Route::currentRouteName() == 'sinhVien.show')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý sinh viên
+        </span>
+
+      <!-- tiêu đề khoa -->
+      @elseif (Route::currentRouteName() == 'khoa.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý khoa
+        </span>
+      @elseif (Route::currentRouteName() == 'khoa.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm khoa
+        </span>
+      @elseif (Route::currentRouteName() == 'khoa.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin khoa
+        </span>
+        
+      <!-- tiêu đề lớp -->
+      @elseif (Route::currentRouteName() == 'lop.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý lớp học
+        </span>
+      @elseif (Route::currentRouteName() == 'lop.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm lớp học
+        </span>
+      @elseif (Route::currentRouteName() == 'lop.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin lớp học
+        </span>
+
+      <!-- tiêu đề năm học -->
+      @elseif (Route::currentRouteName() == 'namHoc.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý năm học
+        </span>
+      @elseif (Route::currentRouteName() == 'namHoc.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm năm học
+        </span>
+      @elseif (Route::currentRouteName() == 'namHoc.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin năm học
+        </span>
+
+      <!-- tiêu đề học kỳ -->
+      @elseif (Route::currentRouteName() == 'hocKy.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý học kỳ
+        </span>
+      @elseif (Route::currentRouteName() == 'hocKy.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm học kỳ
+        </span>
+      @elseif (Route::currentRouteName() == 'hocKy.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin học kỳ
+        </span>
+
+
+      <!-- tiêu đề học phí -->
+      @elseif (Route::currentRouteName() == 'hocPhi.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý học phí
+        </span>
+      @elseif (Route::currentRouteName() == 'hocPhi.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm học phí
+        </span>
+      @elseif (Route::currentRouteName() == 'hocPhi.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin học phí
+        </span>
+
+      <!-- tiêu đề biên lai -->
+      @elseif (Route::currentRouteName() == 'bienLai.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Quản lý biên lai
+        </span>
+      @elseif (Route::currentRouteName() == 'bienLai.create')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thêm biên lai
+        </span>
+      @elseif (Route::currentRouteName() == 'bienLai.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin biên lai
+        </span>
+      @endif
+      
+    </a>
+
+    </div>
+
+    @auth
+    <div class="relative inline-block text-left">
+      <!-- Profile button -->
+      <button id="profileBtn" 
+        class="flex items-center space-x-4 focus:outline-none" 
+        aria-haspopup="true" aria-expanded="false">
+        <div>
+          <p class="font-semibold text-lg text-gray-900 leading-tight">{{ auth()->user()->name }}</p>
+          <p class="text-gray-600 text-sm">
+            @if (auth()->user()->role == 0)
+              Quản trị viên
+            @elseif (auth()->user()->role == 1)
+              Tài vụ
+            @else
+              Sinh viên
+            @endif 
+          </p>
+        </div>
+        <div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-gray-500 text-3xl select-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.77 6.879 2.088M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+      </button>
+      <!-- Dropdown -->
+      <div id="profileDropdown" 
+          class="hidden p-2 absolute bg-white shadow-lg select-none border border-base-200 rounded-lg w-auto min-w-max font-semibold"
+          role="menu" aria-orientation="vertical" aria-labelledby="profileBtn"
+          >
+        <a href="#" class="block px-6 py-3 text-blue-600 hover:bg-gray-100 rounded-lg" role="menuitem">
+          Thông tin cá nhân
+        </a>
+        <hr class="border-gray-200 my-0 mx-2" />
+        <a href="{{route('logout')}}" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 rounded-lg" role="menuitem">
+          Đăng xuất
+        </a>
+      </div>
+    </div>
+    @endauth
+</header>
+</body>
+@vite('resources/js/profile_dropdown.js')
