@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\NamHocController;
 use App\Http\Controllers\Admin\HocKyController;
 use App\Http\Controllers\Admin\HocPhiController;
 use App\Http\Controllers\Admin\BienLaiController;
+use App\Http\Controllers\Admin\ThongTinCaNhan;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -24,4 +25,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('admins/hocKy', HocKyController::class);
     Route::resource('admins/hocPhi', HocPhiController::class);
     Route::resource('admins/bienLai', BienLaiController::class);
+    Route::get('admins/thongTinCaNhan', [ThongTinCaNhan::class, 'index'])->name('thongTinCaNhan.index');
+    Route::get('admins/thongTinCaNhan/edit', [ThongTinCaNhan::class, 'edit'])->name('thongTinCaNhan.edit');
+    Route::put('admins/thongTinCaNhan/update', [ThongTinCaNhan::class, 'update'])->name('thongTinCaNhan.update');
 });

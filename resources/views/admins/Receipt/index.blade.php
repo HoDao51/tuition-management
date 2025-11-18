@@ -31,14 +31,14 @@
       <table class="min-w-full border border-gray-200 text-sm text-left">
         <thead class="bg-[#D9D9D9] text-gray-700 uppercase">
           <tr>
-            <th class="px-4 py-2 border w-[100px] text-center">Mã SV</th>
+            <th class="px-4 py-2 border w-[70px] text-center">Mã SV</th>
             <th class="px-4 py-2 border text-center">Tên sinh viên</th>
             <th class="px-4 py-2 border text-center">Học kỳ</th>
             <th class="px-4 py-2 border text-center">Năm Học</th>
             <th class="px-4 py-2 border text-center">Số tiền đã thu</th>
             <th class="px-4 py-2 border text-center">Ngày thu</th>
             <th class="px-4 py-2 border text-center">Tình Trạng</th>
-            <th class="px-4 py-2 border w-[200px] text-center">Hành động</th>
+            <th class="px-4 py-2 border w-[180px] text-center">Hành động</th>
           </tr>
         </thead>
     @foreach ($data as $item)

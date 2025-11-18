@@ -173,7 +173,7 @@
           class="hidden absolute bg-white shadow-lg select-none border border-base-200 rounded-lg w-auto min-w-max font-semibold right-0 top-12 p-2"
           role="menu" aria-orientation="vertical" aria-labelledby="profileBtn"
           >
-        <a href="#" class="block px-6 py-3 text-blue-600 hover:bg-gray-100 rounded-lg" role="menuitem">
+        <a href="{{route('thongTinCaNhan.index')}}" class="block px-6 py-3 text-blue-600 hover:bg-gray-100 rounded-lg" role="menuitem">
           Thông tin cá nhân
         </a>
         <hr class="border-gray-200 my-0 mx-2" />

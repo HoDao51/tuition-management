@@ -36,7 +36,7 @@
             <th class="px-4 py-2 border text-center">Năm học</th>
             <th class="px-4 py-2 border text-center">ngày bắt đầu</th>
             <th class="px-4 py-2 border text-center">ngày kết thúc</th>
-            <th class="px-4 py-2 border w-[300px] text-center">Hành động</th>
+            <th class="px-4 py-2 border w-[180px] text-center">Hành động</th>
           </tr>
         </thead>
         @foreach ($data as $item)
