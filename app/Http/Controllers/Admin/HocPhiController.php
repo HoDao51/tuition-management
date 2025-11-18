@@ -12,6 +12,7 @@ use App\Http\Requests\UpdatehocPhiRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -20,11 +21,35 @@ class HocPhiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(hocPhi $hocPhi)
-    {
-        $data = hocPhi::with('hocKy.namHoc', 'sinhVien')->where('deleted', false)->orderBy('id', 'desc')->get();
-        return view('admins.tuition.index', compact('data'));
+    public function index(Request $request)
+{
+    // Lấy từ khóa tìm kiếm từ request (từ form)
+    $search = $request->get('search');
+
+    // Query cơ bản
+    $query = hocPhi::with('hocKy.namHoc', 'sinhVien')
+                    ->where('deleted', false);
+
+    // Áp dụng tìm kiếm nếu có từ khóa
+    if ($search) {
+        $query->whereHas('sinhVien', function ($q) use ($search) {
+                $q->where('hoTen', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%')
+                  ->orWhere('ma_sv', 'like', '%' . $search . '%');
+            })
+            ->orWhereHas('hocKy.namHoc', function ($q) use ($search) {
+                $q->where('tenNamHoc', 'like', '%' . $search . '%');
+            })
+            ->orWhereHas('hocKy', function ($q) use ($search) {
+                $q->where('tenHocKy', 'like', '%' . $search . '%');
+            });
     }
+
+    // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+    $data = $query->orderBy('id', 'desc')->paginate(5)->withQueryString();
+
+    return view('admins.tuition.index', compact('data', 'search'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -49,8 +74,9 @@ class HocPhiController extends Controller
         $tongTien = $request->tongTien;
 
         $exists = hocPhi::where('id_sinh_vien', $request->id_sinh_vien)
-                    ->where('id_hoc_ky', $request->id_hoc_ky)
-                    ->exists();
+                ->where('id_hoc_ky', $request->id_hoc_ky)
+                ->where('deleted', false)
+                ->exists();
 
         if ($exists) {
             return back()->withErrors([
@@ -61,6 +87,7 @@ class HocPhiController extends Controller
         $hocPhi = hocPhi::create([
             'id_sinh_vien' => $id_sinh_vien,
             'id_hoc_ky' => $id_hoc_ky,
+            'nguoiTao' => Auth::user()->nhanVien->id,
             'tongTien' => $tongTien,
         ]);
 

@@ -15,10 +15,19 @@ class KhoaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = khoa::orderBy('id', 'desc')->where('deleted', 0)->get();
-        return view('admins.department.index', compact('data'));
+        // Lấy từ khóa tìm kiếm từ request (từ form)
+        $search = $request->get('search');
+        // Query cơ bản
+        $query = khoa::query();
+        // Áp dụng tìm kiếm nếu có từ khóa (tìm theo hoTen, email, ma_nv)
+        if ($search) {
+            $query->where('tenKhoa', 'like', '%' . $search . '%');
+        }
+        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        $data = $query->orderBy('id', 'desc')->where('deleted', false)->paginate(5)->withQueryString();
+        return view('admins.department.index', compact('data', 'search'));
     }
 
     /**
@@ -35,6 +44,14 @@ class KhoaController extends Controller
     public function store(StorekhoaRequest $request)
     {
         $tenKhoa = $request->tenKhoa;
+        // Kiểm tra trùng lặp
+        $existingKhoa = khoa::where('tenKhoa', $tenKhoa)
+                            ->where('deleted', false)  
+                            ->first();
+        if ($existingKhoa) {
+            // Trả về với lỗi
+            return redirect()->back()->withErrors(['duplicate' => 'Khoa ' . $existingKhoa->tenKhoa . ' đã tồn tại!'])->withInput();
+        }
         $tenKhoa = khoa::create([
             'tenKhoa' => $tenKhoa,
         ]);
@@ -64,6 +81,14 @@ class KhoaController extends Controller
     public function update(UpdatekhoaRequest $request, khoa $khoa)
     {
         $tenKhoa = $request->tenKhoa;
+        // Kiểm tra trùng lặp
+        $existingKhoa = khoa::where('tenKhoa', $tenKhoa)
+                            ->where('deleted', false)  
+                            ->first();
+        if ($existingKhoa) {
+            // Trả về với lỗi
+            return redirect()->back()->withErrors(['duplicate' => 'Khoa ' . $existingKhoa->tenKhoa . ' đã tồn tại!'])->withInput();
+        }
         $khoa->update([
             'tenKhoa' => $tenKhoa,
         ]);

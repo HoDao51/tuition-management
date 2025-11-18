@@ -1,6 +1,6 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <body>
-  <header class="flex items-center justify-between border-b border-[E5E6E6] px-6 py-3">
+  <header class="flex items-center justify-between border-b border-[E5E6E6] px-6 py-3 bg-white">
     
     <!-- Logo + tên -->
     <div class="flex items-center space-x-4 ">
@@ -133,17 +133,12 @@
           Chỉnh sửa thông tin biên lai
         </span>
       @endif
-      
-    </a>
-
     </div>
 
     @auth
-    <div class="relative inline-block text-left">
+    <div class="relative inline-block text-left right-2 ">
       <!-- Profile button -->
-      <button id="profileBtn" 
-        class="flex items-center space-x-4 focus:outline-none" 
-        aria-haspopup="true" aria-expanded="false">
+      <button id="profileBtn" class="flex items-center space-x-4 focus:outline-none" aria-haspopup="true" aria-expanded="false">
         <div>
           <p class="font-semibold text-lg text-gray-900 leading-tight">{{ auth()->user()->name }}</p>
           <p class="text-gray-600 text-sm">
@@ -157,25 +152,25 @@
           </p>
         </div>
         @php
-    $user = auth()->user();
-    $avatar = asset('images/sbcf-default-avatar.png');
+        $user = auth()->user();
+        $avatar = asset('images/sbcf-default-avatar.png');
 
-    if ($user) {
-        if ($user->nhanVien && $user->nhanVien->anhDaiDien) {
-            $avatar = asset('storage/' . $user->nhanVien->anhDaiDien);
-        } elseif ($user->sinhVien && $user->sinhVien->anhDaiDien) {
-            $avatar = asset('storage/' . $user->sinhVien->anhDaiDien);
+        if ($user) {
+            if ($user->nhanVien && $user->nhanVien->anhDaiDien) {
+                $avatar = asset('storage/' . $user->nhanVien->anhDaiDien);
+            } elseif ($user->sinhVien && $user->sinhVien->anhDaiDien) {
+                $avatar = asset('storage/' . $user->sinhVien->anhDaiDien);
+            }
         }
-    }
-    @endphp
-
-    <div class="w-12 h-12 rounded-full overflow-hidden">
-        <img src="{{ $avatar }}" alt="Avatar" class="w-full h-full object-cover">
-    </div>
+        @endphp
+      
+        <div class="w-12 h-12 rounded-full overflow-hidden">
+            <img src="{{ $avatar }}" alt="Avatar" class="w-full h-full object-cover">
+        </div>
       </button>
       <!-- Dropdown -->
       <div id="profileDropdown" 
-          class="hidden p-2 absolute bg-white shadow-lg select-none border border-base-200 rounded-lg w-auto min-w-max font-semibold"
+          class="hidden absolute bg-white shadow-lg select-none border border-base-200 rounded-lg w-auto min-w-max font-semibold right-0 top-12 p-2"
           role="menu" aria-orientation="vertical" aria-labelledby="profileBtn"
           >
         <a href="#" class="block px-6 py-3 text-blue-600 hover:bg-gray-100 rounded-lg" role="menuitem">

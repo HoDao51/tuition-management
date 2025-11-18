@@ -16,10 +16,22 @@ class LopController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = lop::with('khoa')->orderBy('id', 'desc')->where('deleted', 0)->get();
-        return view('admins.class.index', compact('data'));
+        // Lấy từ khóa tìm kiếm từ request (từ form)
+        $search = $request->get('search');
+        // Query cơ bản
+        $query = lop::query();
+        // Áp dụng tìm kiếm nếu có từ khóa (tìm theo hoTen, email, ma_nv)
+        if ($search) {
+            $query->where('tenLop', 'like', '%' . $search . '%')
+            ->orWhereHas('khoa', function ($khoa) use ($search) {  // Tìm trong quan hệ khoa
+                  $khoa->where('tenKhoa', 'like', '%' . $search . '%');  // Giả sử trường tên khoa là 'tenKhoa'
+              });
+        }
+        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        $data = $query->orderBy('id', 'desc')->where('deleted', false)->paginate(5)->withQueryString();
+        return view('admins.class.index', compact('data', 'search'));
     }
 
     /**
@@ -38,6 +50,16 @@ class LopController extends Controller
     {
         $tenLop = $request->tenLop;
         $id_khoa = $request->id_khoa;
+        // Kiểm tra trùng lặp
+        $existingLop = lop::where('tenLop', $tenLop)
+                            ->where('id_khoa', $id_khoa)
+                            ->where('deleted', false)  
+                            ->first();
+        if ($existingLop) {
+            // Trả về với lỗi
+            return redirect()->back()->withErrors(['duplicate' => 'Khoa ' . $existingLop->khoa->tenKhoa . ' đã có lớp này!'])->withInput();
+        }
+
         $Lop = lop::create([
             'tenLop' => $tenLop,
             'id_khoa' => $id_khoa,
@@ -71,6 +93,15 @@ class LopController extends Controller
         $tenLop = $request->tenLop;
         $id_khoa = $request->id_khoa;
 
+        // Kiểm tra trùng lặp
+        $existingLop = lop::where('tenLop', $tenLop)
+                            ->where('id_khoa', $id_khoa)
+                            ->where('deleted', false)  
+                            ->first();
+        if ($existingLop) {
+            // Trả về với lỗi
+            return redirect()->back()->withErrors(['duplicate' => 'Khoa ' . $existingLop->khoa->tenKhoa . ' đã có lớp này!'])->withInput();
+        }
         $lop->update([
             'tenLop' => $tenLop,
             'id_khoa' => $id_khoa,

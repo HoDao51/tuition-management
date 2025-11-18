@@ -10,16 +10,30 @@ use App\Http\Requests\UpdatenhanVienRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class NhanVienController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = nhanVien::orderBy('id', 'desc')->get();
-        return view('admins.employee.index', compact('data'));
+        // Lấy từ khóa tìm kiếm từ request (từ form)
+        $search = $request->get('search');
+        // Query cơ bản
+        $query = nhanVien::query();
+        // Áp dụng tìm kiếm nếu có từ khóa (tìm theo hoTen, email, ma_nv)
+        if ($search) {
+            $query->where('hoTen', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%')
+                ->orWhere('ma_nv', 'like', '%' . $search . '%');
+        }
+        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        $nhanVien = $query->orderBy('id', 'desc')->paginate(5)->withQueryString();
+
+       // Trả về view với dữ liệu phân trang và từ khóa search
+        return view('admins.employee.index', compact('nhanVien', 'search'));
     }
 
     /**

@@ -11,22 +11,46 @@ use App\Models\Admin\hocPhi;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BienLaiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $bienLai = BienLai::with('hocPhi.sinhVien', 'hocPhi.hocKy')
-                  ->where('deleted', false)
-                  ->orderBy('id','desc')
-                  ->get();
+        // Lấy từ khóa tìm kiếm từ request (từ form)
+        $search = $request->get('search');
 
-        return view('admins.receipt.index', compact('bienLai'));
+        // Query cơ bản
+        $query = BienLai::with('hocPhi.sinhVien', 'hocPhi.hocKy', 'nhanVien')
+                        ->where('deleted', false);
+
+        // Áp dụng tìm kiếm nếu có từ khóa
+        if ($search) {
+            $query->whereHas('hocPhi.sinhVien', function ($q) use ($search) {
+                    $q->where('hoTen', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%')
+                    ->orWhere('ma_sv', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('hocPhi.hocKy', function ($q) use ($search) {
+                    $q->where('tenHocKy', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('hocPhi.hocKy.namHoc', function ($q) use ($search) {
+                    $q->where('tenNamHoc', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('nhanVien', function ($q) use ($search) {
+                    $q->where('hoTen', 'like', '%' . $search . '%')
+                    ->orWhere('ma_nv', 'like', '%' . $search . '%');
+                });
+        }
+
+        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        $data = $query->orderBy('id', 'desc')->paginate(5)->withQueryString();
+
+        return view('admins.receipt.index', compact('data', 'search'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -62,6 +86,7 @@ class BienLaiController extends Controller
             'id_hoc_phi' => $id_hoc_phi,
             'soTienThu' => $soTienThu,
             'ngayThu' => $ngayThu,
+            'nguoiThu' => Auth::user()->nhanVien->id,
             // 'nguoiThu' => auth()->id(), // Nếu có
         ]);
 

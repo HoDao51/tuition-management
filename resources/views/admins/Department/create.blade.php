@@ -3,6 +3,11 @@
 
 @section('content')
 <div class="max-w-md bg-white">
+    @error('duplicate')
+        <div class="alert alert-danger text-red-600 font-semibold text-[20px]">
+            {{ $message}}
+        </div>
+    @enderror
     <form action="{{ route('khoa.store') }}" method="POST" enctype="multipart/form-data" class="space-y-3">
         @csrf
         <!-- Tên khoa -->

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Requests\StoresinhVienRequest;
 use App\Http\Requests\UpdatesinhVienRequest;
 use App\Models\Admin\namHoc;
+use Database\Seeders\SinhVienSeeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -18,10 +19,22 @@ class SinhVienController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = sinhVien::with('lop')->orderBy('id', 'desc')->get();
-        return view('admins.student.index', compact('data'));
+        // Lấy từ khóa tìm kiếm từ request (từ form)
+        $search = $request->get('search');
+        // Query cơ bản
+        $query = sinhVien::query();
+        // Áp dụng tìm kiếm nếu có từ khóa (tìm theo hoTen, email, ma_nv)
+        if ($search) {
+            $query->where('hoTen', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%')
+                ->orWhere('ma_sv', 'like', '%' . $search . '%');
+        }
+        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        $data = $query->orderBy('id', 'desc')->paginate(5)->withQueryString();
+
+        return view('admins.student.index', compact('data', 'search'));
     }
 
     /**

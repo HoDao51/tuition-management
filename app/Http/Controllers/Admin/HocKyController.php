@@ -16,10 +16,23 @@ class HocKyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = hocKy::with('namHoc')->orderBy('id', 'desc')->where('deleted', 0)->get();
-        return view('admins.semester.index', compact('data'));
+        // Lấy từ khóa tìm kiếm từ request (từ form)
+        $search = $request->get('search');
+        // Query cơ bản
+        $query = hocKy::query();
+        // Áp dụng tìm kiếm nếu có từ khóa (tìm theo hoTen, email, ma_nv)
+        if ($search) {
+            $query->where('tenHocKy', 'like', '%' . $search . '%')
+            ->orWhereHas('namHoc', function ($namHoc) use ($search) {  // Tìm trong quan hệ khoa
+                  $namHoc->where('tenNamHoc', 'like', '%' . $search . '%');  // Giả sử trường tên khoa là 'tenKhoa'
+              });
+        }
+        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        $data = $query->orderBy('id', 'desc')->where('deleted', false)->paginate(5)->withQueryString();
+
+        return view('admins.semester.index', compact('data', 'search'));
     }
 
     /**
@@ -53,6 +66,15 @@ class HocKyController extends Controller
             $tenHocKy = 'Học Kỳ 6';
         }
 
+        // Kiểm tra trùng lặp: Học kỳ với cùng tên và năm học đã tồn tại chưa?
+        $existingHocKy = hocKy::where('tenHocKy', $tenHocKy)
+                            ->where('id_nam_hoc', $id_nam_hoc)
+                            ->where('deleted', false)  
+                            ->first();
+        if ($existingHocKy) {
+            // Trả về với lỗi
+            return redirect()->back()->withErrors(['duplicate' => 'Năm học ' . $existingHocKy->namHoc->tenNamHoc . ' đã có học kỳ được chọn! Hãy chọn học kỳ khác!'])->withInput();
+        }
 
         $hocKy = hocKy::create([
             'tenHocKy' => $tenHocKy,
@@ -99,6 +121,16 @@ class HocKyController extends Controller
             $tenHocKy = 'Học Kỳ 5';
         }elseif ($tenHocKy == 5){
             $tenHocKy = 'Học Kỳ 6';
+        }
+
+        // Kiểm tra trùng lặp: Học kỳ với cùng tên và năm học đã tồn tại chưa?
+        $existingHocKy = hocKy::where('tenHocKy', $tenHocKy)
+                            ->where('id_nam_hoc', $id_nam_hoc)
+                            ->where('deleted', false)  
+                            ->first();
+        if ($existingHocKy) {
+            // Trả về với lỗi
+            return redirect()->back()->withErrors(['duplicate' => 'Năm học ' . $existingHocKy->namHoc->tenNamHoc . ' đã có học kỳ được chọn! Hãy chọn học kỳ khác!'])->withInput();
         }
 
         $hocKy->update([
