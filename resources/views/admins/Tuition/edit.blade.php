@@ -68,7 +68,7 @@
         </div>
 
         <!-- Nút -->
-        <div class="flex space-x-3 pt-4">
+        <div class="flex space-x-3 pt-4 mb-4"">
             <a href="{{ route('hocPhi.index') }}"
                 class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition text-[18px]">
                 Quay lại

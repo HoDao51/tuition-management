@@ -86,8 +86,8 @@
         </div>
 
         <!-- BẢNG DANH SÁCH CHƯA ĐÓNG -->
-        <div class="mt-10">
-            <h2 class="text-2xl font-semibold text-red-600 mb-4">Danh sách sinh viên chưa đóng học phí</h2>
+        <div class="mt-10 mb-4">
+            <h2 class="text-2xl font-semibold text-red-600">Danh sách sinh viên chưa đóng học phí</h2>
 
             <table class="w-full border border-gray-300">
                 <thead class="bg-gray-200 font-semibold">

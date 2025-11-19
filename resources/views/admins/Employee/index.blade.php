@@ -81,7 +81,7 @@
       </table>
     </div>
     <!-- Hiển thị nút phân trang -->
-      <div class="flex justify-center space-x-2 mt-4">
+      <div class="flex justify-center space-x-2 mt-4 mb-4">
             @foreach ($nhanVien->links()->elements[0] ?? [] as $page => $url)
                 @if ($page == $nhanVien->currentPage())
                     <span class="px-4 py-2 bg-blue-600 text-white rounded-[5px]">
