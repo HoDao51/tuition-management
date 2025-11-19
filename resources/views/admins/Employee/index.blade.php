@@ -32,8 +32,8 @@
       <table class="min-w-full border border-gray-200 text-sm text-left">
         <thead class="bg-[#D9D9D9] text-gray-700 uppercase">
           <tr>
-            <th class="px-4 py-2 border">Mã NV</th>
-            <th class="px-4 py-2 border">Họ tên</th>
+            <th class="px-4 py-2 border text-center">Mã NV</th>
+            <th class="px-4 py-2 border text-center">Họ tên</th>
             <th class="px-4 py-2 border text-center">Ngày sinh</th>
             <th class="px-4 py-2 border text-center">Chức vụ</th>
             <th class="px-4 py-2 border text-center">Xem chi tiết</th>
@@ -44,8 +44,8 @@
         @foreach($nhanVien as $item)
         <tbody>
           <tr class="hover:bg-gray-50">
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px]">{{($item->ma_nv)}}</td>
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px]">{{($item->hoTen)}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{($item->ma_nv)}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{($item->hoTen)}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{($item->ngaySinh)}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">
                 @if(($item->chucVu) == 0)

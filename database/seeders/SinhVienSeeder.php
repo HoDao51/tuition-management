@@ -2,69 +2,45 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
-
+use Faker\Factory as Faker;
 
 class SinhVienSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // ================== SINH VIÊN 1: Trần Thái Vũ ==================
-        $user1 = DB::table('users')->insertGetId([
-            'name'       => 'Trần Thái Vũ',
-            'email'      => 'tranthaivu@gmail.com',
-            'password'   => Hash::make('123456'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
+        $faker = Faker::create('vi_VN');
 
-        DB::table('sinh_vien')->insert([
-            'ma_sv'        => 'SV001',
-            'hoTen'        => 'Trần Thái Vũ',
-            'ngaySinh'     => '2006-01-01',
-            'gioiTinh'     => 0,
-            'diaChi'       => 'Hà Nội',
-            'soDienThoai'  => '0912345678',
-            'email'        => 'tranthaivu@gmail.com',
-            'anhDaiDien'   => null,
-            'id_lop'       => 1, 
-            'id_nam_hoc'   => 1,
-            'user_id'      => $user1,
-            'created_at'   => Carbon::now(),
-            'updated_at'   => Carbon::now(),
-        ]);
+        for ($i = 1; $i <= 30; $i++) {
 
+            // Tạo user trước
+            $userId = DB::table('users')->insertGetId([
+                'name'       => $faker->name,
+                'email'      => "sinhvien{$i}@gmail.com",
+                'password'   => Hash::make('123456'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
 
-        // ================== SINH VIÊN 2: Nguyễn Sỹ Khánh Anh ==================
-        $user2 = DB::table('users')->insertGetId([
-            'name'       => 'Nguyễn Sỹ Khánh Anh',
-            'email'      => 'khanhanh@gmail.com',
-            'password'   => Hash::make('123456'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-
-        DB::table('sinh_vien')->insert([
-            'ma_sv'        => 'SV002',
-            'hoTen'        => 'Nguyễn Sỹ Khánh Anh',
-            'ngaySinh'     => '2006-01-01',
-            'gioiTinh'     => 0,
-            'diaChi'       => 'california',
-            'soDienThoai'  => '0988776655',
-            'email'        => 'khanhanh@gmail.com',
-            'anhDaiDien'   => null,
-            'id_lop'       => 1, 
-            'id_nam_hoc'   => 1,
-            'user_id'      => $user2,
-            'created_at'   => Carbon::now(),
-            'updated_at'   => Carbon::now(),
-        ]);
+            // Tạo sinh viên
+            DB::table('sinh_vien')->insert([
+                'ma_sv'        => 'SV' . str_pad($i, 3, '0', STR_PAD_LEFT),
+                'hoTen'        => $faker->name,
+                'ngaySinh'     => $faker->date('Y-m-d', '2010-01-01'),
+                'gioiTinh'     => $faker->randomElement([0, 1]),
+                'diaChi'       => $faker->city,
+                'soDienThoai'  => $faker->phoneNumber,
+                'email'        => "sinhvien{$i}@gmail.com",
+                'anhDaiDien'   => null,
+                'id_lop'       => $faker->randomElement([1, 2]),
+                'id_nam_hoc'   => 1,
+                'user_id'      => $userId,
+                'created_at'   => Carbon::now(),
+                'updated_at'   => Carbon::now(),
+            ]);
+        }
     }
 }

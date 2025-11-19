@@ -14,9 +14,16 @@ class KhoaSeeder extends Seeder
     public function run(): void
     {
         DB::table('khoa')->insert([
-            'tenKhoa' => 'Khoa Kỹ thuật điện',
-            'created_at' => now(),
-            'updated_at' => now(),
+            [
+                'tenKhoa' => 'Kỹ thuật điện',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'tenKhoa' => 'Năng lượng mới',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

@@ -32,9 +32,13 @@ class SinhVienController extends Controller
                 ->orWhere('ma_sv', 'like', '%' . $search . '%');
         }
         // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
-        $data = $query->orderBy('id', 'desc')->paginate(5)->withQueryString();
+       // Sắp xếp theo lớp
+        $data = $query->orderBy('id_lop', 'asc')
+                    ->orderBy('id', 'desc')
+                    ->paginate(10)
+                    ->withQueryString();
 
-        return view('admins.student.index', compact('data', 'search'));
+            return view('admins.student.index', compact('data', 'search'));
     }
 
     /**

@@ -22,7 +22,10 @@ class UpdatenhanVienRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'hoTen' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $this->nhanVien->user_id,
+            'soDienThoai' => 'required',
+            'chucVu' => 'required',
         ];
     }
 }

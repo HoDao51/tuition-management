@@ -14,7 +14,7 @@
         <div>
             <label class="block text-sm text-gray-600 mb-1">Sinh viên</label>
             <input type="text" value="{{ $sinhVien->hoTen }}" readonly
-                   class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100">
+                   class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-green-400">
             <input type="hidden" name="id_sinh_vien" value="{{ $sinhVien->id }}">
         </div>
 
@@ -22,7 +22,7 @@
         <div>
             <label class="block text-sm text-gray-600 mb-1">Năm học</label>
             <input type="text" value="{{ $sinhVien->namHoc->tenNamHoc }}" readonly
-                   class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100">
+                   class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-green-400">
             <input type="hidden" name="" value="{{ $sinhVien->id }}">
         </div>
 
@@ -30,7 +30,7 @@
         <div>
             <label class="block text-sm text-gray-600 mb-1">Học kỳ</label>
             <select name="id_hoc_ky" required
-                    class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white">
+                    class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
                 <option value="" disabled selected>-- Chọn học kỳ --</option>
                 @foreach($hocKy as $hk)
                     <option value="{{ $hk->id }}">{{ $hk->tenHocKy }}</option>
@@ -42,7 +42,7 @@
         <div>
             <label class="block text-sm text-gray-600 mb-1">Tổng tiền</label>
             <input type="number" name="tongTien" required min="0" max="100000000"
-                   class="w-full border border-gray-300 rounded-md px-3 py-2">
+                   class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
                 <p class="text-sm text-gray-500 mt-1">
                     Tối đa: <strong>100.000.000đ</strong>
                 </p>

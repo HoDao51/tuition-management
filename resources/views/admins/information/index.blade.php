@@ -21,7 +21,7 @@
 
     <!-- Thông tin người dùng -->
     <div class="flex-1 pt-5">
-      <h2 class="text-[#4B5563] text-[28px] font-semibold">Thông tin người dùng</h2>
+      <h2 class="text-[#4B5563] text-[28px] font-semibold">Thông tin cơ bản</h2>
       <table class="table-auto w-2/3 border border-[#D4D4D4] text-[#4B5563]">
         <tbody>
           <tr class="border-b border-[#D4D4D4]">

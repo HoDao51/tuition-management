@@ -3,8 +3,12 @@
   <header class="flex items-center justify-between border-b border-[E5E6E6] px-6 py-3 bg-white">
     
     <!-- Logo + tên -->
-    <div class="flex items-center space-x-4 ">
-        <span class="font-bold text-4xl mr-3 bg-gradient-to-tr from-blue-400 to-blue-600 bg-clip-text text-transparent">RSCEP</span>
+    <div class="flex items-center gap-2">
+      <img src="{{ asset('images/logo_school2.png')}}" class="w-[36px] h-[36px] object-contain">
+
+      <span class="font-bold text-4xl leading-none bg-gradient-to-tr from-yellow-400 to-red-600 bg-clip-text text-transparent">
+          RSCEP
+      </span>
     </div>
     <div class="flex items-center gap-4 grow flex items-center lg:ml-36">
       @if (Route::currentRouteName() == 'admins.index')
@@ -131,6 +135,16 @@
       @elseif (Route::currentRouteName() == 'bienLai.edit')
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Chỉnh sửa thông tin biên lai
+        </span>
+
+      <!-- tiêu đề thông tin cá nhân -->
+      @elseif (Route::currentRouteName() == 'thongTinCaNhan.index')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thông tin người dùng
+        </span>
+      @elseif (Route::currentRouteName() == 'thongTinCaNhan.edit')
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Chỉnh sửa thông tin người dùng
         </span>
       @endif
     </div>
