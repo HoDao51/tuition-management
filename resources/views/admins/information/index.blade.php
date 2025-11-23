@@ -6,10 +6,10 @@
     <!-- Khung ảnh đại diện -->
     <div class="flex flex-col items-center space-y-3 p-4 pt-6">
       <div class="w-60 h-80 bg-gray-300 flex flex-col items-center justify-center space-y-6 border border-[#c5c5c5]">
-        @if(Auth::user()->anhDaiDien == null)
+        @if(Auth::user()->nhanVien->anhDaiDien == null)
             <img src="{{ asset('images/sbcf-default-avatar.png') }}" alt="Ảnh đại diện" class="w-full h-full object-cover">
         @else
-            <img src="{{ asset('storage/'.Auth::user()->anhDaiDien) }}" alt="Ảnh đại diện" class="w-full h-full object-cover">
+            <img src="{{ asset('storage/'.Auth::user()->nhanVien->anhDaiDien) }}" alt="Ảnh đại diện" class="w-full h-full object-cover">
         @endif
       </div>
       <div class="text-center text-[#4B5563] text-[18px]">

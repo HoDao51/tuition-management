@@ -22,7 +22,14 @@ class StorenhanVienRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'hoTen' => 'required|string'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'hoTen.required' => 'Vui lòng nhập họ tên.'
         ];
     }
 }

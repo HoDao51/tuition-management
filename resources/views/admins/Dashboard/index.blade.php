@@ -7,8 +7,7 @@
             Chào mừng quản trị viên trở lại!
         </h2>
 
-        <!-- GIỮ NGUYÊN CẤU TRÚC — chỉ đổi grid-cols-2 thành grid-cols-4 -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
 
             <!-- Tổng nhân viên -->
             <div>
@@ -87,7 +86,7 @@
 
         <!-- BẢNG DANH SÁCH CHƯA ĐÓNG -->
         <div class="mt-10 mb-4">
-            <h2 class="text-2xl font-semibold text-red-600">Danh sách sinh viên chưa đóng học phí</h2>
+            <h2 class="text-2xl font-semibold text-red-600 mb-4">Danh sách sinh viên chưa đóng học phí</h2>
 
             <table class="w-full border border-gray-300">
                 <thead class="bg-gray-200 font-semibold">

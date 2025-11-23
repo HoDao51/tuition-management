@@ -29,6 +29,9 @@ class SinhVienController extends Controller
         if ($search) {
             $query->where('hoTen', 'like', '%' . $search . '%')
                 ->orWhere('email', 'like', '%' . $search . '%')
+                ->orWhereHas('lop', function ($lop) use ($search) {  // Tìm trong quan hệ khoa
+                  $lop->where('tenLop', 'like', '%' . $search . '%');  // Giả sử trường tên khoa là 'tenKhoa'
+              })
                 ->orWhere('ma_sv', 'like', '%' . $search . '%');
         }
         // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
