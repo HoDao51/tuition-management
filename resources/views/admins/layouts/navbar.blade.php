@@ -3,13 +3,14 @@
   <header class="flex items-center justify-between border-b border-[E5E6E6] px-6 py-3 bg-white">
     
     <!-- Logo + tên -->
-    <div class="flex items-center gap-2">
-      <img src="{{ asset('images/logo_school2.png')}}" class="w-[36px] h-[36px] object-contain">
-
-      <span class="font-bold text-4xl leading-none bg-gradient-to-tr from-yellow-400 to-red-600 bg-clip-text text-transparent">
-          RSCEP
-      </span>
-    </div>
+    <a href="{{route('admins.index')}}">
+      <div class="flex items-center gap-2">
+        <img src="{{ asset('images/logo_school2.png')}}" class="w-[36px] h-[36px] object-contain">
+        <span class="font-bold text-4xl leading-none bg-gradient-to-tr from-yellow-400 to-red-600 bg-clip-text text-transparent">
+            RSCEP
+        </span>
+      </div>
+    </a>
     <div class="flex items-center gap-4 grow flex items-center lg:ml-[100px]">
       @if (Route::currentRouteName() == 'admins.index')
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">

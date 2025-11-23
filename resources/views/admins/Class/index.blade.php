@@ -32,10 +32,10 @@
       <table class="min-w-full border border-gray-200 text-sm text-left">
         <thead class="bg-[#D9D9D9] text-gray-700 uppercase">
           <tr>
-            <th class="px-4 py-2 border w-[150px] text-center">STT</th>
+            <th class="px-4 py-2 border w-[70px] text-center">STT</th>
             <th class="px-4 py-2 border text-center">Tên lớp</th>
             <th class="px-4 py-2 border text-center">Tên khoa</th>
-            <th class="px-4 py-2 border w-[180px] text-center">Hành động</th>
+            <th class="px-4 py-2 border w-[160px] text-center">Hành động</th>
           </tr>
         </thead>
         @foreach ($data as $lop)
@@ -51,7 +51,7 @@
                 {{-- Nút sửa --}}
                 <a href="{{ route('lop.edit', $lop->id) }}">
                     <button type="button"
-                        class="bg-[#10B981] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-[#1D8F6A]">
+                        class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
                         Sửa
                     </button>
                 </a>
@@ -61,7 +61,7 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit"
-                        class="bg-[#DC2626] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-red-800 ml-2">
+                        class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
                         Xóa
                     </button>
                 </form>

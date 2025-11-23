@@ -10,7 +10,7 @@
         <div>
             <label for="ma_sv" class="block text-lg text-[#4B5563] mb-1">Mã sinh viên:</label>
             <input type="text" name="ma_sv" id="ma_sv" value="{{ $sinhVien->ma_sv }}" readonly
-                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+                class="w-full border border-gray-300 bg-gray-100 cursor-not-allowed rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
         </div>
 
         <!-- Họ tên -->
@@ -125,7 +125,10 @@
 
         <!-- Nút submit -->
         <div class="flex space-x-3 pt-4">
-            <a href="{{ route('sinhVien.index') }}" class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition text-[18px]">Quay lại</a>
+            <a href="{{ route('sinhVien.index') }}" 
+                class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition text-[18px]">
+                Quay lại
+            </a>
             <button type="submit"
                 class="bg-[#10B981] text-white px-4 py-2 rounded-md hover:bg-[#1D8F6A] transition text-[18px]">
                 Cập nhật

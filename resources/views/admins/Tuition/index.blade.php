@@ -29,7 +29,7 @@
 
     <!-- Bảng dữ liệu -->
     <div class="overflow-x-auto">
-      <table class="min-w-max border border-gray-200 text-sm text-left table-auto w-full">
+      <table class="min-w-full border border-gray-200 text-sm">
         <thead class="bg-[#D9D9D9] text-gray-700 uppercase">
           <tr>
             <th class="px-4 py-2 border w-[70px] text-center">Mã SV</th>
@@ -39,7 +39,7 @@
             <th class="px-4 py-2 border text-center">Tổng tiền</th>
             <th class="px-4 py-2 border text-center">Số tiền đã đóng</th>
             <th class="px-4 py-2 border text-center">Tình Trạng</th>
-            <th class="px-4 py-2 border w-[180px] text-center">Hành động</th>
+            <th class="px-4 py-2 border w-[160px] text-center">Hành động</th>
           </tr>
         </thead>
         @foreach ($data as $item)
@@ -62,7 +62,7 @@
                 {{-- Nút sửa --}}
                 <a href="{{route('hocPhi.edit', $item->id)}}">
                     <button type="button"
-                        class="bg-[#10B981] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-[#1D8F6A]">
+                        class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
                         Sửa
                     </button>
                 </a>
@@ -72,14 +72,14 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit"
-                        class="bg-[#DC2626] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-red-800 ml-2">
+                        class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
                         Xóa
                     </button>
                 </form>
                 {{-- thêm biên lai --}}
                 <a href="{{route('bienLai.create')}}?hocPhi={{$item->id}}">
                     <button type="button"
-                        class="bg-[#F97316] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-[#C55E17]">
+                        class="bg-[#F97316] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#C55E17]">
                         Thêm biên lai
                     </button>
                 </a>

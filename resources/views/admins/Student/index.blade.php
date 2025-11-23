@@ -32,25 +32,25 @@
       <table class="min-w-full border border-gray-200 text-sm text-left">
         <thead class="bg-[#D9D9D9] text-gray-700 uppercase">
           <tr>
-            <th class="px-4 py-2 border text-center">Mã SV</th>
+            <th class="px-4 py-2 border text-center w-[70px]">Mã SV</th>
             <th class="px-4 py-2 border text-center">Họ tên</th>
             <th class="px-4 py-2 border text-center">Ngày sinh</th>
             <th class="px-4 py-2 border text-center">Lớp</th>
             <th class="px-4 py-2 border text-center">Xem chi tiết</th>
             <th class="px-4 py-2 border text-center">Tình trạng</th>
-            <th class="px-4 py-2 border text-center">Hành động</th>
+            <th class="px-4 py-2 border text-center w-[250px]">Hành động</th>
           </tr>
         </thead>
         @foreach ($data as $item)
         <tbody>
           <tr class="hover:bg-gray-50">
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->ma_sv}}</td>
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->hoTen}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] pl-6">{{$item->hoTen}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->ngaySinh}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->lop->tenLop}}</td>
             <td class="px-4 py-2 border text-center">
               <a href="{{route('sinhVien.show', $item->id)}}">
-                <button type="button" class="bg-blue-600 text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-blue-700">Xem thêm</button>
+                <button type="button" class="bg-blue-600 text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-blue-700">Xem thêm</button>
               </a>
             </td>
             <td class="px-4 py-2 border text-[17px] text-center">
@@ -62,11 +62,11 @@
             </td>
             <td class="px-4 py-2 border text-center ">
                 <a href="{{route('sinhVien.edit', $item->id)}}">
-                    <button type="button" class="bg-[#10B981] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-[#1D8F6A]">Sửa</button>
+                    <button type="button" class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">Sửa</button>
                 </a>
 
                 <a href="{{ route('hocPhi.create') }}?sinhVien={{ $item->id }}">
-                  <button type="button" class="bg-[#F97316] text-white text-[18px] font-semibold px-4 py-2 rounded-md hover:bg-[#C55E17]">
+                  <button type="button" class="bg-[#F97316] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#C55E17]">
                     Thêm học phí
                   </button>
                 </a>

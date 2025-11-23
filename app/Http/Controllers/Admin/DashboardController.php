@@ -28,7 +28,7 @@ class DashboardController extends Controller
             ->orWhereHas('hocPhi', function($q) {
                 $q->whereColumn('soTienDaThanhToan', '<', 'tongTien');
             })
-            ->paginate(5)
+            ->paginate(4)
             ->withQueryString();
 
         return view('admins.dashboard.index', compact(

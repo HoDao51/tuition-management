@@ -20,7 +20,7 @@
     </div>
 
     <!-- Thông tin người dùng -->
-    <div class="flex-1 pt-5">
+    <div class="flex-1 pt-3">
       <h2 class="text-[#4B5563] text-[28px] font-semibold">Thông tin cơ bản</h2>
       <table class="table-auto w-2/3 border border-[#D4D4D4] text-[#4B5563]">
         <tbody>
@@ -74,7 +74,7 @@
         </a>
 
         <a href="{{ route('thongTinCaNhan.edit') }}">
-          <button type="button" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+          <button type="button" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
             Chỉnh sửa
           </button>
         </a>

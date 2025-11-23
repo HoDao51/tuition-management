@@ -3,7 +3,7 @@
 
 @section('content')
   <div class="mx-auto">
-        <h2 class="text-2xl font-semibold text-orange-500 mb-6">
+        <h2 class="text-2xl font-semibold text-orange-500 mb-4">
             Chào mừng quản trị viên trở lại!
         </h2>
 
@@ -67,7 +67,7 @@
 
             <!-- Chưa đóng -->
             <div>
-                <a href="{{route('hocPhi.index')}}" class="bg-[#EA3438] text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-[#C2282B]">
+                <a href="{{route('hocPhi.index')}}" class="bg-[#EA3438] text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-[#AF1D20]">
                     <div class="flex items-center space-x-4">
                         <div class="flex-shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16" fill="#222C3A" viewBox="0 0 24 24">
@@ -85,11 +85,11 @@
         </div>
 
         <!-- BẢNG DANH SÁCH CHƯA ĐÓNG -->
-        <div class="mt-10 mb-4">
-            <h2 class="text-2xl font-semibold text-red-600 mb-4">Danh sách sinh viên chưa đóng học phí</h2>
+        <div class="mt-8 mb-4">
+            <h2 class="text-2xl font-semibold text-red-600 mb-3">Danh sách sinh viên chưa đóng học phí</h2>
 
-            <table class="w-full border border-gray-300">
-                <thead class="bg-gray-200 font-semibold">
+            <table class="w-full border border-gray-300 text-[#4B5563] ">
+                <thead class="bg-gray-200 font-semibold uppercase">
                     <tr>
                         <th class="border p-3">Mã SV</th>
                         <th class="border p-3">Họ tên</th>
@@ -100,10 +100,10 @@
                 <tbody>
                     @foreach ($dsChuaDong as $sv)
                         <tr class="hover:bg-gray-50">
-                            <td class="border p-3">{{ $sv->ma_sv }}</td>
-                            <td class="border p-3">{{ $sv->hoTen }}</td>
-                            <td class="border p-3">{{ $sv->email }}</td>
-                            <td class="border p-3">{{ $sv->soDienThoai }}</td>
+                            <td class="border p-3 text-center">{{ $sv->ma_sv }}</td>
+                            <td class="border p-3 pl-16">{{ $sv->hoTen }}</td>
+                            <td class="border p-3 text-center">{{ $sv->email }}</td>
+                            <td class="border p-3 text-center">{{ $sv->soDienThoai }}</td>
                         </tr>
                     @endforeach
                 </tbody>
