@@ -96,6 +96,7 @@ class LopController extends Controller
         // Kiểm tra trùng lặp
         $existingLop = lop::where('tenLop', $tenLop)
                             ->where('id_khoa', $id_khoa)
+                            ->where('id', '<>', $lop->id)
                             ->where('deleted', false)  
                             ->first();
         if ($existingLop) {
@@ -117,6 +118,6 @@ class LopController extends Controller
     {
         $lop->deleted = true;
         $lop->save(); 
-        return redirect::route('khoa.index');
+        return redirect::route('lop.index');
     }
 }

@@ -2,12 +2,6 @@
 
 @section('content')
 <div class="max-w-md bg-white p-4 rounded-md shadow-md">
-    @if ($errors->has('duplicated'))
-        <div class="alert alert-danger text-red-600 font-semibold text-lg mb-4">
-            {{ $errors->first('duplicated') }}
-        </div>
-    @endif
-
     <form action="{{ route('bienLai.store') }}" method="POST" class="space-y-4">
         @csrf
 
@@ -49,18 +43,24 @@
         <!-- Số tiền đã đóng -->
         <div>
             <label>Số tiền thu</label>
-            <input type="number" name="soTienThu" min="0"
+            <input type="number" name="soTienThu"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400" 
                 max="{{ $hocPhi->tongTien - $hocPhi->soTienDaThanhToan }}"
-                value="{{ old('soTienThu') }}" required>
+                value="{{ old('soTienThu') }}">
+            @error('soTienThu')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Ngày thu -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="ngayThu">Ngày thu</label>
             <input 
-                type="date" name="ngayThu" id="ngayThu" required max="{{now()->format('Y-m-d')}}"
-                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400" >
+                type="date" name="ngayThu" id="ngayThu" max="{{now()->format('Y-m-d')}}"
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+            @error('ngayThu')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <div class="flex space-x-3 pt-4">

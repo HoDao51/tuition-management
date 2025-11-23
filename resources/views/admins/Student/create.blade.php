@@ -9,75 +9,105 @@
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="hoTen">Tên sinh viên</label>
             <input 
-                type="text" name="hoTen" id="hoTen" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
-                placeholder="Nhập tên sinh viên"
-            >
+                type="text" value="{{ old('hoTen')}}"
+                name="hoTen" id="hoTen"  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
+                placeholder="Nhập tên sinh viên">
+            @error('hoTen')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- lớp -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="id_lop">Lớp</label>
             <select 
-                name="id_lop" id="id_lop" required class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
+                name="id_lop" id="id_lop"  class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
                 <option value="" disabled selected>-- Chọn lớp --</option>
                 @foreach ($lop as $item)
-                    <option value="{{ $item->id }}">{{ $item->tenLop }}</option>
+                    <option value="{{ $item->id }}"  @selected(old('id_lop') == $item->id)>{{ $item->tenLop }}</option>
                 @endforeach
             </select>
+            @error('id_lop')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Năm học -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="id_nam_hoc">Năm học</label>
             <select 
-                name="id_nam_hoc" id="id_nam_hoc" required class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
+                name="id_nam_hoc" id="id_nam_hoc"  class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
                 <option value="" disabled selected>-- Chọn năm học --</option>
                 @foreach ($namHoc as $item)
-                    <option value="{{ $item->id }}">{{ $item->tenNamHoc }}</option>
+                    <option value="{{ $item->id }}" @selected(old('id_nam_hoc') == $item->id)>{{ $item->tenNamHoc }}</option>
                 @endforeach
             </select>
+            @error('id_nam_hoc')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Ngày sinh -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="ngaySinh">Ngày sinh</label>
             <input 
-                type="date" name="ngaySinh" id="ngaySinh" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"  max="{{ date('Y-m-d', strtotime('-18 years')) }}" >
+                type="date" value="{{ old('ngaySinh')}}"
+                name="ngaySinh" id="ngaySinh"  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"  max="{{ date('Y-m-d', strtotime('-18 years')) }}" >
+            @error('ngaySinh')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Giới tính -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="gioiTinh">Giới tính</label>
             <select 
-                name="gioiTinh" id="gioiTinh" required class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
-                <option value="" disabled selected>-- Chọn giới tính --</option>
-                <option value="0">Nam</option>
-                <option value="1">Nữ</option>
+                name="gioiTinh" value="{{ old('gioiTinh')}}"
+                id="gioiTinh" class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
+                <option value="" disabled {{ old('gioiTinh') === null ? 'selected' : '' }}>-- Chọn giới tính --</option>
+                <option value="0" {{ old('gioiTinh') == '0' ? 'selected' : '' }}>Nam</option>
+                <option value="1" {{ old('gioiTinh') == '1' ? 'selected' : '' }}>Nữ</option>
             </select>
+            @error('gioiTinh')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
+
 
         <!-- địa chỉ -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="diaChi">Địa chỉ</label>
             <input 
-                type="text" name="diaChi" id="diaChi" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
+                type="text" value="{{ old('diaChi')}}"
+                 name="diaChi" id="diaChi"  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
                 placeholder="Nhập địa chỉ">
+            @error('diaChi')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Số điện thoại -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="soDienThoai">Số điện thoại</label>
             <input 
-                type="text" name="soDienThoai" id="soDienThoai" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
+                type="text"  value="{{ old('soDienThoai')}}"
+                name="soDienThoai" id="soDienThoai"  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
                 placeholder="Nhập số điện thoại">
+            @error('soDienThoai')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Email -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="email">Email</label>
             <input 
-                type="email" name="email" id="email" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
+                type="email" value="{{ old('email')}}"
+                name="email" id="email"  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
                 placeholder="Nhập email">
+            @error('email')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Ảnh đại diện -->

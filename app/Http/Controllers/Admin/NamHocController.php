@@ -91,7 +91,8 @@ class NamHocController extends Controller
 
         // Kiểm tra trùng lặp
         $existingNamHoc = namHoc::where('tenNamHoc', $tenNamHoc)
-                            ->where('deleted', false)  
+                            ->where('deleted', false)
+                            ->where('id', '<>', $namHoc->id) 
                             ->first();
         if ($existingNamHoc) {
             // Trả về với lỗi

@@ -3,28 +3,33 @@
 
 @section('content')
 <div class="max-w-md bg-white">
-    @error('duplicate')
-        <div class="alert alert-danger text-red-600 font-semibold text-[20px]">
-            {{ $message}}
-        </div>
-    @enderror
     <form action="{{ route('lop.store') }}" method="POST" enctype="multipart/form-data" class="space-y-3">
         @csrf
         <!-- Tên lớp -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="tenLop">Tên lớp</label>
-            <input type="text" name="tenLop" id="tenLop" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400" placeholder="Nhập tên lớp">
+            <input type="text" value="{{old('tenLop')}}"
+            name="tenLop" id="tenLop" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400" placeholder="Nhập tên lớp">
+            @error('tenLop')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
+            @error('duplicate')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- chọn khoa -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="id_khoa">Chọn khoa</label>
-            <select name="id_khoa" id="id_khoa" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+            <select name="id_khoa" id="id_khoa" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
                 <option value="" disabled selected>Chọn khoa</option>
                 @foreach($khoa as $khoa)
-                        <option value="{{ $khoa->id }}">{{ $khoa->tenKhoa }}</option>
+                        <option value="{{ $khoa->id }}" @selected(old('id_khoa') == $khoa->id)>{{ $khoa->tenKhoa }}</option>
                 @endforeach
             </select>
+            @error('id_khoa')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Buttons -->

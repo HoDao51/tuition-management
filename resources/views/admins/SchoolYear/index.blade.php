@@ -32,7 +32,7 @@
       <table class="min-w-full border border-gray-200 text-sm text-left">
         <thead class="bg-[#D9D9D9] text-gray-700 uppercase">
           <tr>
-            <th class="px-4 py-2 border w-[150px] text-center">Mã năm học</th>
+            <th class="px-4 py-2 border w-[150px] text-center">STT</th>
             <th class="px-4 py-2 border text-center">Năm học</th>
             <th class="px-4 py-2 border text-center">ngày bắt đầu</th>
             <th class="px-4 py-2 border text-center">ngày kết thúc</th>
@@ -42,7 +42,9 @@
         @foreach ($data as $item)
         <tbody>
           <tr class="hover:bg-gray-50">
-            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->id}}</td>
+            <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">
+              {{ ($data->currentPage() - 1) * $data->perPage() + $loop->iteration }}
+            </td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->tenNamHoc}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->ngayBatDau}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->ngayKetThuc}}</td>

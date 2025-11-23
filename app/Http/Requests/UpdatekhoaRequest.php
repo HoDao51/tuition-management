@@ -22,7 +22,13 @@ class UpdatekhoaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tenKhoa' => 'required|string',
+        ];
+    }
+    public function messages()
+    {
+        return[
+            'tenKhoa.required' => 'Vui lòng nhập tên khoa.',
         ];
     }
 }

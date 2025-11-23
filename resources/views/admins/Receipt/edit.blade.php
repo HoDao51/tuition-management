@@ -47,16 +47,21 @@
             <input type="number" name="soTienThu" min="0"
                    max="{{ $bienLai->hocPhi->tongTien - $bienLai->hocPhi->soTienDaThanhToan + $bienLai->soTienThu }}"
                    value="{{ old('soTienThu', $bienLai->soTienThu) }}"
-                   required
                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+            @error('soTienThu')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Ngày thu -->
         <div>
             <label class="block text-sm text-gray-700 mb-1 font-semibold" for="ngayThu">Ngày thu</label>
-            <input type="date" name="ngayThu" id="ngayThu" required max="{{now()->format('Y-m-d')}}"
+            <input type="date" name="ngayThu" id="ngayThu" max="{{now()->format('Y-m-d')}}"
                    value="{{ \Carbon\Carbon::parse($bienLai->getRawOriginal('ngayThu'))->format('Y-m-d') }}"
                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+            @error('ngayThu')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- tinh trạng -->
@@ -69,11 +74,16 @@
             </select>
         </div>
 
+        <!-- Nút submit -->
         <div class="flex space-x-3 pt-4">
-            <a href="{{ route('bienLai.index') }}"
-               class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition">Quay lại</a>
+            <a href="{{ route('bienLai.index') }}" 
+                class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition text-[18px]">
+                Quay lại
+            </a>
             <button type="submit"
-                    class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition">Cập nhật biên lai</button>
+                class="bg-[#10B981] text-white px-4 py-2 rounded-md hover:bg-[#1D8F6A] transition text-[18px]">
+                Cập nhật
+            </button>
         </div>
     </form>
 </div>

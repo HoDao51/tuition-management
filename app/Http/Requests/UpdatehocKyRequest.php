@@ -22,7 +22,20 @@ class UpdatehocKyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tenHocKy' => 'required|string',
+            'id_nam_hoc' => 'required|exists:nam_hoc,id',
+        ];
+    }
+
+    /**
+     * Customize the validation messages.
+     */
+    public function messages(): array
+    {
+        return [
+            'tenHocKy.required' => 'Vui lòng nhập tên học kỳ.',
+            'id_nam_hoc.required' => 'Vui lòng chọn năm học.',
+            'id_nam_hoc.exists' => 'Năm học không tồn tại.',
         ];
     }
 }

@@ -80,7 +80,7 @@ class HocPhiController extends Controller
 
         if ($exists) {
             return back()->withErrors([
-                'duplicated' => 'Sinh viên này đã có học phí trong học kỳ này!'
+                'duplicated' => 'Sinh viên đã có học phí trong học kỳ này!'
             ])->withInput();
         }
 
@@ -122,6 +122,17 @@ class HocPhiController extends Controller
         $tongTien = $request->tongTien;
         $tinhTrang = $request->tinhTrang;
 
+        $exists = hocPhi::where('id_sinh_vien', $hocPhi->id_sinh_vien)
+            ->where('id_hoc_ky', $request->id_hoc_ky)
+            ->where('deleted', false)
+            ->where('id', '<>', $hocPhi->id)
+            ->exists();
+            
+        if ($exists) {
+            return back()->withErrors([
+                'duplicated' => 'Sinh viên đã có học phí trong học kỳ này!'
+            ])->withInput();
+        }
         $hocPhi->update([
             'id_hoc_ky' => $id_hoc_ky,
             'tongTien' => $tongTien,

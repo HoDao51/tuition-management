@@ -20,18 +20,24 @@
         <!-- tên khoa -->
         <div>
             <label for="tenLop" class="block text-lg text-[#4B5563] mb-1">Tên lớp</label>
-            <input type="text" name="tenLop" id="tenLop" value="{{ $lop->tenLop }}" required
+            <input type="text" name="tenLop" id="tenLop" value="{{ old('tenLop', $lop->tenLop) }}"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+            @error('tenLop')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
         <!-- chọn khoa -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="id_khoa">Chọn khoa</label>
-            <select name="id_khoa" id="id_khoa" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+            <select name="id_khoa" id="id_khoa" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
                 <option value="" disabled>Chọn khoa</option>
                 @foreach($khoa as $khoa)
                     <option value="{{ $khoa->id }}" {{ $lop->id_khoa == $khoa->id ? 'selected' : '' }}>{{ $khoa->tenKhoa }}</option>
                 @endforeach
             </select>
+            @error('id_khoa')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Nút submit -->

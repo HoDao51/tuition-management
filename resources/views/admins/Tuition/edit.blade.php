@@ -43,16 +43,25 @@
                     </option>
                 @endforeach
             </select>
+            @error('id_hoc_ky')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
+            @error('duplicated')
+                    <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Tổng tiền -->
         <div>
             <label class="block text-lg text-gray-700 mb-1">Tổng tiền:</label>
-            <input type="number" name="tongTien" value="{{ $hocPhi->tongTien }}" required
-                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400" max="100000000" min="0">
+            <input type="number" name="tongTien" value="{{ old('tongTien', $hocPhi->tongTien) }}"
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
                 <p class="text-sm text-gray-500 mt-1">
                     Tối đa: <strong>100.000.000đ</strong>
                 </p>
+            @error('tongTien')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Trạng thái -->

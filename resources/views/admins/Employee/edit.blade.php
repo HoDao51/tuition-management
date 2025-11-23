@@ -16,42 +16,57 @@
         <!-- Họ tên -->
         <div>
             <label for="hoTen" class="block text-lg text-[#4B5563] mb-1">Họ tên</label>
-            <input type="text" name="hoTen" id="hoTen" value="{{ $nhanVien->hoTen }}" required
+            <input type="text" name="hoTen" id="hoTen" value="{{ old('hoTen',$nhanVien->hoTen) }}"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+            @error('hoTen')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Ngày sinh -->
         <div>
             <label for="ngaySinh" class="block text-lg text-[#4B5563] mb-1">Ngày sinh</label>
-            <input type="date" name="ngaySinh" id="ngaySinh" value="{{ \Carbon\Carbon::parse($nhanVien->getRawOriginal('ngaySinh'))->format('Y-m-d') }}" required
+            <input type="date" name="ngaySinh" id="ngaySinh" value="{{ \Carbon\Carbon::parse($nhanVien->getRawOriginal('ngaySinh'))->format('Y-m-d') }}" 
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400" max="{{ date('Y-m-d', strtotime('-18 years')) }}">
+            @error('ngaySinh')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Giới tính -->
         <div>
             <label for="gioiTinh" class="block text-lg text-[#4B5563] mb-1">Giới tính</label>
-            <select name="gioiTinh" id="gioiTinh" required
+            <select name="gioiTinh" id="gioiTinh"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
                 <option value="0" {{ $nhanVien->gioiTinh == 0 ? 'selected' : '' }}>Nam</option>
                 <option value="1" {{ $nhanVien->gioiTinh == 1 ? 'selected' : '' }}>Nữ</option>
             </select>
+            @error('gioiTinh')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Chức vụ -->
         <div>
             <label for="chucVu" class="block text-lg text-[#4B5563] mb-1">Chức vụ</label>
-            <select name="chucVu" id="chucVu" required
+            <select name="chucVu" id="chucVu"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
                 <option value="0" {{ $nhanVien->chucVu == 0 ? 'selected' : '' }}>Quản trị viên</option>
                 <option value="1" {{ $nhanVien->chucVu == 1 ? 'selected' : '' }}>Tài vụ</option>
             </select>
+            @error('chucVu')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Số điện thoại -->
         <div>
             <label for="soDienThoai" class="block text-lg text-[#4B5563] mb-1">Số điện thoại</label>
-            <input type="text" name="soDienThoai" id="soDienThoai" value="{{ $nhanVien->soDienThoai }}"
+            <input type="text" name="soDienThoai" id="soDienThoai" value="{{ old('soDienThoai',$nhanVien->soDienThoai) }}"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+            @error('soDienThoai')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Email -->
@@ -76,7 +91,7 @@
         <!-- Tình trạng -->
         <div>
             <label for="tinhTrang" class="block text-lg text-[#4B5563] mb-1">Tình trạng</label>
-            <select name="tinhTrang" id="tinhTrang" required
+            <select name="tinhTrang" id="tinhTrang" 
                 class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
                 <option value="0" {{ $nhanVien->tinhTrang == 0 ? 'selected' : '' }}>Đang hoạt động</option>
                 <option value="1" {{ $nhanVien->tinhTrang == 1 ? 'selected' : '' }}>Ngưng hoạt động</option>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('nam_hoc', function (Blueprint $table) {
             $table->id();
-            $table->string('tenNamHoc', 20)->unique()->notnullable();
+            $table->string('tenNamHoc', 20)->notnullable();
             $table->date('ngayBatDau')->notnullable();
             $table->date('ngayKetThuc')->notnullable();
             $table->boolean('deleted')->default(false);

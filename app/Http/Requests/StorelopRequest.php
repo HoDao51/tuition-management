@@ -22,7 +22,15 @@ class StorelopRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tenLop' => 'required|string',
+            'id_khoa' => 'required|exists:khoa,id',
+        ];
+    }
+    public function messages()
+    {
+        return[
+            'tenLop.required' => 'Vui lòng nhập tên lớp.',
+            'id_khoa.required' => 'Vui lòng chọn khoa.'
         ];
     }
 }

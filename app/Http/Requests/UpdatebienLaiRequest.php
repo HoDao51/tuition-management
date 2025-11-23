@@ -22,7 +22,21 @@ class UpdatebienLaiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'soTienThu' => 'required|numeric|min:0',
+            'ngayThu' => 'required|date',
+        ];
+    }
+
+    /**
+     * Customize the validation messages.
+     */
+    public function messages(): array
+    {
+        return [
+            'ngayThu.required' => 'Vui lòng chọn ngày thu.',
+            'soTienThu.required' => 'Vui lòng nhập số tiền học phí đã thu.',
+            'soTienThu.max'  => 'Số tiền học phí không được vượt quá 100.000.000đ.',
+            'soTienThu.min'  => 'Số tiền học phí không được âm.',
         ];
     }
 }

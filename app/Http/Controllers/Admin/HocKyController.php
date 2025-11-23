@@ -126,7 +126,8 @@ class HocKyController extends Controller
         // Kiểm tra trùng lặp: Học kỳ với cùng tên và năm học đã tồn tại chưa?
         $existingHocKy = hocKy::where('tenHocKy', $tenHocKy)
                             ->where('id_nam_hoc', $id_nam_hoc)
-                            ->where('deleted', false)  
+                            ->where('deleted', false)
+                            ->where('id', '<>', $hocKy->id)
                             ->first();
         if ($existingHocKy) {
             // Trả về với lỗi

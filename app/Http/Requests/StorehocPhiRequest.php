@@ -22,7 +22,21 @@ class StorehocPhiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id_hoc_ky' => 'required|string',
+            'tongTien' => 'required|numeric|min:0|max:100000000',
+        ];
+    }
+
+    /**
+     * Customize the validation messages.
+     */
+    public function messages(): array
+    {
+        return [
+            'id_hoc_ky.required' => 'Vui lòng chọn học kỳ.',
+            'tongTien.required' => 'Vui lòng nhập số tiền học phí.',
+            'tongTien.max'  => 'Số tiền học phí không được vượt quá 100.000.000đ.',
+            'tongTien.min'  => 'Số tiền học phí không được âm.',
         ];
     }
 }

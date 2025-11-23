@@ -29,7 +29,7 @@
 
     <!-- Bảng dữ liệu -->
     <div class="overflow-x-auto">
-      <table class="min-w-full border border-gray-200 text-sm text-left">
+      <table class="min-w-max border border-gray-200 text-sm text-left table-auto w-full">
         <thead class="bg-[#D9D9D9] text-gray-700 uppercase">
           <tr>
             <th class="px-4 py-2 border w-[70px] text-center">Mã SV</th>

@@ -9,7 +9,8 @@
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="hoTen">Tên nhân viên</label>
             <input 
-                type="text" name="hoTen" id="hoTen" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
+                type="text" value="{{ old('hoTen')}}"
+                name="hoTen" id="hoTen" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
                 placeholder="Nhập tên nhân viên"
             >
             @error('hoTen')
@@ -21,45 +22,64 @@
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="ngaySinh">Ngày sinh</label>
             <input 
-                type="date" name="ngaySinh" id="ngaySinh" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"  max="{{ date('Y-m-d', strtotime('-18 years')) }}" >
+                type="date" value="{{ old('ngaySinh')}}"
+                name="ngaySinh" id="ngaySinh" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"  max="{{ date('Y-m-d', strtotime('-18 years')) }}" >
+            @error('ngaySinh')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Giới tính -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="gioiTinh">Giới tính</label>
             <select 
-                name="gioiTinh" id="gioiTinh" required class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
-                <option value="" disabled selected>-- Chọn giới tính --</option>
-                <option value="0">Nam</option>
-                <option value="1">Nữ</option>
+                name="gioiTinh" value="{{ old('gioiTinh')}}"
+                id="gioiTinh" class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
+                <option value="" disabled {{ old('gioiTinh') === null ? 'selected' : '' }}>-- Chọn giới tính --</option>
+                <option value="0" {{ old('gioiTinh') == '0' ? 'selected' : '' }}>Nam</option>
+                <option value="1" {{ old('gioiTinh') == '1' ? 'selected' : '' }}>Nữ</option>
             </select>
+            @error('gioiTinh')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Chức vụ -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="chucVu">Chức vụ</label>
             <select 
-                name="chucVu" id="chucVu" required class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
-                <option value="" disabled selected>-- Chọn chức vụ --</option>
-                <option value="0">Quản trị viên</option>
-                <option value="1">Tài vụ</option>
+                name="chucVu" id="chucVu" class="text-[#4B5563] w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
+                <option value="" disabled {{ old('chucVu') === null ? 'selected' : '' }}>-- Chọn chức vụ --</option>
+                <option value="0" {{ old('chucVu') == '0' ? 'selected' : '' }}>Quản trị viên</option>
+                <option value="1" {{ old('chucVu') == '1' ? 'selected' : '' }}>Tài vụ</option>
             </select>
+            @error('chucVu')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Số điện thoại -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="soDienThoai">Số điện thoại</label>
             <input 
-                type="text" name="soDienThoai" id="soDienThoai" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
+                type="text" value="{{ old('soDienThoai') }}" 
+                name="soDienThoai" id="soDienThoai" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
                 placeholder="Nhập số điện thoại">
+            @error('soDienThoai')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Email -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="email">Email</label>
             <input 
-                type="email" name="email" id="email" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
+                type="email"  value="{{ old('email') }}" 
+                name="email" id="email" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
                 placeholder="Nhập email">
+            @error('email')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Ảnh đại diện -->

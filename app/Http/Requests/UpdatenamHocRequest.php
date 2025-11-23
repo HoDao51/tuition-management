@@ -22,7 +22,18 @@ class UpdatenamHocRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tenNamHoc' => 'required|string',
+            'ngayBatDau' => 'required|date',
+            'ngayKetThuc' => 'required|date|after:ngayBatDau',
+        ];
+    }
+    public function messages()
+    {
+        return[
+            'tenNamHoc.required' => 'Vui lòng nhập năm học.',
+            'ngayBatDau.required' => 'Vui lòng nhập ngày bắt đầu.',
+            'ngayKetThuc.required' => 'Vui lòng nhập ngày kết thúc.',
+            'ngayKetThuc.after' => 'Ngày kết thúc phải sau ngày bắt đầu.',
         ];
     }
 }

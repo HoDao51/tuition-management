@@ -1,11 +1,6 @@
 @extends('admins.layouts.app')
 @section('content')
 <div class="max-w-md bg-white">
-    @error('duplicate')
-        <div class="alert alert-danger text-red-600 font-semibold text-[20px]">
-            {{ $message}}
-        </div>
-    @enderror
     <form action="{{ route('hocKy.update', $hocKy->id) }}" method="POST" enctype="multipart/form-data" class="space-y-3">
         @csrf
         @method('PUT')
@@ -17,10 +12,23 @@
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
         </div>
 
+        <div>
+            <label for="id_nam_hoc" class="block text-lg text-[#4B5563] mb-1">Năm học</label>
+            <!-- Hiển thị readonly -->
+            <input type="text" value="{{ $hocKy->namHoc->tenNamHoc }}" readonly
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+
+            <!-- Gửi giá trị thật -->
+            <input type="hidden" name="id_nam_hoc" value="{{ $hocKy->id_nam_hoc }}">
+            @error('id_nam_hoc')
+                <p class="text-red-500">{{ $message }}</p>
+            @enderror
+        </div>
+
         <!-- tên học kỳ -->
         <div>
             <label for="tenHocKy" class="block text-lg text-[#4B5563] mb-1">Tên học kỳ</label>
-            <select name="tenHocKy" id="tenHocKy" required
+            <select name="tenHocKy" id="tenHocKy"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
                 <option value="" disabled>-- Chọn học kỳ --</option>
                 <option value="0" {{ $hocKy->tenHocKy == 'Học Kỳ 1' ? 'selected' : '' }}>Học kỳ 1</option>
@@ -30,16 +38,12 @@
                 <option value="4" {{ $hocKy->tenHocKy == 'Học Kỳ 5' ? 'selected' : '' }}>Học kỳ 5</option>
                 <option value="5" {{ $hocKy->tenHocKy == 'Học Kỳ 6' ? 'selected' : '' }}>Học kỳ 6</option>
             </select>
-        </div>
-        <!-- chọn năm học -->
-        <div>
-            <label class="block text-lg text-[#4B5563] mb-1" for="id_nam_hoc">Chọn năm học</label>
-            <select name="id_nam_hoc" id="id_nam_hoc" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
-                <option value="" disabled>Chọn năm học</option>
-                @foreach($namHoc as $namHoc)
-                    <option value="{{ $namHoc->id }}" {{ $hocKy->id_nam_hoc == $namHoc->id ? 'selected' : '' }}>{{ $namHoc->tenNamHoc }}</option>
-                @endforeach
-            </select>
+            @error('tenHocKy')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
+            @error('duplicate')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Nút submit -->

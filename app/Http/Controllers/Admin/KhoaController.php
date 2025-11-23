@@ -78,23 +78,32 @@ class KhoaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatekhoaRequest $request, khoa $khoa)
+    public function update(UpdatekhoaRequest $request, Khoa $khoa)
     {
         $tenKhoa = $request->tenKhoa;
-        // Kiểm tra trùng lặp
-        $existingKhoa = khoa::where('tenKhoa', $tenKhoa)
-                            ->where('deleted', false)  
-                            ->first();
+
+        // Kiểm tra trùng lặp, loại trừ bản ghi hiện tại
+        $existingKhoa = Khoa::where('tenKhoa', $tenKhoa)
+            ->where('deleted', false)
+            ->where('id', '<>', $khoa->id)
+            ->first();
+
         if ($existingKhoa) {
-            // Trả về với lỗi
-            return redirect()->back()->withErrors(['duplicate' => 'Khoa ' . $existingKhoa->tenKhoa . ' đã tồn tại!'])->withInput();
+            return redirect()->back()
+                ->withErrors([
+                    'tenKhoa' => 'Khoa ' . $existingKhoa->tenKhoa . ' đã tồn tại!'
+                ])
+                ->withInput();
         }
+
+        // Nếu không trùng, cập nhật bản ghi
         $khoa->update([
             'tenKhoa' => $tenKhoa,
         ]);
 
         return redirect::route('khoa.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

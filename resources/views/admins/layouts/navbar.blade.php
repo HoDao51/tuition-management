@@ -10,7 +10,7 @@
           RSCEP
       </span>
     </div>
-    <div class="flex items-center gap-4 grow flex items-center lg:ml-36">
+    <div class="flex items-center gap-4 grow flex items-center lg:ml-[100px]">
       @if (Route::currentRouteName() == 'admins.index')
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Tổng quan hệ thống

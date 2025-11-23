@@ -20,8 +20,11 @@
         <!-- tên khoa -->
         <div>
             <label for="tenKhoa" class="block text-lg text-[#4B5563] mb-1">Tên khoa</label>
-            <input type="text" name="tenKhoa" id="tenKhoa" value="{{ $khoa->tenKhoa }}" required
+            <input type="text" name="tenKhoa" id="tenKhoa" value="{{ old('tenKhoa', $khoa->tenKhoa) }}"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+            @error('tenKhoa')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Nút submit -->

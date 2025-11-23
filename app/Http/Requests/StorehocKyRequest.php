@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Models\Admin\HocKy;
 
 class StorehocKyRequest extends FormRequest
 {
@@ -16,13 +18,24 @@ class StorehocKyRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            //
+            'tenHocKy' => 'required|string',
+            'id_nam_hoc' => 'required|exists:nam_hoc,id',
+        ];
+    }
+
+    /**
+     * Customize the validation messages.
+     */
+    public function messages(): array
+    {
+        return [
+            'tenHocKy.required' => 'Vui lòng chọn học kỳ.',
+            'id_nam_hoc.required' => 'Vui lòng chọn năm học.',
+            'id_nam_hoc.exists' => 'Năm học không tồn tại.',
         ];
     }
 }
