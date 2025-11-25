@@ -26,4 +26,14 @@ class LoginRequest extends FormRequest
             'password' => 'required|string'
         ];
     }
+
+        public function messages() : array
+        {
+            return [
+                'email.required' => 'Vui lòng nhập email.',
+                'email.email' => 'Định dạng email không hợp lệ.',
+                'email.exists' => 'Email không tồn tại trong hệ thống.',
+                'password.required' => 'Vui lòng nhập mật khẩu.',
+            ];
+        }
 }
