@@ -3,7 +3,7 @@
   <aside class="w-64  border-r border-gray-200 p-4 h-full">
     <nav class="flex flex-col space-y-2">
       <!-- Trang tổng quan -->
-      <a href="{{route('admins.index')}}" 
+      <a href="{{route('admins.index')}}" onclick="showLoader()"
       class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
       {{ request()->routeIs('admins.index') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="0 0 22 22" stroke="currentColor" stroke-width="0">
@@ -13,7 +13,7 @@
       </a>
 
       <!-- Quản lý nhân viên -->
-      <a href="{{ route('nhanVien.index') }}" 
+      <a href="{{ route('nhanVien.index') }}" onclick="showLoader()"
       class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
       {{ request()->routeIs('nhanVien.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="#222C3A" viewBox="0 0 36 36" stroke="currentColor" stroke-width="0">
@@ -23,7 +23,8 @@
       </a>
 
       <!-- Quản lý sinh viên -->
-      <a href="{{ route('sinhVien.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+      <a href="{{ route('sinhVien.index') }}" onclick="showLoader()"
+      class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
       {{ request()->routeIs('sinhVien.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="#222C3A" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0">
             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3">
@@ -35,7 +36,8 @@
       </a>
 
       <!-- Quản lý khoa -->
-      <a href="{{ route('khoa.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+      <a href="{{ route('khoa.index') }}" onclick="showLoader()"
+      class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
       {{ request()->routeIs('khoa.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="3 6 21 13" stroke="currentColor" stroke-width="0">
             <path fill="currentColor" d="M7 3h9a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3m0 1a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3v6.7l-3-2.1l-3 2.1zm5 0H8v4.78l2-1.4l2 1.4z"/>
@@ -44,7 +46,8 @@
       </a>
 
       <!-- Quản lý lớp -->
-      <a href="{{ route('lop.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+      <a href="{{ route('lop.index') }}" onclick="showLoader()"
+      class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
       {{ request()->routeIs('lop.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="3 0 36 36" stroke="currentColor" stroke-width="0">
             <path fill="currentColor" d="M17.9 17.3c2.7 0 4.8-2.2 4.8-4.9s-2.2-4.8-4.9-4.8S13 9.8 13 12.4c0 2.7 2.2 4.9 4.9 4.9m-.1-7.7q.15 0 0 0c1.6 0 2.9 1.3 2.9 2.9s-1.3 2.8-2.9 2.8S15 14 15 12.5c0-1.6 1.3-2.9 2.8-2.9" class="clr-i-outline clr-i-outline-path-1"/><path fill="currentColor" d="M32.7 16.7c-1.9-1.7-4.4-2.6-7-2.5h-.8q-.3 1.2-.9 2.1c.6-.1 1.1-.1 1.7-.1c1.9-.1 3.8.5 5.3 1.6V25h2v-8z" class="clr-i-outline clr-i-outline-path-2"/>
@@ -55,7 +58,8 @@
       </a>
 
       <!-- Quản lý năm học -->
-      <a href="{{ route('namHoc.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+      <a href="{{ route('namHoc.index') }}" onclick="showLoader()"
+      class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
       {{ request()->routeIs('namHoc.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="#222C3A" viewBox="0 0 2048 2048" stroke="currentColor" stroke-width="0">
             <path fill="currentColor" d="M1664 512h256v1536H256V512h256V384h128v128h896V384h128zm128 128h-128v128h128zm-256 0H640v128h896zm-1024 0H384v128h128zM384 1920h1408V896H384zM256 384V256H128v1408H0V128h256V0h128v128h896V0h128v128h256v128h-256v128h-128V256H384v128zm384 1024v-128h128v128zm256 0v-128h128v128zm256 0v-128h128v128zm256 0v-128h128v128zm-768 256v-128h128v128zm256 0v-128h128v128zm256 0v-128h128v128zm-256-512v-128h128v128zm256 0v-128h128v128zm256 0v-128h128v128z"/>
@@ -64,7 +68,8 @@
       </a>
 
       <!-- Quản lý học kỳ -->
-      <a href="{{ route('hocKy.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+      <a href="{{ route('hocKy.index') }}" onclick="showLoader()"
+      class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
       {{ request()->routeIs('hocKy.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="2 0 23 23" stroke="currentColor" stroke-width="0">
             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm8 8v4m-2-2h4M4 8h16m-4-5v2M8 3v2" stroke-width="1"/>
@@ -73,7 +78,8 @@
       </a>
 
       <!-- Quản lý học phí -->
-      <a href="{{ route('hocPhi.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+      <a href="{{ route('hocPhi.index') }}" onclick="showLoader()"
+      class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
       {{ request()->routeIs('hocPhi.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0">
             <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1">
@@ -86,7 +92,8 @@
       </a>
 
       <!-- Quản lý biên lai -->
-      <a href="{{ route('bienLai.index') }}" class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+      <a href="{{ route('bienLai.index') }}" onclick="showLoader()"
+      class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
       {{ request()->routeIs('bienLai.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="1 0 24 24" stroke="currentColor" stroke-width="0">
             <g fill="none" stroke="currentColor" stroke-width="1.5">
