@@ -31,7 +31,7 @@
           <tr class="border-b border-[#D4D4D4]">
             <td class="px-3 py-2 font-semibold border border-[#D4D4D4]">Chức vụ:</td>
             <td class="px-3 py-2">
-                @if (Auth::user()->chucVu == 0)
+                @if (Auth::user()->role == 0)
                     Quản trị viên
                 @else
                     Tài vụ
@@ -72,12 +72,13 @@
             Quay lại
           </button>
         </a>
-
-        <a href="{{ route('thongTinCaNhan.edit') }}">
-          <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
-            Chỉnh sửa
-          </button>
-        </a>
+        @if (auth()->user()->role == 0)
+          <a href="{{ route('thongTinCaNhan.edit') }}">
+            <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
+              Chỉnh sửa
+            </button>
+          </a>
+        @endif
       </div>
     </div>
   </div>

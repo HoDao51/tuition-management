@@ -6,6 +6,7 @@ use App\Models\Admin\SinhVien;
 use App\Models\Admin\NhanVien;
 use App\Models\Admin\HocPhi;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\bienLai;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,6 +15,7 @@ class DashboardController extends Controller
     {
         $tongNhanVien = NhanVien::count();
         $tongSinhVien = SinhVien::count();
+        $tongBienLai = bienLai::where('deleted', false)->count();
 
         // Sinh viên đã đóng đủ
         $sinhVienDaDong = SinhVien::whereHas('hocPhi')
@@ -36,7 +38,8 @@ class DashboardController extends Controller
             'tongSinhVien',
             'sinhVienDaDong',
             'chuaDong',
-            'dsChuaDong'
+            'dsChuaDong',
+            'tongBienLai'
         ));
     }
 }

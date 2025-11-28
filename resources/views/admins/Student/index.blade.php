@@ -19,11 +19,13 @@
         </button>
       </form>
       <div class="flex items-center space-x-2 mb-1">
-        <a href="{{ route('sinhVien.create') }}">
-            <button type="button" onclick="showLoader()" class="bg-[#4B5563] text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">
-                Thêm sinh viên
-            </button>
-        </a>
+        @if (auth()->user()->role == 0)
+          <a href="{{ route('sinhVien.create') }}">
+              <button type="button" onclick="showLoader()" class="bg-[#4B5563] text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">
+                  Thêm sinh viên
+              </button>
+          </a>
+        @endif
       </div>
     </div>
 
@@ -61,9 +63,11 @@
               @endif
             </td>
             <td class="px-4 py-2 border text-center ">
+              @if (auth()->user()->role == 0)
                 <a href="{{route('sinhVien.edit', $item->id)}}">
                     <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">Sửa</button>
                 </a>
+              @endif
 
                 <a href="{{ route('hocPhi.create') }}?sinhVien={{ $item->id }}">
                   <button type="button" onclick="showLoader()" class="bg-[#F97316] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#C55E17]">
