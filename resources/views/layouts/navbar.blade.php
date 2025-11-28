@@ -11,7 +11,7 @@
         </span>
       </div>
     </a>
-    <div class="flex items-center gap-4 grow flex items-center lg:ml-[100px]">
+    <div class="flex items-center gap-4 grow flex items-center lg:ml-[75px]">
       @if (Route::currentRouteName() == 'admins.index')
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Tổng quan hệ thống
@@ -147,7 +147,17 @@
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Chỉnh sửa thông tin người dùng
         </span>
+
+      @elseif (Route::currentRouteName() == 'thongTinHocPhi.index' && auth()->user()->role == 2)
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thông tin học phí
+        </span>
+      @elseif (Route::currentRouteName() == 'thongTinBienLai.index' && auth()->user()->role == 2)
+        <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
+          Thông tin biên lai
+        </span>
       @endif
+
     </div>
 
     @auth

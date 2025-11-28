@@ -28,7 +28,7 @@ class HocPhiController extends Controller
 
         // Query cơ bản
         $query = hocPhi::with('hocKy.namHoc', 'sinhVien')
-                        ->where('deleted', false);
+                        ->where('deleted', false)->orderBy('tinhTrang', 'asc');
 
         // Áp dụng tìm kiếm nếu có từ khóa
         if ($search) {
@@ -84,15 +84,20 @@ class HocPhiController extends Controller
             ])->withInput();
         }
 
-        $hocPhi = hocPhi::create([
-            'id_sinh_vien' => $id_sinh_vien,
-            'id_hoc_ky' => $id_hoc_ky,
-            'nguoiTao' => Auth::user()->nhanVien->id,
-            'tongTien' => $tongTien,
-        ]);
+        $hocPhi = hocPhi::firstOrCreate(
+            [
+                'id_sinh_vien' => $id_sinh_vien,
+                'id_hoc_ky' => $id_hoc_ky,
+                'deleted' => false,
+            ],
+            [
+                'nguoiTao' => Auth::user()->nhanVien->id,
+                'tongTien' => $tongTien,
+            ]
+        );
 
         return redirect::route('hocPhi.index');
-        }
+    }
 
     /**
      * Display the specified resource.

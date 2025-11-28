@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin\sinhVien;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -16,9 +17,11 @@ class SinhVienSeeder extends Seeder
 
         for ($i = 1; $i <= 30; $i++) {
 
+            $name = $faker->name;
+
             // Tạo user trước
             $userId = DB::table('users')->insertGetId([
-                'name'       => $faker->name,
+                'name'       => $name,
                 'email'      => "sinhvien{$i}@gmail.com",
                 'password'   => Hash::make('123456'),
                 'created_at' => Carbon::now(),
@@ -28,7 +31,7 @@ class SinhVienSeeder extends Seeder
             // Tạo sinh viên
             DB::table('sinh_vien')->insert([
                 'ma_sv'        => 'SV' . str_pad($i, 3, '0', STR_PAD_LEFT),
-                'hoTen'        => $faker->name,
+                'hoTen'        => $name,
                 'ngaySinh'     => $faker->date('Y-m-d', '2010-01-01'),
                 'gioiTinh'     => $faker->randomElement([0, 1]),
                 'diaChi'       => $faker->city,

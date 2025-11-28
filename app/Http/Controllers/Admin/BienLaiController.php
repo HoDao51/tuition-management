@@ -20,14 +20,14 @@ class BienLaiController extends Controller
      */
     public function index(Request $request)
     {
-        // Lấy từ khóa tìm kiếm từ request (từ form)
+        // Lấy từ khóa tìm kiếm từ request
         $search = $request->get('search');
 
         // Query cơ bản
         $query = BienLai::with('hocPhi.sinhVien', 'hocPhi.hocKy', 'nhanVien')
-                        ->where('deleted', false);
+                        ->where('deleted', false)->orderBy('tinhTrang', 'asc');
 
-        // Áp dụng tìm kiếm nếu có từ khóa
+        // tìm kiếm
         if ($search) {
             $query->whereHas('hocPhi.sinhVien', function ($q) use ($search) {
                     $q->where('hoTen', 'like', '%' . $search . '%')
@@ -74,35 +74,37 @@ class BienLaiController extends Controller
         // Lấy đối tượng hocPhi tương ứng
         $hocPhi = HocPhi::findOrFail($id_hoc_phi);
 
-        // Kiểm tra thuộc tính soTienDaThanhToan tồn tại và không null
+        // Kiểm tra thuộc tính 
         if (isset($hocPhi->soTienDaThanhToan)) {
             $soTienDaThu = $hocPhi->soTienDaThanhToan;
         } else {
-            $soTienDaThu = 0; // Giá trị mặc định nếu null hoặc không tồn tại
+            $soTienDaThu = 0;
+        }
+        
+        if($hocPhi->tinhTrang == 0){
+            // Tạo biên lai mới
+            $bienLai = BienLai::create([
+                'id_hoc_phi' => $id_hoc_phi,
+                'soTienThu' => $soTienThu,
+                'ngayThu' => $ngayThu,
+                'nguoiThu' => Auth::user()->nhanVien->id,
+            ]);
+
+            
+            // Cập nhật tổng số tiền đã thu
+            $hocPhi->soTienDaThanhToan = $soTienDaThu + $soTienThu;
+
+            // Cập nhật trạng thái thanh toán
+            if ($hocPhi->soTienDaThanhToan >= $hocPhi->tongTien) {
+                $hocPhi->tinhTrang = 1;
+            } else {
+                $hocPhi->tinhTrang = 0;
+            }
+
+            $hocPhi->save();
         }
 
-        // Tạo biên lai mới
-        $bienLai = BienLai::create([
-            'id_hoc_phi' => $id_hoc_phi,
-            'soTienThu' => $soTienThu,
-            'ngayThu' => $ngayThu,
-            'nguoiThu' => Auth::user()->nhanVien->id,
-            // 'nguoiThu' => auth()->id(), // Nếu có
-        ]);
-
-        // Cập nhật tổng số tiền đã thu
-        $hocPhi->soTienDaThanhToan = $soTienDaThu + $soTienThu;
-
-        // Cập nhật trạng thái thanh toán
-        if ($hocPhi->soTienDaThanhToan >= $hocPhi->tongTien) {
-            $hocPhi->tinhTrang = 1; // Đã thanh toán hết
-        } else {
-            $hocPhi->tinhTrang = 0; // Chưa thanh toán đủ
-        }
-
-        $hocPhi->save();
-
-        return redirect()->route('bienLai.index')->with('success', 'Thêm biên lai thành công!');
+        return redirect()->route('bienLai.index');
     }
 
 

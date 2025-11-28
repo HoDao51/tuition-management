@@ -18,13 +18,6 @@
             Tìm kiếm
         </button>
       </form>
-      <div class="flex items-center space-x-2 mb-1">
-        <a href="{{ route('sinhVien.index') }}">
-            <button type="button" onclick="showLoader()" class="bg-[#4B5563] text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">
-                Thêm học phí
-            </button>
-        </a>
-      </div>
     </div>
 
     <!-- Bảng dữ liệu -->
@@ -39,7 +32,6 @@
             <th class="px-1 py-2 border text-center">Tổng tiền</th>
             <th class="px-1 py-2 border text-center">Số tiền đã đóng</th>
             <th class="px-1 py-2 border text-center">Tình Trạng</th>
-            <th class="px-1 py-2 border w-[155px] text-center">Hành động</th>
           </tr>
         </thead>
         @foreach ($data as $item)
@@ -57,37 +49,6 @@
               @else
                 <span class="px-1 py-1 text-green-600 font-semibold">Đã thanh toán</span>
               @endif
-            </td>
-            <td class="px-4 py-2 border text-center pt-5">
-              @if ($item->tinhTrang == 0)
-                {{-- Nút sửa --}}
-                <a href="{{route('hocPhi.edit', $item->id)}}">
-                    <button type="button" onclick="showLoader()"
-                        class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
-                        Sửa
-                    </button>
-                </a>
-              @endif
-                
-
-                {{-- Nút xóa --}}
-                <form action="{{route('hocPhi.destroy', $item->id)}}" method="POST" class="inline-block">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" onclick="showLoader()"
-                        class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
-                        Xóa
-                    </button>
-                </form>
-                @if ($item->tinhTrang == 0)
-                  {{-- thêm biên lai --}}
-                  <a href="{{route('bienLai.create')}}?hocPhi={{$item->id}}">
-                      <button type="button" onclick="showLoader()"
-                          class="bg-[#F97316] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#C55E17]">
-                          Thêm biên lai
-                      </button>
-                  </a>
-                @endif
             </td>
           </tr>
         </tbody>

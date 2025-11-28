@@ -9,16 +9,17 @@
 </head>
 <body class="min-h-screen flex flex-col">
     <div id="page-loader" class="fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center z-50">
-        <div class="animate-spin rounded-full h-16 w-16 border-8 border-gray-200 border-t-[#ff8e3c]"></div>
+        <div class="animate-spin rounded-full h-16 w-16 border-8 border-gray-200 border-t-[#ff8e3c]">
+        </div>
     </div>
     <div class="sticky top-0 z-50">
         @include('layouts.navbar')
     </div>
     <div class="flex flex-1 w-full">
-        <div class="fixed top-16 left-0 w-64 h-screen z-40 hidden md:block">  <!-- Thêm sticky top-0 ở đây -->
+        <div class="fixed top-16 left-0 h-screen z-40 hidden md:block">  <!-- Thêm sticky top-0 ở đây -->
             @include('layouts.sidebar')
         </div>
-        <main class="flex-1 h-full overflow-auto pl-6 pr-6 pt-2 md:ml-64">
+        <main class="flex-1 h-full pl-3 overflow-auto pr-6 pt-2 md:ml-60">
             @yield('content')
         </main>
     </div>
