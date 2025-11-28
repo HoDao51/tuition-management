@@ -53,9 +53,15 @@
             @enderror
         </div>
 
-        <div class="flex space-x-3 pt-4">
-            <a href="{{ route('sinhVien.index') }}" class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition">Quay lại</a>
-            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition">Thêm học phí</button>
+        <!-- Buttons -->
+        <div class="flex space-x-3 pt-2">
+            <a href="{{ route('sinhVien.index') }}" onclick="showLoader()" class="bg-[#828282] text-white px-4 py-2 rounded-md hover:bg-gray-700 text-[18px] font-semibold">
+                Quay lại
+            </a>
+            <button 
+                type="submit" onclick="showLoader()" class="bg-[#10B981] text-white px-7 py-2 rounded-md hover:bg-green-700 text-[18px] font-semibold ">
+                Thêm
+            </button>
         </div>
     </form>
 </div>

@@ -62,7 +62,7 @@
           @enderror
         </div>
 
-        <button type="submit" class="p-3 w-full text-xl bg-[#ff8e3c] hover:bg-[#ff8906] text-[#1f2937] font-semibold rounded-lg">
+        <button type="submit" onclick="showLoader()" class="p-3 w-full text-xl bg-[#ff8e3c] hover:bg-[#ff8906] text-[#1f2937] font-semibold rounded-lg">
           Đăng nhập
         </button>
       </form>

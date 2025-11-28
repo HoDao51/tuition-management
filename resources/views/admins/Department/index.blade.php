@@ -20,7 +20,7 @@
       </form>
       <div class="flex items-center space-x-2 mb-1">
         <a href="{{ route('khoa.create') }}">
-            <button type="button" class="bg-[#4B5563] text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">
+            <button type="button" onclick="showLoader()" class="bg-[#4B5563] text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">
                 Thêm khoa
             </button>
         </a>
@@ -47,7 +47,7 @@
             <td class="px-4 py-2 border text-center pt-5">
                 {{-- Nút sửa --}}
                 <a href="{{ route('khoa.edit', $item->id) }}">
-                    <button type="button"
+                    <button type="button" onclick="showLoader()"
                         class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
                         Sửa
                     </button>
@@ -57,7 +57,7 @@
                 <form action="{{ route('khoa.destroy', $item->id) }}" method="POST" class="inline-block">
                     @csrf
                     @method('DELETE')
-                    <button type="submit"
+                    <button type="submit" onclick="showLoader()"
                         class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
                         Xóa
                     </button>

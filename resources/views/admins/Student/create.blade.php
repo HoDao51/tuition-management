@@ -121,11 +121,11 @@
 
         <!-- Buttons -->
         <div class="flex space-x-3 pt-2">
-            <a href="{{ route('sinhVien.index') }}" class="bg-[#828282] text-white px-4 py-2 rounded-md hover:bg-gray-700 text-md font-semibold">
+            <a href="{{ route('sinhVien.index') }}" onclick="showLoader()" class="bg-[#828282] text-white px-4 py-2 rounded-md hover:bg-gray-700 text-md font-semibold">
                 Quay lại
             </a>
             <button 
-                type="submit" class="bg-[#10B981] text-white px-7 py-2 rounded-md hover:bg-green-700 text-md font-semibold ">
+                type="submit" onclick="showLoader()" class="bg-[#10B981] text-white px-7 py-2 rounded-md hover:bg-green-700 text-md font-semibold ">
                 Thêm
             </button>
         </div>

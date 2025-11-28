@@ -80,19 +80,19 @@
       <!-- Nút chức năng -->
       <div class="mt-5 space-x-3">
         <a href="{{ route('sinhVien.index') }}">
-          <button type="button" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
+          <button type="button" onclick="showLoader()" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
             Quay lại
           </button>
         </a>
 
         <a href="{{route('sinhVien.edit', $sinhVien->id)}}">
-          <button type="button" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
+          <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
             Chỉnh sửa
           </button>
         </a>
 
         <a href="{{ route('hocPhi.create') }}?sinhVien={{ $sinhVien->id }}">
-          <button type="button" class="bg-[#F97316] text-white px-4 py-2 rounded hover:bg-[#C55E17] transition">
+          <button type="button" onclick="showLoader()" class="bg-[#F97316] text-white px-4 py-2 rounded hover:bg-[#C55E17] transition">
             Thêm học phí
           </button>
         </a>

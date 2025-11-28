@@ -20,7 +20,7 @@
       </form>
       <div class="flex items-center space-x-2 mb-1">
         <a href="{{ route('sinhVien.create') }}">
-            <button type="button" class="bg-[#4B5563] text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">
+            <button type="button" onclick="showLoader()" class="bg-[#4B5563] text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">
                 Thêm sinh viên
             </button>
         </a>
@@ -50,7 +50,7 @@
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->lop->tenLop}}</td>
             <td class="px-4 py-2 border text-center">
               <a href="{{route('sinhVien.show', $item->id)}}">
-                <button type="button" class="bg-blue-600 text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-blue-700">Xem thêm</button>
+                <button type="button" onclick="showLoader()" class="bg-blue-600 text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-blue-700">Xem thêm</button>
               </a>
             </td>
             <td class="px-4 py-2 border text-[17px] text-center">
@@ -62,11 +62,11 @@
             </td>
             <td class="px-4 py-2 border text-center ">
                 <a href="{{route('sinhVien.edit', $item->id)}}">
-                    <button type="button" class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">Sửa</button>
+                    <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">Sửa</button>
                 </a>
 
                 <a href="{{ route('hocPhi.create') }}?sinhVien={{ $item->id }}">
-                  <button type="button" class="bg-[#F97316] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#C55E17]">
+                  <button type="button" onclick="showLoader()" class="bg-[#F97316] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#C55E17]">
                     Thêm học phí
                   </button>
                 </a>

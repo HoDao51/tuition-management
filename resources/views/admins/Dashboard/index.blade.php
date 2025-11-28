@@ -11,7 +11,7 @@
 
             <!-- Tổng nhân viên -->
             <div>
-                <a href="{{route('nhanVien.index')}}" class="bg-blue-500 text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-blue-600">
+                <a href="{{route('nhanVien.index')}}" onclick="showLoader()" class="bg-blue-500 text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-blue-600">
                     <div class="flex items-center space-x-4">
                         <div class="flex-shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16" fill="#222C3A" viewBox="0 0 36 36">
@@ -31,7 +31,7 @@
 
             <!-- Tổng sinh viên -->
             <div>
-                <a href="{{route('sinhVien.index')}}" class="bg-green-500 text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-green-600">
+                <a href="{{route('sinhVien.index')}}" onclick="showLoader()" class="bg-green-500 text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-green-600">
                     <div class="flex items-center space-x-4">
                         <div class="flex-shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16" fill="#222C3A" viewBox="0 0 256 256">
@@ -49,7 +49,7 @@
 
             <!-- Đã đóng -->
             <div>
-                <a href="{{route('hocPhi.index')}}" class="bg-[#F59E0B] text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-[#C4800D]">
+                <a href="{{route('hocPhi.index')}}" onclick="showLoader()" class="bg-[#F59E0B] text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-[#C4800D]">
                     <div class="flex items-center space-x-4">
                         <div class="flex-shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16" fill="#222C3A" viewBox="0 0 48 48">
@@ -67,7 +67,7 @@
 
             <!-- Chưa đóng -->
             <div>
-                <a href="{{route('hocPhi.index')}}" class="bg-[#EA3438] text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-[#AF1D20]">
+                <a href="{{route('hocPhi.index')}}" onclick="showLoader()" class="bg-[#EA3438] text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-[#AF1D20]">
                     <div class="flex items-center space-x-4">
                         <div class="flex-shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16" fill="#222C3A" viewBox="0 0 24 24">

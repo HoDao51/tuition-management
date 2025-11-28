@@ -68,13 +68,13 @@
       <!-- Nút chức năng -->
       <div class="mt-5 space-x-3">
         <a href="{{ route('admins.index') }}">
-          <button type="button" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
+          <button type="button" onclick="showLoader()" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
             Quay lại
           </button>
         </a>
 
         <a href="{{ route('thongTinCaNhan.edit') }}">
-          <button type="button" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
+          <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
             Chỉnh sửa
           </button>
         </a>
