@@ -4,9 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class EnsureUserIsAdmin
+class EnsureStudent
 {
     /**
      * Handle an incoming request.
@@ -15,10 +16,10 @@ class EnsureUserIsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && (Auth::user()->role === 0 || Auth::user()->role === 1)) {
+        if (Auth::check() && Auth::user()->role === 2) {
             return $next($request);
         }
-        //handle error
-        abort(403, 'Bạn không có quyền vào khu vực này.');
+
+        abort(403, 'Bạn không có quyền truy cập');
     }
 }

@@ -1,4 +1,4 @@
-@extends('admins.layouts.app')
+@extends('layouts.app')
 
 @section('content')
     @if (Route::currentRouteName() == 'admins.index')

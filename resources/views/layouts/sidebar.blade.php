@@ -2,15 +2,17 @@
 <body>
   <aside class="w-64  border-r border-gray-200 p-4 h-full">
     <nav class="flex flex-col space-y-2">
-      <!-- Trang tổng quan -->
-      <a href="{{route('admins.index')}}" onclick="showLoader()"
-      class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
-      {{ request()->routeIs('admins.index') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="0 0 22 22" stroke="currentColor" stroke-width="0">
-            <path fill="currentColor" d="m16 8.41l-4.5-4.5L4.41 11H6v8h3v-6h5v6h3v-8h1.59L17 9.41V6h-1zM2 12l9.5-9.5L15 6V5h3v4l3 3h-3v8h-5v-6h-3v6H5v-8z"/>
-        </svg>
-        <span>Trang tổng quan</span>
-      </a>
+      @if (auth()->user()->role == 0 || auth()->user()->role == 1)
+        <!-- Trang tổng quan -->
+        <a href="{{route('admins.index')}}" onclick="showLoader()"
+        class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+        {{ request()->routeIs('admins.index') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="0 0 22 22" stroke="currentColor" stroke-width="0">
+              <path fill="currentColor" d="m16 8.41l-4.5-4.5L4.41 11H6v8h3v-6h5v6h3v-8h1.59L17 9.41V6h-1zM2 12l9.5-9.5L15 6V5h3v4l3 3h-3v8h-5v-6h-3v6H5v-8z"/>
+          </svg>
+          <span>Trang tổng quan</span>
+        </a>
+      @endif
 
       @if (auth()->user()->role == 0)
         <!-- Quản lý nhân viên -->
@@ -24,18 +26,20 @@
       </a>
       @endif
       
-      <!-- Quản lý sinh viên -->
-      <a href="{{ route('sinhVien.index') }}" onclick="showLoader()"
-      class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
-      {{ request()->routeIs('sinhVien.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="#222C3A" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0">
-            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3">
-                <path d="M2.5 6L8 4l5.5 2L11 7.5V9s-.667-.5-3-.5S5 9 5 9V7.5zm0 0v4"/>
-                <path d="M11 8.5v.889c0 1.718-1.343 3.111-3 3.111s-3-1.393-3-3.111V8.5m10.318 2.53s.485-.353 2.182-.353s2.182.352 2.182.352m-4.364 0V10L13.5 9l4-1.5l4 1.5l-1.818 1v1.03m-4.364 0v.288a2.182 2.182 0 1 0 4.364 0v-.289M4.385 15.926c-.943.527-3.416 1.602-1.91 2.947C3.211 19.53 4.03 20 5.061 20h5.878c1.03 0 1.85-.47 2.586-1.127c1.506-1.345-.967-2.42-1.91-2.947c-2.212-1.235-5.018-1.235-7.23 0M16 20h3.705c.773 0 1.387-.376 1.939-.902c1.13-1.076-.725-1.936-1.432-2.357A5.34 5.34 0 0 0 16 16.214"/>
-            </g>
-        </svg>
-        <span>Quản lý sinh viên</span>
-      </a>
+      @if (auth()->user()->role == 0 || auth()->user()->role == 1)
+        <!-- Quản lý sinh viên -->
+        <a href="{{ route('sinhVien.index') }}" onclick="showLoader()"
+        class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+        {{ request()->routeIs('sinhVien.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="#222C3A" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0">
+              <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3">
+                  <path d="M2.5 6L8 4l5.5 2L11 7.5V9s-.667-.5-3-.5S5 9 5 9V7.5zm0 0v4"/>
+                  <path d="M11 8.5v.889c0 1.718-1.343 3.111-3 3.111s-3-1.393-3-3.111V8.5m10.318 2.53s.485-.353 2.182-.353s2.182.352 2.182.352m-4.364 0V10L13.5 9l4-1.5l4 1.5l-1.818 1v1.03m-4.364 0v.288a2.182 2.182 0 1 0 4.364 0v-.289M4.385 15.926c-.943.527-3.416 1.602-1.91 2.947C3.211 19.53 4.03 20 5.061 20h5.878c1.03 0 1.85-.47 2.586-1.127c1.506-1.345-.967-2.42-1.91-2.947c-2.212-1.235-5.018-1.235-7.23 0M16 20h3.705c.773 0 1.387-.376 1.939-.902c1.13-1.076-.725-1.936-1.432-2.357A5.34 5.34 0 0 0 16 16.214"/>
+              </g>
+          </svg>
+          <span>Quản lý sinh viên</span>
+        </a>
+      @endif
 
       @if (auth()->user()->role == 0)
         <!-- Quản lý khoa -->
@@ -114,6 +118,19 @@
         </svg>
         <span>Quản lý biên lai</span>
       </a>
+
+      @if (auth()->user()->role == 2)
+        <!-- Quản lý học kỳ -->
+        <a href="{{ route('students.thongTinCaNhan.index') }}" onclick="showLoader()"
+        class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+        {{ request()->routeIs('students.thongTinCaNhan.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" height="36" viewBox="0 0 36 36" stroke="currentColor" stroke-width="0">
+            <path fill="currentColor" d="M18 17a7 7 0 1 0-7-7a7 7 0 0 0 7 7m0-12a5 5 0 1 1-5 5a5 5 0 0 1 5-5" class="clr-i-outline clr-i-outline-path-1"/><path fill="currentColor" d="M30.47 24.37a17.16 17.16 0 0 0-24.93 0A2 2 0 0 0 5 25.74V31a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2v-5.26a2 2 0 0 0-.53-1.37M29 31H7v-5.27a15.17 15.17 0 0 1 22 0Z" class="clr-i-outline clr-i-outline-path-2"/>
+            <path fill="none" d="M0 0h36v36H0z"/>
+          </svg>
+          <span>Thông tin cá nhân</span>
+        </a>
+      @endif
     </nav>
   </aside>
 </body>

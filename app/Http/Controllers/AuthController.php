@@ -16,10 +16,19 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)){
-            //login thanh cong
+            // Đăng nhập thành công
             $request->session()->regenerate();
 
-            return redirect::route('admins.index');
+            $role = Auth::user()->role;
+
+            if ($role === 0 || $role === 1) {
+                return redirect()->route('admins.index');
+            }
+
+            // Nếu role = 2 → sinh viên
+            if ($role === 2) {
+                return redirect()->route('students.index');
+            }
         }
 
         return back()->withErrors([

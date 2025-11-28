@@ -1,4 +1,4 @@
-@extends('admins.layouts.app')
+@extends('layouts.app')
 @section('content')
 <div class="max-w-md bg-white">
     <form action="{{ route('namHoc.update', $namHoc->id) }}" method="POST" enctype="multipart/form-data" class="space-y-3">

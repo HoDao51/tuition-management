@@ -1,4 +1,4 @@
-@extends('admins.layouts.app')
+@extends('layouts.app')
 @section('content')
   <script src="https://cdn.tailwindcss.com"></script>
 

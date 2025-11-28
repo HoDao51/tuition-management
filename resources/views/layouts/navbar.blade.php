@@ -139,7 +139,7 @@
         </span>
 
       <!-- tiêu đề thông tin cá nhân -->
-      @elseif (Route::currentRouteName() == 'thongTinCaNhan.index')
+      @elseif (Route::currentRouteName() == 'thongTinCaNhan.index' || Route::currentRouteName() == 'students.thongTinCaNhan.index')
         <span class="hidden lg:block mx-1 lg:text-2xl xl:text-3xl font-semibold text-gray-600 hover:text-blue-950">
           Thông tin người dùng
         </span>
@@ -188,9 +188,16 @@
           class="hidden absolute bg-white shadow-lg select-none border border-base-200 rounded-lg w-auto min-w-max font-semibold right-0 top-12 p-2"
           role="menu" aria-orientation="vertical" aria-labelledby="profileBtn"
           >
-        <a href="{{route('thongTinCaNhan.index')}}" class="block px-6 py-3 text-blue-600 hover:bg-gray-100 rounded-lg" role="menuitem">
-          Thông tin cá nhân
-        </a>
+        @if (auth()->user()->role == 0 || auth()->user()->role == 1)
+          <a href="{{route('thongTinCaNhan.index')}}" class="block px-6 py-3 text-blue-600 hover:bg-gray-100 rounded-lg" role="menuitem">
+            Thông tin cá nhân
+          </a>
+        @else
+          <a href="{{route('students.thongTinCaNhan.index')}}" class="block px-6 py-3 text-blue-600 hover:bg-gray-100 rounded-lg" role="menuitem">
+            Thông tin cá nhân
+          </a>
+        @endif
+        
         <hr class="border-gray-200 my-0 mx-2" />
         <a href="{{route('logout')}}" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 rounded-lg" role="menuitem">
           Đăng xuất

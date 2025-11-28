@@ -12,11 +12,11 @@
         <div class="animate-spin rounded-full h-16 w-16 border-8 border-gray-200 border-t-[#ff8e3c]"></div>
     </div>
     <div class="sticky top-0 z-50">
-        @include('admins.layouts.navbar')
+        @include('layouts.navbar')
     </div>
     <div class="flex flex-1 w-full">
         <div class="fixed top-16 left-0 w-64 h-screen z-40 hidden md:block">  <!-- Thêm sticky top-0 ở đây -->
-            @include('admins.layouts.sidebar')
+            @include('layouts.sidebar')
         </div>
         <main class="flex-1 h-full overflow-auto pl-6 pr-6 pt-2 md:ml-64">
             @yield('content')

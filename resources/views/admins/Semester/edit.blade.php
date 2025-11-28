@@ -1,4 +1,5 @@
-@extends('admins.layouts.app')
+<script src="https://cdn.tailwindcss.com"></script>
+@extends('layouts.app')
 @section('content')
 <div class="max-w-md bg-white">
     <form action="{{ route('hocKy.update', $hocKy->id) }}" method="POST" enctype="multipart/form-data" class="space-y-3">

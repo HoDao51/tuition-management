@@ -1,5 +1,5 @@
 <script src="https://cdn.tailwindcss.com"></script>
-@extends('admins.layouts.app')
+@extends('layouts.app')
 
 @section('content')
   <div class="mx-auto">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\EnsureStudent;
 use App\Http\Middleware\EnsureUserIsAdmin;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -14,11 +15,14 @@ return Application::configure(basePath: dirname(__DIR__))
         then: function(){
             Route::middleware('web')
                 ->group(base_path('routes/admin.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/student.php'));
         }
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
-            'admin' => EnsureUserIsAdmin::class
+            'admin' => EnsureUserIsAdmin::class,
+            'student' => EnsureStudent::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
