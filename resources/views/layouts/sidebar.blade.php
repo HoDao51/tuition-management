@@ -19,7 +19,7 @@
       <a href="{{ route('nhanVien.index') }}" onclick="showLoader()"
       class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
       {{ request()->routeIs('nhanVien.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="#222C3A" viewBox="0 0 36 36" stroke="currentColor" stroke-width="0">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="0 0 36 36" stroke="currentColor" stroke-width="0">
             <path fill="currentColor" d="M18.42 16.31a5.7 5.7 0 1 1 5.76-5.7a5.74 5.74 0 0 1-5.76 5.7m0-9.4a3.7 3.7 0 1 0 3.76 3.7a3.74 3.74 0 0 0-3.76-3.7"/><path fill="currentColor" d="M18.42 16.31a5.7 5.7 0 1 1 5.76-5.7a5.74 5.74 0 0 1-5.76 5.7m0-9.4a3.7 3.7 0 1 0 3.76 3.7a3.74 3.74 0 0 0-3.76-3.7m3.49 10.74a20.6 20.6 0 0 0-13 2a1.77 1.77 0 0 0-.91 1.6v3.56a1 1 0 0 0 2 0v-3.43a18.92 18.92 0 0 1 12-1.68Z"/><path fill="currentColor" d="M33 22h-6.7v-1.48a1 1 0 0 0-2 0V22H17a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V23a1 1 0 0 0-1-1m-1 10H18v-8h6.3v.41a1 1 0 0 0 2 0V24H32Z"/><path fill="currentColor" d="M21.81 27.42h5.96v1.4h-5.96zM10.84 12.24a18 18 0 0 0-7.95 2A1.67 1.67 0 0 0 2 15.71v3.1a1 1 0 0 0 2 0v-2.9a16 16 0 0 1 7.58-1.67a7.3 7.3 0 0 1-.74-2m22.27 1.99a17.8 17.8 0 0 0-7.12-2a7.5 7.5 0 0 1-.73 2A15.9 15.9 0 0 1 32 15.91v2.9a1 1 0 1 0 2 0v-3.1a1.67 1.67 0 0 0-.89-1.48m-22.45-3.62v-.67a3.07 3.07 0 0 1 .54-6.11a3.15 3.15 0 0 1 2.2.89a8.2 8.2 0 0 1 1.7-1.08a5.13 5.13 0 0 0-9 3.27a5.1 5.1 0 0 0 4.7 5a7.4 7.4 0 0 1-.14-1.3m14.11-8.78a5.17 5.17 0 0 0-3.69 1.55a8 8 0 0 1 1.9 1a3.14 3.14 0 0 1 4.93 2.52a3.09 3.09 0 0 1-1.79 2.77a7 7 0 0 1 .06.93a8 8 0 0 1-.1 1.2a5.1 5.1 0 0 0 3.83-4.9a5.12 5.12 0 0 0-5.14-5.07"/>
         </svg>
         <span>Quản lý nhân viên</span>
@@ -31,13 +31,27 @@
         <a href="{{ route('sinhVien.index') }}" onclick="showLoader()"
         class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
         {{ request()->routeIs('sinhVien.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="#222C3A" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0">
               <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3">
                   <path d="M2.5 6L8 4l5.5 2L11 7.5V9s-.667-.5-3-.5S5 9 5 9V7.5zm0 0v4"/>
                   <path d="M11 8.5v.889c0 1.718-1.343 3.111-3 3.111s-3-1.393-3-3.111V8.5m10.318 2.53s.485-.353 2.182-.353s2.182.352 2.182.352m-4.364 0V10L13.5 9l4-1.5l4 1.5l-1.818 1v1.03m-4.364 0v.288a2.182 2.182 0 1 0 4.364 0v-.289M4.385 15.926c-.943.527-3.416 1.602-1.91 2.947C3.211 19.53 4.03 20 5.061 20h5.878c1.03 0 1.85-.47 2.586-1.127c1.506-1.345-.967-2.42-1.91-2.947c-2.212-1.235-5.018-1.235-7.23 0M16 20h3.705c.773 0 1.387-.376 1.939-.902c1.13-1.076-.725-1.936-1.432-2.357A5.34 5.34 0 0 0 16 16.214"/>
               </g>
           </svg>
           <span>Quản lý sinh viên</span>
+        </a>
+      @endif
+
+      <!-- thông tin cá nhân -->
+      @if (auth()->user()->role == 0 || auth()->user()->role == 1)
+        <!-- Quản lý học kỳ -->
+        <a href="{{ route('thongTinCaNhan.index') }}" onclick="showLoader()"
+        class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
+        {{ request()->routeIs('thongTinCaNhan.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="0 0 36 36" stroke="currentColor" stroke-width="0">
+            <path fill="currentColor" d="M18 17a7 7 0 1 0-7-7a7 7 0 0 0 7 7m0-12a5 5 0 1 1-5 5a5 5 0 0 1 5-5" class="clr-i-outline clr-i-outline-path-1"/><path fill="currentColor" d="M30.47 24.37a17.16 17.16 0 0 0-24.93 0A2 2 0 0 0 5 25.74V31a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2v-5.26a2 2 0 0 0-.53-1.37M29 31H7v-5.27a15.17 15.17 0 0 1 22 0Z" class="clr-i-outline clr-i-outline-path-2"/>
+            <path fill="none" d="M0 0h36v36H0z"/>
+          </svg>
+          <span>Thông tin cá nhân</span>
         </a>
       @endif
 
@@ -108,7 +122,7 @@
       @else
         <a href="{{ route('thongTinHocPhi.index') }}" onclick="showLoader()"
         class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
-        {{ request()->routeIs('thongTinHocPhi.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
+        {{ request()->routeIs('thongTinHocPhi.index') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0">
               <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1">
                   <path stroke-linecap="round" d="m5.5 11l-.5-.5L7 7L4.5 8L2 7l2 3.5l-3.5 5v3l2.5 2h.5m-1-10H6m11.5.5l.5-.5L16 7l2.5 1L21 7l-2 3.5l3.5 5v3l-2.5 2h-.5m1-10H17m-4.5 4h-2l-.5 1l.5 1h2l.5 1l-.5 1h-2m1-4v-1m0 6v-1"/>
@@ -116,7 +130,7 @@
                   <path stroke-linecap="round" d="M15.5 9.5h-8"/>
               </g>
           </svg>
-          <span>Quản lý học phí</span>
+          <span>Thông tin học phí</span>
         </a>
       @endif
 
@@ -137,7 +151,7 @@
       @else
         <a href="{{ route('thongTinBienLai.index') }}" onclick="showLoader()"
         class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
-        {{ request()->routeIs('thongTinBienLai.*') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
+        {{ request()->routeIs('thongTinBienLai.index') ? 'bg-[#D9D9D9] text-black font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="1 0 24 24" stroke="currentColor" stroke-width="0">
               <g fill="none" stroke="currentColor" stroke-width="1.5">
                   <path d="M16.755 2h-9.51c-1.159 0-1.738 0-2.206.163a3.05 3.05 0 0 0-1.881 1.936C3 4.581 3 5.177 3 6.37v14.004c0 .858.985 1.314 1.608.744a.946.946 0 0 1 1.284 0l.483.442a1.657 1.657 0 0 0 2.25 0a1.657 1.657 0 0 1 2.25 0a1.657 1.657 0 0 0 2.25 0a1.657 1.657 0 0 1 2.25 0a1.657 1.657 0 0 0 2.25 0l.483-.442a.946.946 0 0 1 1.284 0c.623.57 1.608.114 1.608-.744V6.37c0-1.193 0-1.79-.158-2.27a3.05 3.05 0 0 0-1.881-1.937C18.493 2 17.914 2 16.755 2Z"/>
@@ -148,7 +162,6 @@
           <span>Thông tin biên lai</span>
         </a>
       @endif
-      
 
       @if (auth()->user()->role == 2)
         <!-- Quản lý học kỳ -->
