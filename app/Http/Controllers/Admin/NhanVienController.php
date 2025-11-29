@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class NhanVienController extends Controller
 {
@@ -132,7 +133,6 @@ class NhanVienController extends Controller
         $chucVu = $request->chucVu;
         $email = $request->email;
         $soDienThoai = $request->soDienThoai;
-        $tinhTrang = $request->tinhTrang;
 
         // Xử lý ảnh đại diện
         $path = $nhanVien->anhDaiDien; // giữ ảnh cũ nếu không upload mới
@@ -150,7 +150,6 @@ class NhanVienController extends Controller
             'chucVu' => $chucVu,
             'email' => $email,
             'soDienThoai' => $soDienThoai,
-            'tinhTrang' => $tinhTrang,
             'anhDaiDien' => $path
         ]);
 
@@ -165,6 +164,14 @@ class NhanVienController extends Controller
     {
         $nhanVien->tinhTrang = 1;
         $nhanVien->save(); 
+        return redirect::route('nhanVien.index');
+    }
+
+    public function restore(nhanVien $nhanVien )
+    {
+        $nhanVien = nhanVien::findOrFail($nhanVien->id);
+        $nhanVien->tinhTrang = 0;
+        $nhanVien->save();  
         return redirect::route('nhanVien.index');
     }
 }

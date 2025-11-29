@@ -73,26 +73,59 @@
           </button>
         </a>
 
-        @if (auth()->user()->id == $nhanVien->user_id)
-            <button type="button" class="bg-[#10B981] cursor-not-allowed text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
-              Chỉnh sửa
-            </button>
-        @else
+        @if ($nhanVien->tinhTrang == 0)
           <a href="{{route('nhanVien.edit', $nhanVien->id)}}">
             <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
               Chỉnh sửa
             </button>
           </a>
+        @else
+            <button type="button" class="bg-[#10B981] cursor-not-allowed text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
+              Chỉnh sửa
+            </button>
         @endif
-        {{-- Nút xóa --}}
-          <form action="{{route('nhanVien.destroy', $nhanVien->id)}}" method="POST" class="inline-block">
-              @csrf
-              @method('DELETE')
-              <button type="submit" onclick="showLoader()"
-                  class="bg-[#DC2626] text-white text-[16px] font-semibold px-4 py-2 rounded-md hover:bg-red-800">
-                  Vô hiệu hóa
-              </button>
-          </form>
+        
+        
+        @if (auth()->user()->id == $nhanVien->user_id)
+                    <button 
+                        class="bg-[#DC2626] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded-md ml-2 mt-3 mb-3">
+                        Vô hiệu hóa
+                    </button>
+
+                @else
+                    @if ($nhanVien->tinhTrang == 0)
+                        <form action="{{ route('nhanVien.destroy', $nhanVien->id) }}" method="POST" class="inline-block mt-3">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                onclick="
+                                    if (confirm('Bạn có chắc muốn vô hiệu hóa tài khoản này không?')) {
+                                        showLoader();
+                                    } else {
+                                        return false;
+                                    }"
+                                class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
+                                Vô hiệu hóa
+                            </button>
+                        </form>
+                    @else
+                        <form action="{{ route('restore', $nhanVien->id) }}" method="POST" class="inline-block mt-3">
+                            @csrf
+                            @method('POST')
+                            <button type="submit"
+                                onclick="
+                                    if (confirm('Bạn có chắc muốn khôi phục tài khoản này không?')) {
+                                        showLoader();
+                                    } else {
+                                        return false;
+                                    }"
+                                class="bg-[#F97316] text-white text-[16px] font-semibold px-[18px] py-2 rounded-md hover:bg-[#C55E17]">
+                                Kích hoạt
+                            </button>
+                        </form>
+                    @endif
+                  @endif
+          
       </div>
     </div>
   </div>

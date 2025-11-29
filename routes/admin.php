@@ -18,6 +18,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admins', [DashboardController::class, 'index'])->name('admins.index');
 
     Route::resource('admins/nhanVien', NhanVienController::class);
+    Route::post('restore/{nhanVien}', [NhanVienController::class, 'restore'])->name('restore');
     Route::resource('admins/sinhVien', SinhVienController::class);
     Route::resource('admins/khoa', KhoaController::class);
     Route::resource('admins/lop', LopController::class);
