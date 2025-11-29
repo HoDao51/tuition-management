@@ -32,7 +32,7 @@ class UpdatesinhVienRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                Rule::unique('users', 'email')->ignore($this->sinhVien->id)
+                Rule::unique('users', 'email')->ignore($this->route('sinhVien')->user_id)
             ],
             'id_lop' => 'required|exists:lop,id',
             'id_nam_hoc' => 'required|exists:nam_hoc,id',

@@ -36,7 +36,8 @@ class SinhVienController extends Controller
         }
         // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
        // Sắp xếp theo lớp
-        $data = $query->orderBy('id_lop', 'asc')
+        $data = $query ->orderBy('tinhTrang', 'asc')
+                    ->orderBy('id_lop', 'asc')
                     ->orderBy('id', 'desc')
                     ->paginate(10)
                     ->withQueryString();

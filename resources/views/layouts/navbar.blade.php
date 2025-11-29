@@ -3,7 +3,12 @@
   <header class="flex items-center justify-between border-b border-[E5E6E6] px-6 py-3 bg-white">
     
     <!-- Logo + tên -->
-    <a href="{{route('admins.index')}}">
+    <a @if(auth()->user()->role == 0 || auth()->user()->role == 1)
+        href="{{route('admins.index')}}"
+      @else
+        href="{{route('thongTinHocPhi.index')}}"
+      @endif
+    >
       <div class="flex items-center gap-2">
         <img src="{{ asset('images/logo_school2.png')}}" class="w-[36px] h-[36px] object-contain">
         <span class="font-bold text-4xl leading-none bg-gradient-to-tr from-yellow-400 to-red-600 bg-clip-text text-transparent">

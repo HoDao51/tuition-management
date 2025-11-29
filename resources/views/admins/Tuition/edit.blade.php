@@ -10,28 +10,28 @@
         <div>
             <label class="block text-lg text-gray-700 mb-1">Mã sinh viên:</label>
             <input type="text" value="{{ $hocPhi->sinhVien->ma_sv }}" readonly
-                class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-green-400">
+                class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 cursor-not-allowed focus:outline-none focus:ring-1 focus:ring-green-400">
         </div>
 
         <!-- Sinh viên -->
         <div>
             <label class="block text-lg text-gray-700 mb-1">Sinh viên:</label>
             <input type="text" value="{{ $sinhVien->hoTen }}" readonly
-                class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-green-400">
+                class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 cursor-not-allowed focus:outline-none focus:ring-1 focus:ring-green-400">
         </div>
 
         <!-- năm học -->
         <div>
             <label class="block text-sm text-gray-600 mb-1">Năm học</label>
             <input type="text" value="{{ $sinhVien->namHoc->tenNamHoc }}" readonly
-                   class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-green-400">
+                   class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100 cursor-not-allowed focus:outline-none focus:ring-1 focus:ring-green-400">
             <input type="hidden" name="" value="{{ $sinhVien->id }}">
         </div>
 
         <!-- Học kỳ -->
         <div>
             <label class="block text-sm text-gray-600 mb-1">Học kỳ</label>
-            <select name="id_hoc_ky" required
+            <select name="id_hoc_ky"
                     class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
 
                 <option value="" disabled>-- Chọn học kỳ --</option>
@@ -62,18 +62,6 @@
             @error('tongTien')
                 <p class="text-red-500">{{$message}}</p>
             @enderror
-        </div>
-
-        <!-- Trạng thái -->
-        <div>
-            <label class="block text-lg text-gray-700 mb-1">Tình Trạng:</label>
-            <select name="tinhTrang"
-                class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
-
-                <option value="0" {{ $hocPhi->trangThai == 0 ? 'selected' : '' }}>Chưa thanh toán</option>
-                <option value="1" {{ $hocPhi->trangThai == 1 ? 'selected' : '' }}>Đã thanh toán</option>
-
-            </select>
         </div>
 
         <!-- Nút -->

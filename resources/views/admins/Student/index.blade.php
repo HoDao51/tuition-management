@@ -62,15 +62,18 @@
                   <span class="text-red-600 font-semibold">Đã nghỉ học</span>
               @endif
             </td>
-            <td class="px-4 py-2 border text-center ">
+            <td class="px-2 py-2 border text-center ">
               @if (auth()->user()->role == 0)
                 <a href="{{route('sinhVien.edit', $item->id)}}">
-                    <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">Sửa</button>
+                    <button type="button" onclick="showLoader()" 
+                      class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
+                      Sửa
+                    </button>
                 </a>
               @endif
 
                 <a href="{{ route('hocPhi.create') }}?sinhVien={{ $item->id }}">
-                  <button type="button" onclick="showLoader()" class="bg-[#F97316] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#C55E17]">
+                  <button type="button" onclick="showLoader()" class="bg-[#F97316] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#C55E17] ml-2">
                     Thêm học phí
                   </button>
                 </a>

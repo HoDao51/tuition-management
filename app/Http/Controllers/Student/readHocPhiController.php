@@ -20,7 +20,8 @@ class readHocPhiController extends Controller
         // Query cơ bản: chỉ lấy học phí của sinh viên đang đăng nhập
         $query = hocPhi::with('hocKy.namHoc', 'sinhVien')
                         ->where('deleted', false)
-                        ->where('id_sinh_vien', $idSinhVien);
+                        ->where('id_sinh_vien', $idSinhVien)
+                        ->orderBy('tinhTrang', 'asc');
 
         // Áp dụng tìm kiếm nếu có từ khóa
         if ($search) {

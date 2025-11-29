@@ -30,7 +30,7 @@ class NhanVienController extends Controller
                 ->orWhere('ma_nv', 'like', '%' . $search . '%');
         }
         // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
-        $nhanVien = $query->orderBy('id', 'desc')->paginate(5)->withQueryString();
+        $nhanVien = $query->orderBy('tinhTrang', 'asc')->orderBy('chucVu', 'asc')->paginate(5)->withQueryString();
 
        // Trả về view với dữ liệu phân trang và từ khóa search
         return view('admins.employee.index', compact('nhanVien', 'search'));
@@ -163,7 +163,9 @@ class NhanVienController extends Controller
      */
     public function destroy(nhanVien $nhanVien)
     {
-        //
+        $nhanVien->tinhTrang = 1;
+        $nhanVien->save(); 
+        return redirect::route('nhanVien.index');
     }
 }
 

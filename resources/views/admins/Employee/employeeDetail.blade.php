@@ -66,18 +66,33 @@
       </table>
 
       <!-- Nút chức năng -->
-      <div class="mt-5 space-x-3">
+      <div class="mt-5 space-x-2">
         <a href="{{ route('nhanVien.index') }}">
           <button type="button" onclick="showLoader()" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
             Quay lại
           </button>
         </a>
 
-        <a href="{{route('nhanVien.edit', $nhanVien->id)}}">
-          <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
-            Chỉnh sửa
-          </button>
-        </a>
+        @if (auth()->user()->id == $nhanVien->user_id)
+            <button type="button" class="bg-[#10B981] cursor-not-allowed text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
+              Chỉnh sửa
+            </button>
+        @else
+          <a href="{{route('nhanVien.edit', $nhanVien->id)}}">
+            <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
+              Chỉnh sửa
+            </button>
+          </a>
+        @endif
+        {{-- Nút xóa --}}
+          <form action="{{route('nhanVien.destroy', $nhanVien->id)}}" method="POST" class="inline-block">
+              @csrf
+              @method('DELETE')
+              <button type="submit" onclick="showLoader()"
+                  class="bg-[#DC2626] text-white text-[16px] font-semibold px-4 py-2 rounded-md hover:bg-red-800">
+                  Vô hiệu hóa
+              </button>
+          </form>
       </div>
     </div>
   </div>

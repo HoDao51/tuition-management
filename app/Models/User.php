@@ -49,7 +49,7 @@ class User extends Authenticatable
         ];
     }
     public function nhanVien(){
-        return $this->hasOne(NhanVien::class);
+        return $this->hasOne(nhanVien::class);
     }
     
     public function sinhVien(){

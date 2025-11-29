@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo_school2.png')}}">
 </head>
 <body class="min-h-screen flex flex-col">
-    <div id="page-loader" class="fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center z-50">
+    <div id="page-loader" class="hidden fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center z-50">
         <div class="animate-spin rounded-full h-16 w-16 border-8 border-gray-200 border-t-[#ff8e3c]">
         </div>
     </div>
@@ -24,13 +24,29 @@
         </main>
     </div>
     <script>
-        function showLoader() {
-            document.getElementById("page-loader").classList.remove("hidden");
-        }
+    document.addEventListener("DOMContentLoaded", () => {
+        const loader = document.getElementById("page-loader");
 
-        window.addEventListener("load", () => {
-            document.getElementById("page-loader").classList.add("hidden");
+        // Ẩn loader khi vừa load trang
+        loader.classList.add("hidden");
+
+        // Khi chuyển trang bằng link
+        document.querySelectorAll("a[href]").forEach(link => {
+            link.addEventListener("click", (e) => {
+                const href = link.getAttribute("href");
+                if (!href || href.startsWith("#") || href.startsWith("javascript")) return;
+
+                loader.classList.remove("hidden");
+            });
         });
+
+        // Khi submit form
+        document.querySelectorAll("form").forEach(form => {
+            form.addEventListener("submit", () => {
+                loader.classList.remove("hidden");
+            });
+        });
+    });
     </script>
 </body>
 </html>

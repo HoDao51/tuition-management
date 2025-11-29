@@ -16,7 +16,7 @@ class EnsureStudent
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role === 2) {
+        if (Auth::check() && (Auth::user()->role === 2 && Auth::user()->tinhTrang === 0)) {
             return $next($request);
         }
 

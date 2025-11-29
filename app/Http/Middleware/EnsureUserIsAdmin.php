@@ -15,7 +15,7 @@ class EnsureUserIsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && (Auth::user()->role === 0 || Auth::user()->role === 1)) {
+        if (Auth::check() && (Auth::user()->role === 0 && Auth::user()->nhanVien->tinhTrang === 0 || Auth::user()->role === 1 && Auth::user()->nhanVien->tinhTrang === 0)) {
             return $next($request);
         }
         //handle error

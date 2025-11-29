@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('email', 100)->unique()->notnullable();
             $table->unsignedBigInteger('id_lop');
             $table->unsignedBigInteger('id_nam_hoc');
-            $table->string('tinhTrang')->default('0');
+            $table->integer('tinhTrang')->default('0');
             $table->string('anhDaiDien')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

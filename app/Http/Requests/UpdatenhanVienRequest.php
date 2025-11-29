@@ -32,7 +32,7 @@ class UpdatenhanVienRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                Rule::unique('users', 'email')->ignore($this->nhanVien->id)
+                Rule::unique('users', 'email')->ignore($this->route('nhanVien')->user_id)
             ],
         ];
     }

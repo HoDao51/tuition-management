@@ -125,7 +125,6 @@ class HocPhiController extends Controller
     {
         $id_hoc_ky = $request->id_hoc_ky;
         $tongTien = $request->tongTien;
-        $tinhTrang = $request->tinhTrang;
 
         $exists = hocPhi::where('id_sinh_vien', $hocPhi->id_sinh_vien)
             ->where('id_hoc_ky', $request->id_hoc_ky)
@@ -141,7 +140,6 @@ class HocPhiController extends Controller
         $hocPhi->update([
             'id_hoc_ky' => $id_hoc_ky,
             'tongTien' => $tongTien,
-            'tinhTrang' => $tinhTrang
         ]);
 
         return Redirect::route('hocPhi.index');

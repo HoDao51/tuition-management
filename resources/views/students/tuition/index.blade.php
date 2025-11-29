@@ -37,13 +37,13 @@
         @foreach ($data as $item)
         <tbody>
           <tr class="hover:bg-gray-50">
-            <td class="px-1 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->sinhVien->ma_sv}}</td>
-            <td class="px-1 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->sinhVien->hoTen}}</td>
-            <td class="px-1 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->hocKy->tenHocKy}}</td>
-            <td class="px-1 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->hocKy->namHoc->tenNamHoc}}</td>
-            <td class="px-1 py-2 border text-[#4B5563] text-[17px] text-center text-red-600 font-semibold">{{number_format($item->tongTien, 0, ',', '.')}}đ</td>
-            <td class="px-1 py-2 border text-[#4B5563] text-[17px] text-center text-red-600 font-semibold">{{number_format($item->soTienDaThanhToan, 0, ',', '.')}}đ</td>
-            <td class="px-1 py-2 border text-[#4B5563] text-[17px] text-center">
+            <td class="px-2 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->sinhVien->ma_sv}}</td>
+            <td class="px-2 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->sinhVien->hoTen}}</td>
+            <td class="px-2 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->hocKy->tenHocKy}}</td>
+            <td class="px-2 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->hocKy->namHoc->tenNamHoc}}</td>
+            <td class="px-2 py-4 border text-[#4B5563] text-[17px] text-center text-red-600 font-semibold">{{number_format($item->tongTien, 0, ',', '.')}}đ</td>
+            <td class="px-2 py-4 border text-[#4B5563] text-[17px] text-center text-red-600 font-semibold">{{number_format($item->soTienDaThanhToan, 0, ',', '.')}}đ</td>
+            <td class="px-2 py-4 border text-[#4B5563] text-[17px] text-center">
               @if ($item->tinhTrang == 0)
                 <span class="px-1 py-1 text-red-600 font-semibold">Chưa thanh toán</span>
               @else

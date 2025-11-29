@@ -72,12 +72,27 @@
                 </div>
                 @endif
             </td>
-            <td class="px-4 py-2 border text-center">
-                <a href="{{ route('nhanVien.edit', $item->id) }}">
+            <td class="px-1 py-2 border text-center">
+              @if (auth()->user()->id == $item->user_id)
+                    <button type="button" class="bg-[#10B981] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
+                      Sửa
+                    </button>
+              @else
+              <a href="{{ route('nhanVien.edit', $item->id) }}">
                     <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
                       Sửa
                     </button>
                 </a>
+              @endif
+              {{-- Nút xóa --}}
+                <form action="{{route('nhanVien.destroy', $item->id)}}" method="POST" class="inline-block">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" onclick="showLoader()"
+                        class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
+                        Khóa
+                    </button>
+                </form>
             </td>
           </tr>
         </tbody>
