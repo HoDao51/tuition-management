@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Termwind\Components\Dd;
 
 class EnsureStudent
 {
@@ -16,7 +17,7 @@ class EnsureStudent
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && (Auth::user()->role === 2 && Auth::user()->tinhTrang === 0)) {
+        if (Auth::check() && (Auth::user()->role === 2 && Auth::user()->sinhVien->tinhTrang === 0)) {
             return $next($request);
         }
 

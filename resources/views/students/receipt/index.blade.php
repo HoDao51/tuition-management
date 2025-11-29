@@ -24,36 +24,44 @@
       <table class="min-w-full border border-gray-200 text-sm text-left">
         <thead class="bg-[#D9D9D9] text-gray-700 uppercase">
           <tr>
-            <th class="px-4 py-2 border w-[70px] text-center">Mã SV</th>
-            <th class="px-4 py-2 border text-center">Tên sinh viên</th>
-            <th class="px-4 py-2 border text-center">Học kỳ</th>
-            <th class="px-4 py-2 border text-center">Năm Học</th>
-            <th class="px-4 py-2 border text-center">Số tiền đã thu</th>
-            <th class="px-4 py-2 border text-center">Ngày thu</th>
-            <th class="px-4 py-2 border text-center">Tình Trạng</th>
+            <th class="px-1 py-2 border w-[70px] text-center">Mã SV</th>
+            <th class="px-1 py-2 border text-center">Tên sinh viên</th>
+            <th class="px-1 py-2 border text-center">Học kỳ</th>
+            <th class="px-1 py-2 border text-center">Năm Học</th>
+            <th class="px-1 py-2 border text-center">Số tiền đã thu</th>
+            <th class="px-1 py-2 border text-center">Ngày thu</th>
+            <th class="px-1 py-2 border text-center">Tình Trạng</th>
           </tr>
         </thead>
-    @foreach ($data as $item)
-        <tbody>
-          <tr class="hover:bg-gray-50">
-            <td class="px-4 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->hocPhi->sinhVien->ma_sv}}</td>
-            <td class="px-4 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->hocPhi->sinhvien->hoTen}}</td>
-            <td class="px-4 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->hocPhi->hocKy->tenHocKy}}</td>
-            <td class="px-4 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->hocPhi->hocKy->namHoc->tenNamHoc}}</td>
-            <td class="px-4 py-4 border text-[#4B5563] text-[17px] text-center text-red-600 font-semibold">{{number_format($item->soTienThu, 0, ',', '.')}}đ</td>
-            <td class="px-4 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->ngayThu}}</td>
-            <td class="px-4 py-4 border text-[#4B5563] text-[17px] text-center">
-               @if ($item->tinhTrang == 0)
-                <span class="px-3 py-2 text-green-600 font-semibold">Đã thu</span>
-              @else
-                <span class="px-3 py-2 text-red-600 font-semibold">Đã hủy</span>
-              @endif
-            </td>
-          </tr>
-        </tbody>
-  @endforeach
+        @forelse  ($data as $item)
+          <tbody>
+            <tr class="hover:bg-gray-50">
+              <td class="px-1 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->hocPhi->sinhVien->ma_sv}}</td>
+              <td class="px-1 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->hocPhi->sinhvien->hoTen}}</td>
+              <td class="px-1 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->hocPhi->hocKy->tenHocKy}}</td>
+              <td class="px-1 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->hocPhi->hocKy->namHoc->tenNamHoc}}</td>
+              <td class="px-1 py-4 border text-[#4B5563] text-[17px] text-center text-red-600 font-semibold">{{number_format($item->soTienThu, 0, ',', '.')}}đ</td>
+              <td class="px-1 py-4 border text-[#4B5563] text-[17px] text-center">{{$item->ngayThu}}</td>
+              <td class="px-1 py-4 border text-[#4B5563] text-[17px] text-center">
+                @if ($item->tinhTrang == 0)
+                  <span class="px-3 py-2 text-green-600 font-semibold">Đã thu</span>
+                @else
+                  <span class="px-3 py-2 text-red-600 font-semibold">Đã hủy</span>
+                @endif
+              </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="7" class="px-2 py-4 border text-center text-gray-600 text-[17px]">
+                    Không có dữ liệu
+                </td>
+            </tr>
+          </tbody>
+        @endforelse 
       </table>
     </div>
+
+    @if ($data->hasPages())
     <!-- Hiển thị nút phân trang -->
       <div class="flex justify-center space-x-2 mt-4 mb-4">
             @foreach ($data->links()->elements[0] ?? [] as $page => $url)
@@ -69,5 +77,6 @@
                 @endif
             @endforeach
       </div>
+    @endif
   </div>
   @endsection

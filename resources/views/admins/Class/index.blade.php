@@ -38,7 +38,7 @@
             <th class="px-4 py-2 border w-[160px] text-center">Hành động</th>
           </tr>
         </thead>
-        @foreach ($data as $lop)
+        @forelse ($data as $lop)
           
         <tbody>
           <tr class="hover:bg-gray-50">
@@ -66,12 +66,19 @@
                     </button>
                 </form>
             </td>
-          @endforeach
           </tr>
+          @empty
+            <tr>
+                <td colspan="8" class="px-2 py-4 border text-center text-gray-600 text-[17px]">
+                    Không có dữ liệu
+                </td>
+            </tr>
         </tbody>
-        
+        @endforelse
       </table>
     </div>
+
+    @if ($data->hasPages())
     <!-- Hiển thị nút phân trang -->
       <div class="flex justify-center space-x-2 mt-4 mb-4">
             @foreach ($data->links()->elements[0] ?? [] as $page => $url)
@@ -87,5 +94,6 @@
                 @endif
             @endforeach
       </div>
+    @endif
   </div>
   @endsection

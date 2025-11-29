@@ -35,7 +35,7 @@ class SinhVienSeeder extends Seeder
                 'ngaySinh'     => $faker->date('Y-m-d', '2010-01-01'),
                 'gioiTinh'     => $faker->randomElement([0, 1]),
                 'diaChi'       => $faker->city,
-                'soDienThoai'  => $faker->phoneNumber,
+                'soDienThoai'  => $faker->numerify($faker->randomElement(['09########', '03########', '08########'])),
                 'email'        => "sinhvien{$i}@gmail.com",
                 'anhDaiDien'   => null,
                 'id_lop'       => $faker->randomElement([1, 2]),
