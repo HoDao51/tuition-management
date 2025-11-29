@@ -75,14 +75,14 @@
             <td class="px-2 py-2 border text-center">
               @if ($item->tinhTrang == 0)
                 <a href="{{ route('nhanVien.edit', $item->id) }}">
-                    <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
-                      Sửa
-                    </button>
+                  <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
+                    Sửa
+                  </button>
                 </a>
               @else
-                    <button type="button"class="bg-[#10B981] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
-                      Sửa
-                    </button>
+                <button type="button"class="bg-[#10B981] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
+                  Sửa
+                </button>
               @endif
 
                 @if (auth()->user()->id == $item->user_id)
@@ -90,40 +90,39 @@
                         class="bg-[#DC2626] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded-md ml-2 mt-3 mb-3">
                         Khóa
                     </button>
-
                 @else
-                    @if ($item->tinhTrang == 0)
-                        <form action="{{ route('nhanVien.destroy', $item->id) }}" method="POST" class="inline-block mt-3">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                onclick="
-                                    if (confirm('Bạn có chắc muốn vô hiệu hóa tài khoản này không?')) {
-                                        showLoader();
-                                    } else {
-                                        return false;
-                                    }"
-                                class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
-                                Khóa
-                            </button>
-                        </form>
-                    @else
-                        <form action="{{ route('restore', $item->id) }}" method="POST" class="inline-block mt-3">
-                            @csrf
-                            @method('POST')
-                            <button type="submit"
-                                onclick="
-                                    if (confirm('Bạn có chắc muốn khôi phục tài khoản này không?')) {
-                                        showLoader();
-                                    } else {
-                                        return false;
-                                    }"
-                                class="bg-[#F97316] text-white text-[16px] font-semibold px-[18px] py-2 rounded-md hover:bg-[#C55E17] ml-2">
-                                Mở
-                            </button>
-                        </form>
-                    @endif
+                  @if ($item->tinhTrang == 0)
+                    <form action="{{ route('nhanVien.destroy', $item->id) }}" method="POST" class="inline-block mt-3">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                            onclick="
+                                if (confirm('Bạn có chắc muốn vô hiệu hóa tài khoản này không?')) {
+                                    showLoader();
+                                } else {
+                                    return false;
+                                }"
+                            class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
+                            Khóa
+                        </button>
+                    </form>
+                  @else
+                    <form action="{{ route('restore', $item->id) }}" method="POST" class="inline-block mt-3">
+                        @csrf
+                        @method('POST')
+                        <button type="submit"
+                            onclick="
+                                if (confirm('Bạn có chắc muốn khôi phục tài khoản này không?')) {
+                                    showLoader();
+                                } else {
+                                    return false;
+                                }"
+                            class="bg-[#F97316] text-white text-[16px] font-semibold px-[18px] py-2 rounded-md hover:bg-[#C55E17] ml-2">
+                            Mở
+                        </button>
+                    </form>
                   @endif
+                @endif
             </td>
           </tr>
           @empty
