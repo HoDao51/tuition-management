@@ -1,7 +1,5 @@
 @extends('layouts.app')
 @section('content')
-  <script src="https://cdn.tailwindcss.com"></script>
-
   <div class="w-full bg-white inline-flex">
     <!-- Khung ảnh đại diện -->
     <div class="flex flex-col items-center space-y-3 p-4 pt-6">

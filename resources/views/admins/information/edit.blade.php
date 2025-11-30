@@ -1,11 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <div class="max-w-md bg-white mb-6">
-
     <form action="{{ route('thongTinCaNhan.update') }}" method="POST" enctype="multipart/form-data" class="space-y-3">
         @csrf
         @method('PUT')
-
         <!-- Mã NV -->
         <div>
             <label for="ma_nv" class="block text-lg text-[#4B5563] mb-1">Mã nhân viên:</label>

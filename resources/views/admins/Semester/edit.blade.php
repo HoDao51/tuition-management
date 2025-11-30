@@ -1,4 +1,3 @@
-<script src="https://cdn.tailwindcss.com"></script>
 @extends('layouts.app')
 @section('content')
 <div class="max-w-md bg-white">
@@ -18,7 +17,6 @@
             <!-- Hiển thị readonly -->
             <input type="text" value="{{ $hocKy->namHoc->tenNamHoc }}" readonly
                 class="w-full border border-gray-300 bg-gray-100 cursor-not-allowed rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
-
             <!-- Gửi giá trị thật -->
             <input type="hidden" name="id_nam_hoc" value="{{ $hocKy->id_nam_hoc }}">
             @error('id_nam_hoc')

@@ -1,6 +1,4 @@
-<script src="https://cdn.tailwindcss.com"></script>
 @extends('layouts.app')
-
 @section('content')
   <div class="mx-auto">
     <!-- Thanh tìm kiếm -->
@@ -70,9 +68,9 @@
           </tr>
           @empty
             <tr>
-                <td colspan="8" class="px-2 py-4 border text-center text-gray-600 text-[17px]">
-                    Không có dữ liệu
-                </td>
+              <td colspan="8" class="px-2 py-4 border text-center text-gray-600 text-[17px]">
+                  Không có dữ liệu
+              </td>
             </tr>
         </tbody>
       @endforelse

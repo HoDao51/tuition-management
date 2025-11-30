@@ -1,6 +1,4 @@
-<script src="https://cdn.tailwindcss.com"></script>
 @extends('layouts.app')
-
 @section('content')
   <div class="mx-auto">
     <!-- Thanh tìm kiếm -->
@@ -53,9 +51,9 @@
           </tr>
           @empty
             <tr>
-                <td colspan="7" class="px-2 py-4 border text-center text-gray-600 text-[17px]">
-                    Không có dữ liệu
-                </td>
+              <td colspan="7" class="px-2 py-4 border text-center text-gray-600 text-[17px]">
+                  Không có dữ liệu
+              </td>
             </tr>
         </tbody>
         @endforelse
@@ -65,18 +63,18 @@
     @if ($data->hasPages())
     <!-- Hiển thị nút phân trang -->
       <div class="flex justify-center space-x-2 mt-4 mb-4">
-            @foreach ($data->links()->elements[0] ?? [] as $page => $url)
-                @if ($page == $data->currentPage())
-                    <span class="px-4 py-2 bg-blue-600 text-white rounded-[5px]">
-                        {{ $page }}
-                    </span>
-                @else
-                    <a href="{{ $url }}" 
-                      class="px-4 py-2 bg-gray-200 text-gray-700 rounded-[5px] hover:bg-blue-500 hover:text-white transition">
-                        {{ $page }}
-                    </a>
-                @endif
-            @endforeach
+        @foreach ($data->links()->elements[0] ?? [] as $page => $url)
+          @if ($page == $data->currentPage())
+            <span class="px-4 py-2 bg-blue-600 text-white rounded-[5px]">
+                {{ $page }}
+            </span>
+          @else
+            <a href="{{ $url }}" 
+              class="px-4 py-2 bg-gray-200 text-gray-700 rounded-[5px] hover:bg-blue-500 hover:text-white transition">
+                {{ $page }}
+            </a>
+          @endif
+        @endforeach
       </div>
     @endif
   </div>

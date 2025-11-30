@@ -1,9 +1,7 @@
-<script src="https://cdn.tailwindcss.com"></script>
 @extends('layouts.app')
-
 @section('content')
 <div class="max-w-md bg-white">
-    <form action="{{ route('lop.store') }}" method="POST" enctype="multipart/form-data" class="space-y-3">
+    <form action="{{ route('lop.store') }}" method="POST" class="space-y-3">
         @csrf
         <!-- Tên lớp -->
         <div>
@@ -22,7 +20,7 @@
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="id_khoa">Chọn khoa</label>
             <select name="id_khoa" id="id_khoa" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
-                <option value="" disabled selected>Chọn khoa</option>
+                <option value="" disabled selected>-- Chọn khoa --</option>
                 @foreach($khoa as $khoa)
                         <option value="{{ $khoa->id }}" @selected(old('id_khoa') == $khoa->id)>{{ $khoa->tenKhoa }}</option>
                 @endforeach

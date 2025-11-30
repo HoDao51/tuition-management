@@ -1,19 +1,14 @@
-<script src="https://cdn.tailwindcss.com"></script>
 @extends('layouts.app')
-
 @section('content')
 <div class="max-w-md bg-white">
-    
-    <form action="{{ route('khoa.store') }}" method="POST" enctype="multipart/form-data" class="space-y-3">
+    <form action="{{ route('khoa.store') }}" method="POST" class="space-y-3">
         @csrf
         <!-- Tên khoa -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="tenKhoa">Tên khoa</label>
-            <input 
-                type="text" value="{{ old('tenKhoa')}}"
+            <input type="text" value="{{ old('tenKhoa')}}"
                 name="tenKhoa" id="tenKhoa" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
-                placeholder="Nhập tên khoa"
-            >
+                placeholder="Nhập tên khoa">
             @error('tenKhoa')
                 <p class="text-red-500">{{$message}}</p>
             @enderror

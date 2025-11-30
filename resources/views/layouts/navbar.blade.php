@@ -1,4 +1,3 @@
-<script src="https://cdn.tailwindcss.com"></script>
 <body>
   <header class="flex items-center justify-between border-b border-[E5E6E6] px-6 py-3 bg-white">
     

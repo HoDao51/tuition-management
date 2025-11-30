@@ -1,6 +1,4 @@
-<script src="https://cdn.tailwindcss.com"></script>
 @extends('layouts.app')
-
 @section('content')
   <div class="mx-auto">
     @if (auth()->user()->role == 0)
@@ -12,7 +10,6 @@
             Chào mừng bạn trở lại!
         </h2>
     @endif
-
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             @if (auth()->user()->role == 0)
                 <!-- Tổng nhân viên -->
@@ -35,7 +32,6 @@
                     </a>
                 </div>
             @endif
-
                 <!-- Tổng sinh viên -->
                 <div>
                     <a href="{{route('sinhVien.index')}}" onclick="showLoader()" class="bg-green-500 text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-green-600">
@@ -53,7 +49,6 @@
                         </div>
                     </a>
                 </div>
-
                 <!-- Đã đóng -->
                 <div>
                     <a href="{{route('hocPhi.index')}}" onclick="showLoader()" class="bg-[#F59E0B] text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-[#C4800D]">
@@ -71,7 +66,6 @@
                         </div>
                     </a>
                 </div>
-
                 <!-- Chưa đóng -->
                 <div>
                     <a href="{{route('hocPhi.index')}}" onclick="showLoader()" class="bg-[#EA3438] text-white p-6 rounded-xl shadow-xl shadow-black/30 flex justify-center items-center h-[150px] mx-auto hover:bg-[#AF1D20]">
@@ -112,11 +106,9 @@
             @endif
         </div>
         
-
         <!-- BẢNG DANH SÁCH CHƯA ĐÓNG -->
         <div class="mt-8 mb-4">
             <h2 class="text-2xl font-semibold text-red-600 mb-3">Danh sách sinh viên chưa đóng học phí</h2>
-
             <table class="w-full border border-gray-300 text-[#4B5563] ">
                 <thead class="bg-gray-200 font-semibold uppercase">
                     <tr>

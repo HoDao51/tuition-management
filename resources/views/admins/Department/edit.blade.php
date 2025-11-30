@@ -1,16 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <div class="max-w-md bg-white">
-    @error('duplicate')
-        <div class="alert alert-danger text-red-600 font-semibold text-[20px]">
-            {{ $message}}
-        </div>
-    @enderror
-    <form action="{{ route('khoa.update', $khoa->id) }}" method="POST" enctype="multipart/form-data" class="space-y-3">
+    <form action="{{ route('khoa.update', $khoa->id) }}" method="POST" class="space-y-3">
         @csrf
         @method('PUT')
-
-        <!-- Mã NV -->
+        <!-- Mã khoa -->
         <div>
             <label for="ma_nv" class="block text-lg text-[#4B5563] mb-1">Mã khoa:</label>
             <input type="text" name="ma_nv" id="ma_nv" value="{{ $khoa->id }}" readonly

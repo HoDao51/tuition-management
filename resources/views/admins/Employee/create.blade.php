@@ -1,6 +1,4 @@
-<script src="https://cdn.tailwindcss.com"></script>
 @extends('layouts.app')
-
 @section('content')
 <div class="max-w-md bg-white">
     <form action="{{ route('nhanVien.store') }}" method="POST" enctype="multipart/form-data" class="space-y-3">
@@ -11,8 +9,7 @@
             <input 
                 type="text" value="{{ old('hoTen')}}"
                 name="hoTen" id="hoTen" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
-                placeholder="Nhập tên nhân viên"
-            >
+                placeholder="Nhập tên nhân viên">
             @error('hoTen')
                 <p class="text-red-500">{{$message}}</p>
             @enderror

@@ -1,11 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <div class="max-w-md bg-white p-6 rounded-md shadow">
-
     <form action="{{ route('hocPhi.update', $hocPhi->id) }}" method="POST" class="space-y-4">
         @csrf
         @method('PUT')
-
         <!-- Mã học phí -->
         <div>
             <label class="block text-lg text-gray-700 mb-1">Mã sinh viên:</label>
@@ -33,9 +31,7 @@
             <label class="block text-sm text-gray-600 mb-1">Học kỳ</label>
             <select name="id_hoc_ky"
                     class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
-
                 <option value="" disabled>-- Chọn học kỳ --</option>
-
                 @foreach($hocKy as $hk)
                     <option value="{{ $hk->id }}"
                         {{ $hocPhi->id_hoc_ky == $hk->id ? 'selected' : '' }}>

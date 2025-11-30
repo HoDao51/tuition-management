@@ -1,12 +1,9 @@
-<script src="https://cdn.tailwindcss.com"></script>
 @extends('layouts.app')
 @section('content')
 <div class="max-w-md bg-white mb-6">
-
     <form action="{{ route('sinhVien.update', $sinhVien->id) }}" method="POST" enctype="multipart/form-data" class="space-y-3">
         @csrf
         @method('PUT')
-        
         <!-- Mã SV -->
         <div>
             <label for="ma_sv" class="block text-lg text-[#4B5563] mb-1">Mã sinh viên:</label>

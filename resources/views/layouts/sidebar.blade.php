@@ -1,4 +1,3 @@
-<script src="https://cdn.tailwindcss.com"></script>
 <body>
   <aside class="w-60  border-r border-gray-200 p-4 h-full">
     <nav class="flex flex-col space-y-2">

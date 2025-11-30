@@ -1,6 +1,4 @@
-<script src="https://cdn.tailwindcss.com"></script>
 @extends('layouts.app')
-
 @section('content')
   <div class="mx-auto">
     <!-- Thanh tìm kiếm -->
