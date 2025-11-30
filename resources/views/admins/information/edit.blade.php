@@ -88,16 +88,6 @@
             @endif
         </div>
 
-        <!-- Tình trạng -->
-        <div>
-            <label for="tinhTrang" class="block text-lg text-[#4B5563] mb-1">Tình trạng</label>
-            <select name="tinhTrang" id="tinhTrang" 
-                class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
-                <option value="0" {{ Auth::user()->nhanVien->tinhTrang == 0 ? 'selected' : '' }}>Đang hoạt động</option>
-                <option value="1" {{ Auth::user()->nhanVien->tinhTrang == 1 ? 'selected' : '' }}>Ngưng hoạt động</option>
-            </select>
-        </div>
-
         <!-- Nút submit -->
         <div class="flex space-x-3 pt-4">
             <a href="{{ route('thongTinCaNhan.index') }}" onclick="showLoader()"

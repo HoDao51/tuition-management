@@ -35,7 +35,7 @@
         @error('tenHocKy')
                 <p class="text-red-500">{{$message}}</p>
         @enderror
-        @error('duplicated')
+        @error('duplicate') 
                 <p class="text-red-500">{{$message}}</p>
         @enderror
     </div>

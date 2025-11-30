@@ -40,7 +40,6 @@ public function update(UpdateThongTinCaNhan $request)
         $chucVu = $request->chucVu;
         $email = $request->email;
         $soDienThoai = $request->soDienThoai;
-        $tinhTrang = $request->tinhTrang;
 
         // Xử lý ảnh đại diện
         $path = $nhanVien->anhDaiDien; // giữ ảnh cũ nếu không upload mới
@@ -58,7 +57,6 @@ public function update(UpdateThongTinCaNhan $request)
             'chucVu' => $chucVu,
             'email' => $email,
             'soDienThoai' => $soDienThoai,
-            'tinhTrang' => $tinhTrang,
             'anhDaiDien' => $path
         ]);
 

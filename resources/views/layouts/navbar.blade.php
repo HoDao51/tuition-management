@@ -166,11 +166,11 @@
     </div>
 
     @auth
-    <div class="relative inline-block text-left right-2 ">
+    <div class="relative inline-block text-left ">
       <!-- Profile button -->
-      <button id="profileBtn" class="flex items-center space-x-4 focus:outline-none" aria-haspopup="true" aria-expanded="false">
+      <button id="profileBtn" class="flex items-center space-x-2" aria-haspopup="true" aria-expanded="false">
         <div>
-          <p class="font-semibold text-lg text-gray-900 leading-tight">{{ auth()->user()->name }}</p>
+          <p class="font-semibold text-lg text-gray-700 leading-tight">{{ auth()->user()->name }}</p>
           <p class="text-gray-600 text-sm">
             @if (auth()->user()->role == 0)
               Quản trị viên
@@ -194,7 +194,7 @@
         }
         @endphp
       
-        <div class="w-12 h-12 rounded-full overflow-hidden">
+        <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-300">
             <img src="{{ $avatar }}" alt="Avatar" class="w-full h-full object-cover">
         </div>
       </button>
