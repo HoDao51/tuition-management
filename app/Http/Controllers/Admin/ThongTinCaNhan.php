@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Models\Admin\nhanVien;
-use App\Http\Requests\UpdatenhanVienRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateThongTinCaNhan;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 
 class ThongTinCaNhan extends Controller
 {
@@ -26,13 +22,11 @@ public function update(UpdateThongTinCaNhan $request)
 {
     $nhanVien = Auth::user()->nhanVien;
 
-    // update user
     $nhanVien->user->update([
         'name' => $request->hoTen,
         'email' => $request->email,
         'role' => $request->chucVu,
     ]);
-
 
         $hoTen = $request->hoTen;
         $ngaySinh = $request->ngaySinh;
@@ -49,7 +43,6 @@ public function update(UpdateThongTinCaNhan $request)
             $path = $file->storeAs('nhanVien', $fileName, 'public');
         }
 
-        // Cập nhật thông tin nhân viên
         $nhanVien->update([
             'hoTen' => $hoTen,
             'ngaySinh' => $ngaySinh,

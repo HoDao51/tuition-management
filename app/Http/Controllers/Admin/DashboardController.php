@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin\SinhVien;
 use App\Models\Admin\NhanVien;
-use App\Models\Admin\HocPhi;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\bienLai;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {

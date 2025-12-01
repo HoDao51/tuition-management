@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin\bienLai;
-use App\Models\Admin\sinhVien;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorebienLaiRequest;
 use App\Http\Requests\UpdatebienLaiRequest;
 use App\Models\Admin\hocPhi;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +44,7 @@ class BienLaiController extends Controller
                 });
         }
 
-        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        // Phân trang
         $data = $query->orderBy('id', 'desc')->paginate(5)->withQueryString();
 
         return view('admins.receipt.index', compact('data', 'search'));
@@ -134,30 +132,21 @@ class BienLaiController extends Controller
     {
         // Lấy biên lai
         $bienLai = BienLai::findOrFail($id);
-
-        // Lấy học phí gốc
         $hocPhi = HocPhi::findOrFail($bienLai->id_hoc_phi);
-
-        // Lấy số tiền cũ của biên lai
         $soTienCu = $bienLai->soTienThu;
-
-        // Lấy số tiền mới từ form
         $soTienMoi = $request->soTienThu;
 
-        // Cập nhật số tiền thu, ngày thu, tình trạng
         $bienLai->update([
             'soTienThu' => $soTienMoi,
             'ngayThu'   => $request->ngayThu,
-            'tinhTrang' => $request->tinhTrang, // 0 = đã đóng, 1 = đã hủy
+            'tinhTrang' => $request->tinhTrang,
         ]);
 
-        // Nếu biên lai bị hủy → coi như số tiền thu = 0
         if ($request->tinhTrang == 1) {
             $soTienMoi = 0;
         }
 
         // Cập nhật lại tổng tiền đã thanh toán
-        // (trừ tiền cũ, cộng tiền mới)
         $hocPhi->soTienDaThanhToan = 
             ($hocPhi->soTienDaThanhToan - $soTienCu) + $soTienMoi;
 
@@ -168,9 +157,9 @@ class BienLaiController extends Controller
 
         // Cập nhật tình trạng học phí
         if ($hocPhi->soTienDaThanhToan >= $hocPhi->tongTien) {
-            $hocPhi->tinhTrang = 1;  // đã thanh toán đủ
+            $hocPhi->tinhTrang = 1;
         } else {
-            $hocPhi->tinhTrang = 0;  // chưa thanh toán đủ
+            $hocPhi->tinhTrang = 0; 
         }
 
         $hocPhi->save();
@@ -191,16 +180,16 @@ class BienLaiController extends Controller
 
         // Cập nhật lại trạng thái học phí
         if ($hocPhi->soTienDaThanhToan >= $hocPhi->tongTien) {
-            $hocPhi->tinhTrang = 1; // đã thanh toán đủ
+            $hocPhi->tinhTrang = 1;
         } else {
-            $hocPhi->tinhTrang = 0; // chưa thanh toán đủ
+            $hocPhi->tinhTrang = 0;
         }
 
         $hocPhi->save();
 
         // Đánh dấu biên lai là đã xóa
         $bienLai->deleted = true;
-        $bienLai->tinhTrang = 1; // đã hủy
+        $bienLai->tinhTrang = 1;
         $bienLai->save();
         return redirect::route('bienLai.index');
     }

@@ -7,7 +7,6 @@ use App\Models\Admin\namHoc;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorehocKyRequest;
 use App\Http\Requests\UpdatehocKyRequest;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
@@ -18,18 +17,18 @@ class HocKyController extends Controller
      */
     public function index(Request $request)
     {
-        // Lấy từ khóa tìm kiếm từ request (từ form)
+        // Lấy từ khóa tìm kiếm từ request 
         $search = $request->get('search');
         // Query cơ bản
         $query = hocKy::query();
-        // Áp dụng tìm kiếm nếu có từ khóa (tìm theo hoTen, email, ma_nv)
+        // Áp dụng tìm kiếm nếu có từ khóa
         if ($search) {
             $query->where('tenHocKy', 'like', '%' . $search . '%')
-            ->orWhereHas('namHoc', function ($namHoc) use ($search) {  // Tìm trong quan hệ khoa
-                  $namHoc->where('tenNamHoc', 'like', '%' . $search . '%');  // Giả sử trường tên khoa là 'tenKhoa'
+            ->orWhereHas('namHoc', function ($namHoc) use ($search) { 
+                  $namHoc->where('tenNamHoc', 'like', '%' . $search . '%'); 
               });
         }
-        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        // Phân trang
         $data = $query->orderBy('id', 'desc')->where('deleted', false)->paginate(5)->withQueryString();
 
         return view('admins.semester.index', compact('data', 'search'));
@@ -66,7 +65,7 @@ class HocKyController extends Controller
             $tenHocKy = 'Học Kỳ 6';
         }
 
-        // Kiểm tra trùng lặp: Học kỳ với cùng tên và năm học đã tồn tại chưa?
+        // Kiểm tra trùng lặp
         $existingHocKy = hocKy::where('tenHocKy', $tenHocKy)
                             ->where('id_nam_hoc', $id_nam_hoc)
                             ->where('deleted', false)  
@@ -123,7 +122,7 @@ class HocKyController extends Controller
             $tenHocKy = 'Học Kỳ 6';
         }
 
-        // Kiểm tra trùng lặp: Học kỳ với cùng tên và năm học đã tồn tại chưa?
+        // Kiểm tra trùng lặp
         $existingHocKy = hocKy::where('tenHocKy', $tenHocKy)
                             ->where('id_nam_hoc', $id_nam_hoc)
                             ->where('deleted', false)

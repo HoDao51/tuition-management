@@ -5,13 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin\hocPhi;
 use App\Models\Admin\hocKy;
 use App\Models\Admin\sinhVien;
-use App\Models\Admin\namHoc;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorehocPhiRequest;
 use App\Http\Requests\UpdatehocPhiRequest;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -23,7 +20,7 @@ class HocPhiController extends Controller
      */
     public function index(Request $request)
     {
-        // Lấy từ khóa tìm kiếm từ request (từ form)
+        // Lấy từ khóa tìm kiếm từ request
         $search = $request->get('search');
 
         // Query cơ bản
@@ -45,7 +42,7 @@ class HocPhiController extends Controller
                 });
         }
 
-        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        // Phân trang
         $data = $query->orderBy('id', 'desc')->paginate(5)->withQueryString();
 
         return view('admins.tuition.index', compact('data', 'search'));

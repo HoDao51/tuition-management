@@ -6,7 +6,6 @@ use App\Models\Admin\khoa;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorekhoaRequest;
 use App\Http\Requests\UpdatekhoaRequest;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
@@ -17,15 +16,15 @@ class KhoaController extends Controller
      */
     public function index(Request $request)
     {
-        // Lấy từ khóa tìm kiếm từ request (từ form)
+        // Lấy từ khóa tìm kiếm từ request
         $search = $request->get('search');
         // Query cơ bản
         $query = khoa::query();
-        // Áp dụng tìm kiếm nếu có từ khóa (tìm theo hoTen, email, ma_nv)
+        // Áp dụng tìm kiếm nếu có từ khóa
         if ($search) {
             $query->where('tenKhoa', 'like', '%' . $search . '%');
         }
-        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        // Phân trang
         $data = $query->orderBy('id', 'desc')->where('deleted', false)->paginate(5)->withQueryString();
         return view('admins.department.index', compact('data', 'search'));
     }
@@ -96,7 +95,6 @@ class KhoaController extends Controller
                 ->withInput();
         }
 
-        // Nếu không trùng, cập nhật bản ghi
         $khoa->update([
             'tenKhoa' => $tenKhoa,
         ]);

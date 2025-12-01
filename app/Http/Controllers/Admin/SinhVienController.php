@@ -7,10 +7,7 @@ use App\Models\User;
 use App\Http\Requests\StoresinhVienRequest;
 use App\Http\Requests\UpdatesinhVienRequest;
 use App\Models\Admin\namHoc;
-use Database\Seeders\SinhVienSeeder;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,21 +18,20 @@ class SinhVienController extends Controller
      */
     public function index(Request $request)
     {
-        // Lấy từ khóa tìm kiếm từ request (từ form)
+        // Lấy từ khóa tìm kiếm từ request
         $search = $request->get('search');
         // Query cơ bản
         $query = sinhVien::query();
-        // Áp dụng tìm kiếm nếu có từ khóa (tìm theo hoTen, email, ma_nv)
+        // Áp dụng tìm kiếm nếu có từ khóa
         if ($search) {
             $query->where('hoTen', 'like', '%' . $search . '%')
                 ->orWhere('email', 'like', '%' . $search . '%')
-                ->orWhereHas('lop', function ($lop) use ($search) {  // Tìm trong quan hệ khoa
-                  $lop->where('tenLop', 'like', '%' . $search . '%');  // Giả sử trường tên khoa là 'tenKhoa'
+                ->orWhereHas('lop', function ($lop) use ($search) {
+                  $lop->where('tenLop', 'like', '%' . $search . '%');
               })
                 ->orWhere('ma_sv', 'like', '%' . $search . '%');
         }
-        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
-       // Sắp xếp theo lớp
+        // Phân trang
         $data = $query ->orderBy('tinhTrang', 'asc')
                     ->orderBy('id_lop', 'asc')
                     ->orderBy('id', 'desc')
@@ -60,7 +56,7 @@ class SinhVienController extends Controller
      */
     public function store(StoresinhVienRequest $request)
     {
-        $password = $request->input('password', '123456'); // hoặc yêu cầu nhập password trong form
+        $password = $request->input('password', '123456');
         $user = User::create([
             'name' => $request->hoTen,
             'email' => $request->email,
@@ -75,16 +71,15 @@ class SinhVienController extends Controller
         $email = $request->email;
         $id_lop = $request->id_lop;
         $id_nam_hoc = $request->id_nam_hoc;
+
         // xử lý ảnh đại diện
         $path = null;
         if ($request->hasFile('anhDaiDien')) {
             $file = $request->file('anhDaiDien');
-            //tạo vị trí lưu CSDL và thư mục
             $fileName = time() . "-" . $file->getClientOriginalName();
-            //lưu trữ vào thư mục và CSDL
             $path = $file->storeAs('sinhVien', $fileName, 'public');
         }
-        // Tạo sinh viên và gán vào biến
+
         $sinhVien = sinhVien::create([
             'hoTen' => $hoTen,
             'ngaySinh' => $ngaySinh,
@@ -101,7 +96,6 @@ class SinhVienController extends Controller
         // Tự sinh ma_nv theo id
         $ma_sv = 'SV' . str_pad($sinhVien->id, 3, '0', STR_PAD_LEFT);
 
-        // Cập nhật ma_nv
         $sinhVien->update(['ma_sv' => $ma_sv]);
 
         return redirect::route('sinhVien.index');
@@ -132,7 +126,7 @@ class SinhVienController extends Controller
      */
     public function update(UpdatesinhVienRequest $request, sinhVien $sinhVien)
     {
-        $user = $sinhVien->user; // Lấy user liên kết
+        $user = $sinhVien->user;
 
         if ($user) {
             $user->update([
@@ -159,7 +153,6 @@ class SinhVienController extends Controller
             $path = $file->storeAs('sinhVien', $fileName, 'public');
         }
 
-        // Tạo sinh viên và gán vào biến
         $sinhVien->update([
             'hoTen' => $hoTen,
             'ngaySinh' => $ngaySinh,

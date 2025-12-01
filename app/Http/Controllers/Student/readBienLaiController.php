@@ -11,13 +11,13 @@ class readBienLaiController extends Controller
 {
     public function index(Request $request)
     {
-        // Lấy từ khóa tìm kiếm từ request (từ form)
+        // Lấy từ khóa tìm kiếm từ request
         $search = $request->get('search');
 
         // Lấy id sinh viên từ user đang đăng nhập
         $idSinhVien = Auth::user()->sinhVien->id;
 
-        // Query cơ bản: chỉ lấy biên lai của sinh viên đang đăng nhập
+        // lấy biên lai của sinh viên đang đăng nhập
         $query = BienLai::with('hocPhi.sinhVien', 'hocPhi.hocKy', 'nhanVien')
                         ->where('deleted', false)
                         ->whereHas('hocPhi', function ($q) use ($idSinhVien) {
@@ -43,7 +43,7 @@ class readBienLaiController extends Controller
                 });
         }
 
-        // Phân trang (5 item/trang, giữ query string để search không bị mất khi phân trang)
+        // Phân trang
         $data = $query->orderBy('id', 'desc')->paginate(5)->withQueryString();
 
         return view('students.receipt.index', compact('data', 'search'));

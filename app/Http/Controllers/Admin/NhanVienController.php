@@ -7,11 +7,9 @@ use App\Models\Admin\nhanVien;
 use App\Models\User;
 use App\Http\Requests\StorenhanVienRequest;
 use App\Http\Requests\UpdatenhanVienRequest;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use Termwind\Components\Dd;
 
 class NhanVienController extends Controller
 {
@@ -20,17 +18,17 @@ class NhanVienController extends Controller
      */
     public function index(Request $request)
     {
-        // Lấy từ khóa tìm kiếm từ request (từ form)
+        // Lấy từ khóa tìm kiếm từ request
         $search = $request->get('search');
         // Query cơ bản
         $query = nhanVien::query();
-        // Áp dụng tìm kiếm nếu có từ khóa (tìm theo hoTen, email, ma_nv)
+        // Áp dụng tìm kiếm nếu có từ khóa
         if ($search) {
             $query->where('hoTen', 'like', '%' . $search . '%')
                 ->orWhere('email', 'like', '%' . $search . '%')
                 ->orWhere('ma_nv', 'like', '%' . $search . '%');
         }
-        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        // Phân trang
         $nhanVien = $query->orderBy('tinhTrang', 'asc')->orderBy('chucVu', 'asc')->paginate(5)->withQueryString();
 
        // Trả về view với dữ liệu phân trang và từ khóa search
@@ -51,7 +49,7 @@ class NhanVienController extends Controller
      */
     public function store(StorenhanVienRequest $request)
     {
-        $password = $request->input('password', '123456'); // hoặc yêu cầu nhập password trong form
+        $password = $request->input('password', '123456');
         $user = User::create([
             'name' => $request->hoTen,
             'email' => $request->email,
@@ -69,13 +67,11 @@ class NhanVienController extends Controller
         $path = null;
         if ($request->hasFile('anhDaiDien')) {
             $file = $request->file('anhDaiDien');
-            //tạo vị trí lưu CSDL và thư mục
             $fileName = time() . "-" . $file->getClientOriginalName();
             //lưu trữ vào thư mục và CSDL
             $path = $file->storeAs('nhanVien', $fileName, 'public');
         }
 
-        // Tạo nhân viên và gán vào biến
         $nhanVien = nhanVien::create([
             'hoTen' => $hoTen,
             'ngaySinh' => $ngaySinh,
@@ -117,8 +113,7 @@ class NhanVienController extends Controller
      */
     public function update(UpdatenhanVienRequest $request, nhanVien $nhanVien)
     {
-        $user = $nhanVien->user; // Lấy user liên kết
-
+        $user = $nhanVien->user;
         if ($user) {
             $user->update([
                 'name' => $request->hoTen,
@@ -135,7 +130,7 @@ class NhanVienController extends Controller
         $soDienThoai = $request->soDienThoai;
 
         // Xử lý ảnh đại diện
-        $path = $nhanVien->anhDaiDien; // giữ ảnh cũ nếu không upload mới
+        $path = $nhanVien->anhDaiDien;
         if ($request->hasFile('anhDaiDien')) {
             $file = $request->file('anhDaiDien');
             $fileName = time() . "-" . $file->getClientOriginalName();

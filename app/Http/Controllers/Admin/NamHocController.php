@@ -6,7 +6,6 @@ use App\Models\Admin\namHoc;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorenamHocRequest;
 use App\Http\Requests\UpdatenamHocRequest;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
@@ -17,15 +16,15 @@ class NamHocController extends Controller
      */
     public function index(Request $request)
     {
-        // Lấy từ khóa tìm kiếm từ request (từ form)
+        // Lấy từ khóa tìm kiếm từ request
         $search = $request->get('search');
         // Query cơ bản
         $query = namHoc::query();
-        // Áp dụng tìm kiếm nếu có từ khóa (tìm theo hoTen, email, ma_nv)
+        // Áp dụng tìm kiếm nếu có từ khóa
         if ($search) {
             $query->where('tenNamHoc', 'like', '%' . $search . '%');
         }
-        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        // Phân trang
         $data = $query->orderBy('id', 'desc')->where('deleted', false)->paginate(5)->withQueryString();
         return view('admins.schoolYear.index', compact('data', 'search'));
     }

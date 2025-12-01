@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\hocPhi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; // thêm dòng này
+use Illuminate\Support\Facades\Auth;
 
 class readHocPhiController extends Controller
 {
@@ -17,7 +17,7 @@ class readHocPhiController extends Controller
         // Lấy id sinh viên từ user đang đăng nhập
         $idSinhVien = Auth::user()->sinhVien->id;
         
-        // Query cơ bản: chỉ lấy học phí của sinh viên đang đăng nhập
+        // lấy học phí của sinh viên đang đăng nhập
         $query = hocPhi::with('hocKy.namHoc', 'sinhVien')
                         ->where('deleted', false)
                         ->where('id_sinh_vien', $idSinhVien)
@@ -38,7 +38,7 @@ class readHocPhiController extends Controller
                 });
         }
 
-        // Phân trang (5 item/trang, giữ query string để search không bị mất khi phân trang)
+        // Phân trang
         $data = $query->orderBy('id', 'desc')->paginate(5)->withQueryString();
 
         return view('students.tuition.index', compact('data', 'search'));

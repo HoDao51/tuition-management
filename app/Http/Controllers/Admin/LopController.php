@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorelopRequest;
 use App\Http\Requests\UpdatelopRequest;
 use App\Models\Admin\khoa;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
@@ -18,18 +17,18 @@ class LopController extends Controller
      */
     public function index(Request $request)
     {
-        // Lấy từ khóa tìm kiếm từ request (từ form)
+        // Lấy từ khóa tìm kiếm từ request
         $search = $request->get('search');
         // Query cơ bản
         $query = lop::query();
-        // Áp dụng tìm kiếm nếu có từ khóa (tìm theo hoTen, email, ma_nv)
+        // Áp dụng tìm kiếm nếu có từ khóa
         if ($search) {
             $query->where('tenLop', 'like', '%' . $search . '%')
-            ->orWhereHas('khoa', function ($khoa) use ($search) {  // Tìm trong quan hệ khoa
-                  $khoa->where('tenKhoa', 'like', '%' . $search . '%');  // Giả sử trường tên khoa là 'tenKhoa'
+            ->orWhereHas('khoa', function ($khoa) use ($search) {
+                  $khoa->where('tenKhoa', 'like', '%' . $search . '%');
               });
         }
-        // Phân trang (10 item/trang, giữ query string để search không bị mất khi phân trang)
+        // Phân trang
         $data = $query->orderBy('id', 'desc')->where('deleted', false)->paginate(5)->withQueryString();
         return view('admins.class.index', compact('data', 'search'));
     }
