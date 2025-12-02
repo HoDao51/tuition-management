@@ -1,10 +1,9 @@
 @extends('layouts.app')
 @section('content')
   <div class="mx-auto">
-    <!-- Thanh tìm kiếm -->
     <div class="">
       <form method="GET" action="{{ route('hocPhi.index') }}" class="flex items-center space-x-2 mb-4">
-        <!-- Ô tìm kiếm có icon bên trong -->
+        <!-- Thanh tìm kiếm -->
         <div class="relative w-1/3">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
             <path fill="currentColor" fill-rule="evenodd" d="M18.319 14.433A8.001 8.001 0 0 0 6.343 3.868a8 8 0 0 0 10.564 11.976l.043.045l4.242 4.243a1 1 0 1 0 1.415-1.415l-4.243-4.242zm-2.076-9.15a6 6 0 1 1-8.485 8.485a6 6 0 0 1 8.485-8.485" clip-rule="evenodd"/>
@@ -69,20 +68,20 @@
                 
               <!-- Nút xóa -->
               <form action="{{route('hocPhi.destroy', $item->id)}}" method="POST" class="inline-block">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" onclick="showLoader()"
-                      class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
-                      Xóa
-                  </button>
+                @csrf
+                @method('DELETE')
+                <button type="submit" onclick="showLoader()"
+                    class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
+                    Xóa
+                </button>
               </form>
               @if ($item->tinhTrang == 0)
                 <!-- thêm biên lai -->
                 <a href="{{route('bienLai.create')}}?hocPhi={{$item->id}}">
-                    <button type="button" onclick="showLoader()"
-                        class="bg-[#F97316] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#C55E17]">
-                        Thêm biên lai
-                    </button>
+                  <button type="button" onclick="showLoader()"
+                      class="bg-[#F97316] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#C55E17]">
+                      Thêm biên lai
+                  </button>
                 </a>
               @endif
             </td>

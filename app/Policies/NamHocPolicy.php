@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\namHoc;
+use App\Models\Admin\namHoc;
 use Illuminate\Auth\Access\Response;
 
 class NamHocPolicy

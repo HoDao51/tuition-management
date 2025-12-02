@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\lop;
+use App\Models\Admin\lop;
 use Illuminate\Auth\Access\Response;
 
 class LopPolicy

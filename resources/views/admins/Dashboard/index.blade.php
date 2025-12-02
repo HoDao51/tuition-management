@@ -137,18 +137,18 @@
             @if ($dsChuaDong->hasPages())
                 <!-- Hiển thị nút phân trang -->
                 <div class="flex justify-center space-x-2 mt-4">
-                        @foreach ($dsChuaDong->links()->elements[0] ?? [] as $page => $url)
-                            @if ($page == $dsChuaDong->currentPage())
-                                <span class="px-4 py-2 bg-blue-600 text-white rounded-[5px]">
-                                    {{ $page }}
-                                </span>
-                            @else
-                                <a href="{{ $url }}" 
-                                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-[5px] hover:bg-blue-500 hover:text-white transition">
-                                    {{ $page }}
-                                </a>
-                            @endif
-                        @endforeach
+                    @foreach ($dsChuaDong->links()->elements[0] ?? [] as $page => $url)
+                        @if ($page == $dsChuaDong->currentPage())
+                            <span class="px-4 py-2 bg-blue-600 text-white rounded-[5px]">
+                                {{ $page }}
+                            </span>
+                        @else
+                            <a href="{{ $url }}" 
+                            class="px-4 py-2 bg-gray-200 text-gray-700 rounded-[5px] hover:bg-blue-500 hover:text-white transition">
+                                {{ $page }}
+                            </a>
+                        @endif
+                    @endforeach
                 </div>
             @endif
         </div>

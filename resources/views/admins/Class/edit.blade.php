@@ -4,7 +4,6 @@
     <form action="{{ route('lop.update', $lop->id) }}" method="POST" class="space-y-3">
         @csrf
         @method('PUT')
-
         <!-- Mã lớp -->
         <div>
             <label for="id" class="block text-lg text-[#4B5563] mb-1">Mã lớp:</label>
@@ -26,6 +25,7 @@
                 </p>
             @enderror
         </div>
+        
         <!-- chọn khoa -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="id_khoa">Chọn khoa</label>

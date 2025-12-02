@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\bienLai;
+use App\Models\Admin\bienLai;
 use Illuminate\Auth\Access\Response;
 
 class BienLaiPolicy

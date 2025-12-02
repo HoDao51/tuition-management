@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\hocKy;
+use App\Models\Admin\hocKy;
 use Illuminate\Auth\Access\Response;
 
 class HocKyPolicy

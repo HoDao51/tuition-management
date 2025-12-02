@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\khoa;
+use App\Models\Admin\khoa;
 use Illuminate\Auth\Access\Response;
 
 class KhoaPolicy

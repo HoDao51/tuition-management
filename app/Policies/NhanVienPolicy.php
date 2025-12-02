@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\nhanVien;
+use App\Models\Admin\nhanVien;
 use Illuminate\Auth\Access\Response;
 
 class NhanVienPolicy

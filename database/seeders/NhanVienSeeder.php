@@ -60,5 +60,28 @@ class NhanVienSeeder extends Seeder
             'created_at'   => Carbon::now(),
             'updated_at'   => Carbon::now(),
         ]);
+
+        $user3 = DB::table('users')->insertGetId([
+            'name'       => 'Trần Thái Vũ',
+            'email'      => 'vu@gmail.com',
+            'password'   => Hash::make('123456'),
+            'role' => 1,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('nhan_vien')->insert([
+            'ma_nv'        => 'NV003',
+            'hoTen'        => 'Trần Thái Vũ',
+            'ngaySinh'     => '2006-01-01',
+            'gioiTinh'     => 0,
+            'chucVu' => 1,
+            'soDienThoai'  => '0901456789',
+            'email'        => 'vu@gmail.com',
+            'anhDaiDien'   => null,
+            'user_id'      => $user3,
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ]);
     }
 }

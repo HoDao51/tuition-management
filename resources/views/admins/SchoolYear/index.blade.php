@@ -18,9 +18,9 @@
       </form>
       <div class="flex items-center space-x-2 mb-1">
         <a href="{{ route('namHoc.create') }}">
-            <button type="button" onclick="showLoader()" class="bg-[#4B5563] text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">
-                Thêm năm học
-            </button>
+          <button type="button" onclick="showLoader()" class="bg-[#4B5563] text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">
+              Thêm năm học
+          </button>
         </a>
       </div>
     </div>
@@ -47,7 +47,7 @@
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->ngayBatDau}}</td>
             <td class="px-4 py-2 border text-[#4B5563] text-[17px] text-center">{{$item->ngayKetThuc}}</td>
             <td class="px-4 py-2 border text-center pt-5">
-                {{-- Nút sửa --}}
+                <!-- Nút sửa -->
                 <a href="{{route('namHoc.edit', $item->id)}}">
                     <button type="button" onclick="showLoader()"
                         class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
@@ -55,7 +55,7 @@
                     </button>
                 </a>
 
-                {{-- Nút xóa --}}
+                <!-- Nút xóa -->
                 <form action="{{route('namHoc.destroy', $item->id)}}" method="POST" class="inline-block">
                     @csrf
                     @method('DELETE')
@@ -80,18 +80,18 @@
     @if ($data->hasPages())
     <!-- Hiển thị nút phân trang -->
       <div class="flex justify-center space-x-2 mt-4 mb-4">
-            @foreach ($data->links()->elements[0] ?? [] as $page => $url)
-                @if ($page == $data->currentPage())
-                    <span class="px-4 py-2 bg-blue-600 text-white rounded-[5px]">
-                        {{ $page }}
-                    </span>
-                @else
-                    <a href="{{ $url }}" 
-                      class="px-4 py-2 bg-gray-200 text-gray-700 rounded-[5px] hover:bg-blue-500 hover:text-white transition">
-                        {{ $page }}
-                    </a>
-                @endif
-            @endforeach
+        @foreach ($data->links()->elements[0] ?? [] as $page => $url)
+          @if ($page == $data->currentPage())
+            <span class="px-4 py-2 bg-blue-600 text-white rounded-[5px]">
+                {{ $page }}
+            </span>
+          @else
+            <a href="{{ $url }}" 
+              class="px-4 py-2 bg-gray-200 text-gray-700 rounded-[5px] hover:bg-blue-500 hover:text-white transition">
+                {{ $page }}
+            </a>
+          @endif
+        @endforeach
       </div>
     @endif
   </div>

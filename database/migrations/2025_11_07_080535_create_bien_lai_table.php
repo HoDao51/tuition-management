@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer('tinhTrang')->default(0);
             $table->boolean('deleted')->default(false);
             $table->timestamps();
-
             $table->foreign('id_hoc_phi')->references('id')->on('hoc_phi');
             $table->foreign('nguoiThu')->references('id')->on('nhan_vien');
         });

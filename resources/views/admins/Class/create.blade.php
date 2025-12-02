@@ -6,8 +6,9 @@
         <!-- Tên lớp -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="tenLop">Tên lớp</label>
-            <input type="text" value="{{old('tenLop')}}"
-            name="tenLop" id="tenLop" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400" placeholder="Nhập tên lớp">
+            <input type="text" value="{{old('tenLop')}}" name="tenLop" id="tenLop"
+             class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
+             placeholder="Nhập tên lớp">
             @error('tenLop')
                 <p class="text-red-500">{{$message}}</p>
             @enderror

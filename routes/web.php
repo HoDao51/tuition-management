@@ -1,16 +1,6 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\NhanVienController;
-use App\Http\Controllers\Admin\SinhVienController;
-use App\Http\Controllers\Admin\KhoaController;
-use App\Http\Controllers\Admin\LopController;
-use App\Http\Controllers\Admin\NamHocController;
-use App\Http\Controllers\Admin\HocKyController;
-use App\Http\Controllers\Admin\HocPhiController;
-use App\Http\Controllers\Admin\BienLaiController;
-use App\Http\Controllers\Admin\ThongTinCaNhan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

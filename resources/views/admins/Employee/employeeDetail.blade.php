@@ -29,11 +29,11 @@
           <tr class="border-b border-[#D4D4D4]">
             <td class="px-3 py-2 font-semibold border border-[#D4D4D4]">Chức vụ:</td>
             <td class="px-3 py-2 ">
-                @if ($nhanVien->chucVu == 0)
-                    Quản trị viên
-                @else
-                    Tài vụ
-                @endif
+              @if ($nhanVien->chucVu == 0)
+                  Quản trị viên
+              @else
+                  Tài vụ
+              @endif
             </td>
           </tr>
           <tr class="border-b border-[#D4D4D4]">
@@ -90,35 +90,35 @@
           </button>
         @else
             @if ($nhanVien->tinhTrang == 0)
-                <form action="{{ route('nhanVien.destroy', $nhanVien->id) }}" method="POST" class="inline-block mt-3">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"
-                        onclick="
-                            if (confirm('Bạn có chắc muốn vô hiệu hóa tài khoản này không?')) {
-                                showLoader();
-                            } else {
-                                return false;
-                            }"
-                        class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
-                        Vô hiệu hóa
-                    </button>
-                </form>
+              <form action="{{ route('nhanVien.destroy', $nhanVien->id) }}" method="POST" class="inline-block mt-3">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit"
+                      onclick="
+                        if (confirm('Bạn có chắc muốn vô hiệu hóa tài khoản này không?')) {
+                            showLoader();
+                        } else {
+                            return false;
+                        }"
+                      class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
+                      Vô hiệu hóa
+                  </button>
+              </form>
             @else
-                <form action="{{ route('restore', $nhanVien->id) }}" method="POST" class="inline-block mt-3">
-                    @csrf
-                    @method('POST')
-                    <button type="submit"
-                        onclick="
-                            if (confirm('Bạn có chắc muốn khôi phục tài khoản này không?')) {
-                                showLoader();
-                            } else {
-                                return false;
-                            }"
-                        class="bg-[#F97316] text-white text-[16px] font-semibold px-[18px] py-2 rounded-md hover:bg-[#C55E17]">
-                        Kích hoạt
-                    </button>
-                </form>
+              <form action="{{ route('restore', $nhanVien->id) }}" method="POST" class="inline-block mt-3">
+                  @csrf
+                  @method('POST')
+                  <button type="submit"
+                      onclick="
+                        if (confirm('Bạn có chắc muốn khôi phục tài khoản này không?')) {
+                            showLoader();
+                        } else {
+                            return false;
+                        }"
+                      class="bg-[#F97316] text-white text-[16px] font-semibold px-[18px] py-2 rounded-md hover:bg-[#C55E17]">
+                      Kích hoạt
+                  </button>
+              </form>
             @endif
           @endif
       </div>

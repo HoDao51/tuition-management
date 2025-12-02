@@ -19,7 +19,6 @@ class SinhVienSeeder extends Seeder
 
             $name = $faker->name;
 
-            // Tạo user trước
             $userId = DB::table('users')->insertGetId([
                 'name'       => $name,
                 'email'      => "sinhvien{$i}@gmail.com",
@@ -28,7 +27,6 @@ class SinhVienSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ]);
 
-            // Tạo sinh viên
             DB::table('sinh_vien')->insert([
                 'ma_sv'        => 'SV' . str_pad($i, 3, '0', STR_PAD_LEFT),
                 'hoTen'        => $name,

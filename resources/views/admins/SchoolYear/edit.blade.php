@@ -4,7 +4,6 @@
     <form action="{{ route('namHoc.update', $namHoc->id) }}" method="POST" enctype="multipart/form-data" class="space-y-3">
         @csrf
         @method('PUT')
-
         <!-- Mã năm học -->
         <div>
             <label for="id" class="block text-lg text-[#4B5563] mb-1">Mã năm học:</label>

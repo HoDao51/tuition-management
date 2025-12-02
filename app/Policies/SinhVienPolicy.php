@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\sinhVien;
+use App\Models\Admin\sinhVien;
 use Illuminate\Auth\Access\Response;
 
 class SinhVienPolicy
