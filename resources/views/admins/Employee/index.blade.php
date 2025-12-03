@@ -58,13 +58,13 @@
                 </button>
               </a>
             </td>
-            <td class="px-4 py-2 border text-[17px]">
+            <td class="px-4 py-1 border text-[17px]">
               @if(($item->tinhTrang) == 0)
-              <div class="text-green-600 font-medium text-center">
+              <div class="text-green-500 py-1 border border-green-400 rounded-full font-medium text-center">
                   Đang hoạt động
               </div>
               @else
-              <div class="text-red-600 font-medium text-center">
+              <div class="text-red-500 py-1 border border-red-400 rounded-full font-medium text-center">
                   Ngưng hoạt động
               </div>
               @endif

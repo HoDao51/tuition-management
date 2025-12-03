@@ -203,17 +203,17 @@
           role="menu" aria-orientation="vertical" aria-labelledby="profileBtn"
           >
         @if (auth()->user()->role == 0 || auth()->user()->role == 1)
-          <a href="{{route('thongTinCaNhan.index')}}" class="block px-6 py-3 text-blue-600 hover:bg-gray-100 rounded-lg" role="menuitem">
+          <a href="{{route('thongTinCaNhan.index')}}" class="block px-6 py-2 text-blue-600 hover:bg-gray-100 rounded-lg mb-2" role="menuitem">
             Thông tin cá nhân
           </a>
         @else
-          <a href="{{route('students.thongTinCaNhan.index')}}" class="block px-6 py-3 text-blue-600 hover:bg-gray-100 rounded-lg" role="menuitem">
+          <a href="{{route('students.thongTinCaNhan.index')}}" class="block px-6 py-2 text-blue-600 hover:bg-gray-100 rounded-lg" role="menuitem">
             Thông tin cá nhân
           </a>
         @endif
         
-        <hr class="border-gray-200 my-0 mx-2" />
-        <a href="{{route('logout')}}" class="block px-6 py-3 text-gray-600 hover:bg-gray-100 rounded-lg" role="menuitem">
+        <hr class="border-gray-200 my-0 mx-2">
+        <a href="{{route('logout')}}" class="block px-6 py-2 text-gray-600 hover:bg-gray-100 rounded-lg mt-2" role="menuitem">
           Đăng xuất
         </a>
       </div>

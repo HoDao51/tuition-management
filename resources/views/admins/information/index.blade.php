@@ -3,7 +3,7 @@
   <div class="w-full bg-white inline-flex">
     <!-- Khung ảnh đại diện -->
     <div class="flex flex-col items-center space-y-3 p-4 pt-6">
-      <div class="w-60 h-80 bg-gray-300 flex flex-col items-center justify-center space-y-6 border border-[#c5c5c5]">
+      <div class="w-40 h-60 bg-gray-300 flex flex-col items-center justify-center space-y-6 border border-[#c5c5c5]">
         @if(Auth::user()->nhanVien->anhDaiDien == null)
             <img src="{{ asset('images/sbcf-default-avatar.png') }}" alt="Ảnh đại diện" class="w-full h-full object-cover">
         @else

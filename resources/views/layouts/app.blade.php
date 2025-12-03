@@ -28,8 +28,8 @@
         </main>
     </div>
     <!-- FOOTER -->
-    <footer class="hidden lg:block footer-left font-semibold text-gray-500 uppercase py-4 ml-[250px] border-t mt-5 mr-6">
-        <p class="flex w-full text-[17px] justify-between hover:text-gray-700">
+    <footer class="hidden lg:block footer-left font-semibold text-gray-500 uppercase py-4 ml-[250px] border-t mt-6 mr-6">
+        <p class="flex w-full text-[15px] justify-between hover:text-gray-700">
             Cao đẳng điện lực hoàng gia Scambodia - RSCEP
         </p>
     </footer>
