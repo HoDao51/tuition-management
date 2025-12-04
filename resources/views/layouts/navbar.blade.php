@@ -220,5 +220,6 @@
     </div>
     @endauth
 </header>
-</body>
+<!-- script menu lựa chọn -->
 @vite('resources/js/profile_dropdown.js')
+</body>

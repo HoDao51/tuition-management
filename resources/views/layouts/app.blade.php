@@ -14,10 +14,12 @@
         <div class="animate-spin rounded-full h-16 w-16 border-8 border-gray-200 border-t-[#ff8e3c]">
         </div>
     </div>
-    <!-- navbar -->
+
+    <!-- header -->
     <div class="sticky top-0 z-50">
         @include('layouts.navbar')
     </div>
+
     <!-- main -->
     <div class="flex flex-1 w-full">
         <div class="fixed top-16 left-0 h-screen z-40 hidden md:block">
@@ -27,12 +29,13 @@
             @yield('content')
         </main>
     </div>
+
     <!-- FOOTER -->
     <footer class="hidden lg:block footer-left font-semibold text-gray-500 uppercase py-4 ml-[250px] border-t mt-6 mr-6">
-        <p class="flex w-full text-[15px] justify-between hover:text-gray-700">
-            Cao đẳng điện lực hoàng gia Scambodia - RSCEP
-        </p>
+        @include('layouts.footer')
     </footer>
+
+    <!-- loader script -->
     @vite('resources/js/showloader.js')
 </body>
 </html>
