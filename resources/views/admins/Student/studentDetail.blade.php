@@ -64,11 +64,11 @@
 
           <tr>
             <td class="px-3 py-2 font-semibold border border-[#D4D4D4]">Tình trạng:</td>
-            <td >
+            <td class="px-2 py-1">
               @if ($sinhVien->tinhTrang == 0)
-                <span class="px-3 py-2 text-green-600 font-semibold">Đang học</span>
+                <span class="px-2 text-blue-500 border border-blue-500 rounded-full font-semibold">Đang học</span>
               @else
-                <span class="px-3 py-2 text-red-600 font-semibold">Đã nghỉ học</span>
+                <span class="px-2 text-red-600 border border-red-500 rounded-full font-semibold">Đã nghỉ học</span>
               @endif
           </td>
           </tr>

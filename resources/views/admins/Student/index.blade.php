@@ -54,9 +54,9 @@
             </td>
             <td class="px-4 py-2 border text-[17px] text-center">
               @if ($item->tinhTrang == 0)
-                <span class="text-green-600 font-semibold">Đang học</span>
+                <span class="px-2 text-blue-500 border border-blue-500 rounded-full font-semibold">Đang học</span>
               @else
-                <span class="text-red-600 font-semibold">Đã nghỉ học</span>
+                <span class="px-2 text-red-600 border border-red-400 rounded-full font-semibold">Đã nghỉ học</span>
               @endif
             </td>
             <td class="px-2 py-2 border text-center ">
