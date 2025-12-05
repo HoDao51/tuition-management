@@ -10,8 +10,8 @@
             <img src="{{ asset('storage/'.Auth::user()->nhanVien->anhDaiDien) }}" alt="Ảnh đại diện" class="w-full h-full object-cover">
         @endif
       </div>
-      <div class="text-center text-[#4B5563] text-[18px]">
-        <p class="font-semibold">{{ Auth::user()->name }}</p>
+      <div class="text-center text-[#1f2937]">
+        <p class="font-semibold text-[18px]">{{ Auth::user()->name }}</p>
         <p>{{ Auth::user()->nhanVien->soDienThoai }}</p>
         <p>{{ Auth::user()->email }}</p>
       </div>
@@ -19,8 +19,11 @@
 
     <!-- Thông tin người dùng -->
     <div class="flex-1 pt-3">
-      <h2 class="text-[#4B5563] text-[28px] font-semibold">Thông tin cơ bản</h2>
-      <table class="table-auto w-2/3 border border-[#D4D4D4] text-[#4B5563]">
+      <div class="flex items-center space-x-4 w-2/3">
+          <h2 class="my-2 text-xl divider divider-start font-semibold text-blue-500">Thông tin cơ bản</h2>
+          <div class="flex-1 h-[2px] bg-blue-200"></div>
+      </div>
+      <table class="table-auto w-2/3 border border-[#D4D4D4] text-[#1f2937]">
         <tbody>
           <tr class="border-b border-[#D4D4D4]">
             <td class="px-3 py-2 font-semibold w-36 border border-[#D4D4D4]">Mã nhân viên:</td>

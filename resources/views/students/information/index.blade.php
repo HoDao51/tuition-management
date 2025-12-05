@@ -3,14 +3,14 @@
   <div class="w-full bg-white inline-flex">
     <!-- Khung ảnh đại diện -->
     <div class="flex flex-col items-center space-y-3 p-4 pt-6">
-      <div class="w-60 h-80 bg-gray-300 flex flex-col items-center justify-center space-y-6 border border-[#c5c5c5]">
+      <div class="w-40 h-60 bg-gray-300 flex flex-col items-center justify-center space-y-6 border border-[#c5c5c5]">
         @if(Auth::user()->sinhVien->anhDaiDien == null)
             <img src="{{ asset('images/sbcf-default-avatar.png') }}" alt="Ảnh đại diện" class="w-full h-full object-cover">
         @else
             <img src="{{ asset('storage/'.Auth::user()->sinhVien->anhDaiDien) }}" alt="Ảnh đại diện" class="w-full h-full object-cover">
         @endif
       </div>
-      <div class="text-center text-[#4B5563] text-[18px]">
+      <div class="text-center text-[#1f2937] text-[18px]">
         <p class="font-semibold">{{ Auth::user()->name }}</p>
         <p>{{ Auth::user()->sinhVien->soDienThoai }}</p>
         <p>{{ Auth::user()->email }}</p>
@@ -19,8 +19,11 @@
 
     <!-- Thông tin người dùng -->
     <div class="flex-1 pt-3">
-      <h2 class="text-[#4B5563] text-[28px] font-semibold">Thông tin cơ bản</h2>
-      <table class="table-auto w-2/3 border border-[#D4D4D4] text-[#4B5563]">
+      <div class="flex items-center space-x-4 w-2/3">
+          <h2 class="my-2 text-xl divider divider-start font-semibold text-blue-500">Thông tin cơ bản</h2>
+          <div class="flex-1 h-[2px] bg-blue-200"></div>
+      </div>
+      <table class="table-auto w-2/3 border border-[#D4D4D4] text-[#1f2937]">
         <tbody>
           <tr class="border-b border-[#D4D4D4]">
             <td class="px-3 py-2 font-semibold w-36 border border-[#D4D4D4]">Mã sinh viên:</td>
@@ -64,11 +67,11 @@
 
           <tr>
             <td class="px-3 py-2 font-semibold border border-[#D4D4D4]">Tình trạng:</td>
-            <td >
+            <td class="px-2 py-1">
               @if (Auth::user()->sinhVien->tinhTrang == 0)
-                <span class="px-3 py-2 text-green-600 font-semibold">Đang học</span>
+                <span class="px-2 text-blue-500 border border-blue-500 rounded-full font-semibold">Đang học</span>
               @else
-                <span class="px-3 py-2 text-red-600 font-semibold">Đã nghỉ học</span>
+                <span class="px-2 text-red-500 border border-red-500 rounded-full font-semibold">Đã nghỉ học</span>
               @endif
           </td>
           </tr>

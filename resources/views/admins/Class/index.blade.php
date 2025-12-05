@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
   <div class="mx-auto">
-    <div class="">
+    <div class="flex justify-between">
       <form method="GET" action="{{ route('lop.index') }}" class="flex items-center space-x-2 mb-4">
         <!-- Thanh tìm kiếm -->
-        <div class="relative w-1/3">
+        <div class="relative w-[400px]">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
             <path fill="currentColor" fill-rule="evenodd" d="M18.319 14.433A8.001 8.001 0 0 0 6.343 3.868a8 8 0 0 0 10.564 11.976l.043.045l4.242 4.243a1 1 0 1 0 1.415-1.415l-4.243-4.242zm-2.076-9.15a6 6 0 1 1-8.485 8.485a6 6 0 0 1 8.485-8.485" clip-rule="evenodd"/>
           </svg>
@@ -17,8 +17,11 @@
       </form>
       <div class="flex items-center space-x-2 mb-1">
         <a href="{{ route('lop.create') }}">
-          <button type="button" onclick="showLoader()" class="bg-[#4B5563] text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">
-              Thêm lớp
+          <button type="button" onclick="showLoader()" class="bg-[#4B5563] text-white px-6 py-2 font-semibold rounded hover:bg-gray-700 transition flex">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-1" fill="#222C3A" viewBox="0 0 32 32">
+              <path fill="currentColor" d="M16 3C8.832 3 3 8.832 3 16s5.832 13 13 13s13-5.832 13-13S23.168 3 16 3m0 2c6.087 0 11 4.913 11 11s-4.913 11-11 11S5 22.087 5 16S9.913 5 16 5m-1 5v5h-5v2h5v5h2v-5h5v-2h-5v-5z"/>
+            </svg>
+            Thêm lớp
           </button>
         </a>
       </div>
