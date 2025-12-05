@@ -63,12 +63,12 @@
         <!-- Nút -->
         <div class="flex space-x-3 pt-4 mb-4"">
             <a href="{{ route('hocPhi.index') }}" onclick="showLoader()"
-                class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition text-[18px]">
+                class="bg-[#828282] text-white px-4 py-2 rounded hover:bg-[#595959] text-[16px] font-semibold">
                 Quay lại
             </a>
 
             <button type="submit" onclick="showLoader()"
-                class="bg-[#10B981] text-white px-4 py-2 rounded-md hover:bg-[#1D8F6A] transition text-[18px]">
+                class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] text-[16px] font-semibold">
                 Cập nhật
             </button>
         </div>

@@ -8,10 +8,10 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
               <path fill="currentColor" fill-rule="evenodd" d="M18.319 14.433A8.001 8.001 0 0 0 6.343 3.868a8 8 0 0 0 10.564 11.976l.043.045l4.242 4.243a1 1 0 1 0 1.415-1.415l-4.243-4.242zm-2.076-9.15a6 6 0 1 1-8.485 8.485a6 6 0 0 1 8.485-8.485" clip-rule="evenodd"/>
             </svg>
-            <input type="text" name="search" value="{{ $search }}" placeholder="Nhập từ khóa..." class="bg-[#F2F2F2] pl-10 pr-3 py-2 rounded-md w-full focus:outline-none focus:ring-1 focus:ring-gray-300">
+            <input type="text" name="search" value="{{ $search }}" placeholder="Nhập từ khóa..." class="bg-[#F2F2F2] pl-10 pr-3 py-2 rounded w-full focus:outline-none focus:ring-1 focus:ring-gray-300">
         </div>
         <!-- Nút tìm kiếm -->
-        <button type="submit" class="bg-[#D9D9D9] text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400 transition">
+        <button type="submit" class="bg-[#D9D9D9] text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition">
             Tìm kiếm
         </button>
       </form>
@@ -56,7 +56,7 @@
             </td>
             <td class="px-4 py-2 border text-center">
               <a href="{{ route('nhanVien.show', $item->id) }}">
-                <button type="button" onclick="showLoader()" class="bg-blue-600 text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-blue-700">
+                <button type="button" onclick="showLoader()" class="bg-blue-600 text-white text-[16px] font-semibold px-3 py-2 rounded hover:bg-blue-700">
                   Xem thêm
                 </button>
               </a>
@@ -75,19 +75,19 @@
             <td class="px-2 py-2 border text-center">
               @if ($item->tinhTrang == 0)
                 <a href="{{ route('nhanVien.edit', $item->id) }}">
-                  <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
+                  <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white text-[16px] font-semibold px-3 py-2 rounded hover:bg-[#1D8F6A]">
                     Sửa
                   </button>
                 </a>
               @else
-                <button type="button"class="bg-[#10B981] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-[#1D8F6A]">
+                <button type="button"class="bg-[#10B981] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded hover:bg-[#1D8F6A]">
                   Sửa
                 </button>
               @endif
 
                 @if (auth()->user()->id == $item->user_id)
                     <button 
-                        class="bg-[#DC2626] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded-md ml-2 mt-3 mb-3">
+                        class="bg-[#DC2626] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded ml-2 mt-3 mb-3">
                         Khóa
                     </button>
                 @else
@@ -102,7 +102,7 @@
                                 } else {
                                     return false;
                                 }"
-                            class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
+                            class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded hover:bg-red-800 ml-2">
                             Khóa
                         </button>
                     </form>
@@ -117,7 +117,7 @@
                                 } else {
                                     return false;
                                 }"
-                            class="bg-[#F97316] text-white text-[16px] font-semibold px-[18px] py-2 rounded-md hover:bg-[#C55E17] ml-2">
+                            class="bg-[#F97316] text-white text-[16px] font-semibold px-[18px] py-2 rounded hover:bg-[#C55E17] ml-2">
                             Mở
                         </button>
                     </form>

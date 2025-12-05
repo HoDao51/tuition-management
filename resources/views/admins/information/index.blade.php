@@ -69,13 +69,13 @@
       <!-- Nút chức năng -->
       <div class="mt-5 space-x-3">
         <a href="{{ route('admins.index') }}">
-          <button type="button" onclick="showLoader()" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
+          <button type="button" onclick="showLoader()" class="bg-[#828282] text-white px-4 py-2 rounded hover:bg-[#595959] text-[16px] font-semibold">
             Quay lại
           </button>
         </a>
         @if (auth()->user()->role == 0)
           <a href="{{ route('thongTinCaNhan.edit') }}">
-            <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
+            <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] text-[16px] font-semibold">
               Chỉnh sửa
             </button>
           </a>

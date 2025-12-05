@@ -69,26 +69,26 @@
       <!-- Nút chức năng -->
       <div class="mt-5 space-x-2">
         <a href="{{ route('nhanVien.index') }}">
-          <button type="button" onclick="showLoader()" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
+          <button type="button" onclick="showLoader()" class="bg-[#828282] text-white px-4 py-2 rounded hover:bg-[#595959] text-[16px] font-semibold">
             Quay lại
           </button>
         </a>
 
         @if ($nhanVien->tinhTrang == 0)
           <a href="{{route('nhanVien.edit', $nhanVien->id)}}">
-            <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
+            <button type="button" onclick="showLoader()" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] text-[16px] font-semibold">
               Chỉnh sửa
             </button>
           </a>
         @else
-            <button type="button" class="bg-[#10B981] cursor-not-allowed text-white px-4 py-2 rounded hover:bg-[#1D8F6A] transition">
+            <button type="button" class="bg-[#10B981] text-white px-4 py-2 rounded hover:bg-[#1D8F6A] text-[16px] font-semibold">
               Chỉnh sửa
             </button>
         @endif
         
         @if (auth()->user()->id == $nhanVien->user_id)
           <button 
-              class="bg-[#DC2626] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded-md ml-2 mt-3 mb-3">
+              class="bg-[#DC2626] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded ml-2 mt-3 mb-3">
               Vô hiệu hóa
           </button>
         @else
