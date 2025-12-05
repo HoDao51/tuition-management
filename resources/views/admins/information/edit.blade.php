@@ -15,7 +15,8 @@
         <div>
             <label for="hoTen" class="block text-lg text-[#4B5563] mb-1">Họ tên</label>
             <input type="text" name="hoTen" id="hoTen" value="{{ old('hoTen', Auth::user()->nhanVien->hoTen) }}" 
-                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+            placeholder="Nhập tên"    
+            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
             @error('hoTen')
                 <p class="text-red-500">{{$message}}</p>
             @enderror
@@ -32,26 +33,44 @@
         </div>
 
         <!-- Giới tính -->
-        <div>
+        <div class="mb-4">
             <label for="gioiTinh" class="block text-lg text-[#4B5563] mb-1">Giới tính</label>
-            <select name="gioiTinh" id="gioiTinh" 
-                class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
-                <option value="0" {{ Auth::user()->nhanVien->gioiTinh == 0 ? 'selected' : '' }}>Nam</option>
-                <option value="1" {{ Auth::user()->nhanVien->gioiTinh == 1 ? 'selected' : '' }}>Nữ</option>
-            </select>
+            <div class="relative">
+                <select name="gioiTinh" id="gioiTinh" 
+                    class="appearance-none w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
+                    <option value="" disabled>Chọn giới tính</option>
+                    <option value="0" {{ Auth::user()->nhanVien->gioiTinh == 0 ? 'selected' : '' }}>Nam</option>
+                    <option value="1" {{ Auth::user()->nhanVien->gioiTinh == 1 ? 'selected' : '' }}>Nữ</option>
+                </select>
+                <!-- icon mũi tên -->
+                <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 16 16">
+                        <path fill="currentColor" d="M13.069 5.157L8.384 9.768a.546.546 0 0 1-.768 0L2.93 5.158a.55.55 0 0 0-.771 0a.53.53 0 0 0 0 .759l4.684 4.61a1.65 1.65 0 0 0 2.312 0l4.684-4.61a.53.53 0 0 0 0-.76a.55.55 0 0 0-.771 0"/>
+                    </svg>
+                </div>
+            </div>
             @error('gioiTinh')
                 <p class="text-red-500">{{$message}}</p>
             @enderror
         </div>
 
         <!-- Chức vụ -->
-        <div>
+        <div class="mb-4">
             <label for="chucVu" class="block text-lg text-[#4B5563] mb-1">Chức vụ</label>
-            <select name="chucVu" id="chucVu" 
-                class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
-                <option value="0" {{ Auth::user()->nhanVien->chucVu == 0 ? 'selected' : '' }}>Quản trị viên</option>
-                <option value="1" {{ Auth::user()->nhanVien->chucVu == 1 ? 'selected' : '' }}>Tài vụ</option>
-            </select>
+            <div class="relative">
+                <select name="chucVu" id="chucVu" 
+                    class="appearance-none w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-green-400">
+                    <option value="" disabled>Chọn chức vụ</option>
+                    <option value="0" {{ Auth::user()->nhanVien->chucVu == 0 ? 'selected' : '' }}>Quản trị viên</option>
+                    <option value="1" {{ Auth::user()->nhanVien->chucVu == 1 ? 'selected' : '' }}>Tài vụ</option>
+                </select>
+                <!-- icon mũi tên -->
+                <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 16 16">
+                        <path fill="currentColor" d="M13.069 5.157L8.384 9.768a.546.546 0 0 1-.768 0L2.93 5.158a.55.55 0 0 0-.771 0a.53.53 0 0 0 0 .759l4.684 4.61a1.65 1.65 0 0 0 2.312 0l4.684-4.61a.53.53 0 0 0 0-.76a.55.55 0 0 0-.771 0"/>
+                    </svg>
+                </div>
+            </div>
             @error('chucVu')
                 <p class="text-red-500">{{$message}}</p>
             @enderror
