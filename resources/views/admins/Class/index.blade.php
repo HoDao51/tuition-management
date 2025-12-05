@@ -2,7 +2,7 @@
 @section('content')
   <div class="mx-auto">
     <div class="flex justify-between">
-      <form method="GET" action="{{ route('lop.index') }}" class="flex items-center space-x-2 mb-4">
+      <form method="GET" action="{{ route('lop.index') }}" class="flex items-center space-x-2 mb-2">
         <!-- Thanh tìm kiếm -->
         <div class="relative w-[400px]">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -15,7 +15,7 @@
           Tìm kiếm
         </button>
       </form>
-      <div class="flex items-center space-x-2 mb-1">
+      <div class="flex items-center space-x-2 mb-2">
         <a href="{{ route('lop.create') }}">
           <button type="button" onclick="showLoader()" class="bg-[#4B5563] text-white px-6 py-2 font-semibold rounded hover:bg-gray-700 transition flex">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-1" fill="#222C3A" viewBox="0 0 32 32">

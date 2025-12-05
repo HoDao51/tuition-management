@@ -10,10 +10,7 @@
 </head>
 <body class="min-h-screen flex flex-col">
     <!-- loader -->
-    <div id="page-loader" class="hidden fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center z-50">
-        <div class="animate-spin rounded-full h-16 w-16 border-8 border-gray-200 border-t-[#ff8e3c]">
-        </div>
-    </div>
+    @include('layouts.loader')
 
     <!-- header -->
     <div class="sticky top-0 z-50">
@@ -31,11 +28,8 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="hidden lg:block footer-left font-semibold text-gray-500 uppercase py-4 ml-[250px] border-t mt-6 mr-6">
+    <footer class="hidden lg:block font-semibold text-gray-500 uppercase py-4 ml-[250px] border-t mt-6 mr-6">
         @include('layouts.footer')
     </footer>
-
-    <!-- loader script -->
-    @vite('resources/js/showloader.js')
 </body>
 </html>

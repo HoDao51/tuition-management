@@ -9,9 +9,7 @@
 </head>
 <body class="flex items-center justify-center min-h-screen bg-[#eff0f3]">
   <!-- loader-->
-  <div id="page-loader" class="fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center z-50">
-    <div class="animate-spin rounded-full h-16 w-16 border-8 border-gray-200 border-t-[#ff8e3c]"></div>
-  </div>
+  @include('layouts.loader')
   
   <div class="w-full sm:max-w-xl px-6 ">
     <div class="text-center flex flex-col items-center">
@@ -69,6 +67,5 @@
       </form>
     </div>
   </div>
-  @vite('resources/js/showLoader.js')
 </body>
 </html>
