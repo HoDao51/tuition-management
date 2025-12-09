@@ -16,11 +16,11 @@ class LopSeeder extends Seeder
     {
         DB::table('lop')->insert([
             [
-                'tenLop' => 'TH18K36',
+                'tenLop' => 'NLM01K36',
                 'id_khoa' => 1,
             ],
             [
-                'tenLop' => 'ND18K36',
+                'tenLop' => 'KTD01K36',
                 'id_khoa' => 2,
             ],
         ]);
