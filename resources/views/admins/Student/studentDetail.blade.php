@@ -71,7 +71,7 @@
               @if ($sinhVien->tinhTrang == 0)
                 <span class="px-2 text-blue-500 border border-blue-500 rounded-full font-semibold">Đang học</span>
               @else
-                <span class="px-2 text-red-600 border border-red-500 rounded-full font-semibold">Đã nghỉ học</span>
+                <span class="px-2 text-red-500 border border-red-500 rounded-full font-semibold">Đã nghỉ học</span>
               @endif
           </td>
           </tr>
