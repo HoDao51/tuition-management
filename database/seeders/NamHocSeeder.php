@@ -16,8 +16,8 @@ class NamHocSeeder extends Seeder
     {
         DB::table('nam_hoc')->insert([
             'tenNamHoc' => '2024-2027',
-            'ngayBatDau' => '2024-11-02',
-            'ngayKetThuc' => '2027-11-02',
+            'ngayBatDau' => '2024-9-02',
+            'ngayKetThuc' => '2027-9-10',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

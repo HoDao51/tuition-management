@@ -92,18 +92,6 @@
         </a>
       @endif
 
-      @if (auth()->user()->role == 0)
-        <!-- Quản lý học kỳ -->
-        <a href="{{ route('hocKy.index') }}" onclick="showLoader()"
-        class="flex items-center space-x-2 text-gray-700 px-3 py-2 rounded-md hover:bg-[#D9D9D9]
-        {{ request()->routeIs('hocKy.*') ? 'bg-[#D9D9D9] font-semibold' : 'text-gray-700 hover:bg-[#D9D9D9]' }}">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#222C3A" viewBox="2 0 23 23" stroke="currentColor" stroke-width="0">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm8 8v4m-2-2h4M4 8h16m-4-5v2M8 3v2" stroke-width="1"/>
-          </svg>
-          <span>Quản lý học kỳ</span>
-        </a>
-      @endif
-
       <!-- Quản lý học phí -->
       @if (auth()->user()->role == 0 || auth()->user()->role == 1)
         <a href="{{ route('hocPhi.index') }}" onclick="showLoader()"
