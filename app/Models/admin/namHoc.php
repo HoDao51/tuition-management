@@ -61,21 +61,40 @@ class namHoc extends Model
      * AUTO-GENERATE 6 SEMESTERS (HỌC KỲ) WHEN NAM HOC CREATED
      */
     protected static function booted()
-    {
-        static::created(function ($namHoc) {
+{
+    static::created(function ($namHoc) {
 
-            $start = Carbon::parse($namHoc->getRawNgayBatDau());
+        $start = Carbon::parse($namHoc->getRawNgayBatDau());
+        $end   = Carbon::parse($namHoc->getRawNgayKetThuc());
 
-            // Tạo 6 học kỳ — mỗi học kỳ dài 5 tháng
-            for ($i = 1; $i <= 6; $i++) {
+        $currentStart = $start;
+        $hocKyIndex = 1;
 
-                $hkStart = $start->copy()->addMonths(($i - 1) * 5);
-                $hkEnd   = $hkStart->copy()->addMonths(5)->subDay();
+        // Mỗi học kỳ = 6 tháng
+        while (true) {
 
-                $namHoc->hocKy()->create([
-                    'tenHocKy'     => "Học kỳ $i",
-                ]);
+            $hkStart = $currentStart->copy();
+            $hkEnd   = $hkStart->copy()->addMonths(6);
+
+            // Nếu ngày bắt đầu HK > ngày kết thúc năm học -> dừng
+            if ($hkStart->greaterThanOrEqualTo($end)) {
+                break;
             }
-        });
-    }
+
+            // Nếu ngày kết thúc HK lớn hơn năm học -> giới hạn lại
+            if ($hkEnd->greaterThan($end)) {
+                $hkEnd = $end->copy();
+            }
+
+            // Tạo học kỳ
+            $namHoc->hocKy()->create([
+                'tenHocKy'    => "Học kỳ $hocKyIndex",
+            ]);
+
+            // Chuẩn bị cho học kỳ tiếp theo
+            $hocKyIndex++;
+            $currentStart = $hkEnd->copy()->addDay();
+        }
+    });
+}
 }
