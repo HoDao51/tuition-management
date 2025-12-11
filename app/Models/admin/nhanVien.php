@@ -26,6 +26,7 @@ class nhanVien extends Model
         'tinhTrang',
         'user_id'
     ];
+    
     public function getNgaySinhAttribute($value)
     {
         return Carbon::parse($value)->format('d-m-Y');
@@ -41,6 +42,6 @@ class nhanVien extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\nhanVien;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StorenhanVienRequest;
 use App\Http\Requests\UpdatenhanVienRequest;
 use Illuminate\Support\Facades\Redirect;
@@ -113,19 +114,23 @@ class NhanVienController extends Controller
      */
     public function update(UpdatenhanVienRequest $request, nhanVien $nhanVien)
     {
-        $user = $nhanVien->user;
-        if ($user) {
-            $user->update([
-                'name' => $request->hoTen,
-                'email' => $request->email,
-                'role' => $request->chucVu,
-            ]);
+        $role = null;
+        
+        if (Auth::user()->id == $nhanVien->user_id) {
+            $role = $nhanVien->chucVu;
+        } else {
+            $role = $request->chucVu;
         }
+
+        $nhanVien->user()->update([
+            'name'  => $request->hoTen,
+            'email' => $request->email,
+            'role' => $role
+        ]);
 
         $hoTen = $request->hoTen;
         $ngaySinh = $request->ngaySinh;
         $gioiTinh = $request->gioiTinh;
-        $chucVu = $request->chucVu;
         $email = $request->email;
         $soDienThoai = $request->soDienThoai;
 
@@ -142,7 +147,7 @@ class NhanVienController extends Controller
             'hoTen' => $hoTen,
             'ngaySinh' => $ngaySinh,
             'gioiTinh' => $gioiTinh,
-            'chucVu' => $chucVu,
+            'chucVu' => $role,
             'email' => $email,
             'soDienThoai' => $soDienThoai,
             'anhDaiDien' => $path
@@ -150,8 +155,6 @@ class NhanVienController extends Controller
 
         return redirect::route('nhanVien.index');
     }
-
-
     /**
      * Remove the specified resource from storage.
      */

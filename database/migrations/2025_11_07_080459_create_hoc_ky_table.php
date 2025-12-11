@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('tenHocKy', 50);
             $table->unsignedBigInteger('id_nam_hoc');
-            $table->boolean('deleted')->default(false);
             $table->timestamps();
             $table->foreign('id_nam_hoc')->references('id')->on('nam_hoc');
         });

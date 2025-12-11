@@ -17,7 +17,6 @@ class HocKySeeder extends Seeder
             DB::table('hoc_ky')->insert([
                 'tenHocKy' => 'Học kỳ ' . $i,
                 'id_nam_hoc' => 1,
-                'deleted' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

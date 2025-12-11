@@ -26,7 +26,6 @@ class UpdatenhanVienRequest extends FormRequest
             'hoTen' => 'required|string',
             'ngaySinh' => 'required|date|before:' . now()->subYears(18)->toDateString(),
             'gioiTinh' => 'required|in:0,1',
-            'chucVu' => 'required|string',
             'soDienThoai' => 'required|regex:/^[0-9]{10}$/',
             // Email: unique nhưng bỏ qua user đang update
             'email' => [
@@ -44,7 +43,6 @@ class UpdatenhanVienRequest extends FormRequest
             'ngaySinh.required' => 'Vui lòng chọn ngày sinh.',
             'ngaySinh.before' => 'Nhân viên phải từ 18 tuổi trở lên.',
             'gioiTinh.required' => 'Vui lòng chọn giới tính.',
-            'chucVu.required' => 'Vui lòng chọn chức vụ.',
             'soDienThoai.required' => 'Vui lòng nhập số điện thoại.',
             'soDienThoai.regex' => 'Số điện thoại không hợp lệ. Vui lòng nhập 10 chữ số.',
             'email.required' => 'Vui lòng nhập email.',

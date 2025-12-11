@@ -42,27 +42,34 @@ class NamHocController extends Controller
      */
     public function store(StorenamHocRequest $request)
     {
-        $tenNamHoc = $request->tenNamHoc;
         $ngayBatDau = $request->ngayBatDau;
         $ngayKetThuc = $request->ngayKetThuc;
+
+        // Tự động tạo tên năm học
+        $startYear = \Carbon\Carbon::parse($ngayBatDau)->year;
+        $endYear   = \Carbon\Carbon::parse($ngayKetThuc)->year;
+        $tenNamHoc = $startYear . ' - ' . $endYear;
+
         // Kiểm tra trùng lặp
         $existingNamHoc = namHoc::where('tenNamHoc', $tenNamHoc)
-                            ->where('deleted', false)  
+                            ->where('deleted', false)
                             ->first();
+
         if ($existingNamHoc) {
-            // Trả về với lỗi
-            return redirect()->back()->withErrors(['duplicate' => 'Năm học ' . $existingNamHoc->tenNamHoc . ' đã tồn tại!'])->withInput();
+            return redirect()->back()
+                ->withErrors(['duplicate' => 'Năm học ' . $existingNamHoc->tenNamHoc . ' đã tồn tại!'])
+                ->withInput();
         }
 
+        // Lưu vào DB
         $namHoc = namHoc::create([
-            'tenNamHoc' => $tenNamHoc,
-            'ngayBatDau' => $ngayBatDau,
-            'ngayKetThuc' => $ngayKetThuc
+            'tenNamHoc'    => $tenNamHoc,
+            'ngayBatDau'   => $ngayBatDau,
+            'ngayKetThuc'  => $ngayKetThuc
         ]);
 
         return Redirect::route('namHoc.index');
     }
-
     /**
      * Display the specified resource.
      */
@@ -84,19 +91,26 @@ class NamHocController extends Controller
      */
     public function update(UpdatenamHocRequest $request, namHoc $namHoc)
     {
-        $tenNamHoc = $request->tenNamHoc;
         $ngayBatDau = $request->ngayBatDau;
         $ngayKetThuc = $request->ngayKetThuc;
+
+        // Tự động tạo tên năm học
+        $startYear = \Carbon\Carbon::parse($ngayBatDau)->year;
+        $endYear   = \Carbon\Carbon::parse($ngayKetThuc)->year;
+        $tenNamHoc = $startYear . ' - ' . $endYear;
 
         // Kiểm tra trùng lặp
         $existingNamHoc = namHoc::where('tenNamHoc', $tenNamHoc)
                             ->where('deleted', false)
-                            ->where('id', '<>', $namHoc->id) 
+                            ->where('id', '<>', $namHoc->id)
                             ->first();
+
         if ($existingNamHoc) {
-            // Trả về với lỗi
-            return redirect()->back()->withErrors(['duplicate' => 'Năm học ' . $existingNamHoc->tenNamHoc . ' đã tồn tại!'])->withInput();
+            return redirect()->back()
+                ->withErrors(['duplicate' => 'Năm học ' . $existingNamHoc->tenNamHoc . ' đã tồn tại!'])
+                ->withInput();
         }
+
         $namHoc->update([
             'tenNamHoc' => $tenNamHoc,
             'ngayBatDau' => $ngayBatDau,

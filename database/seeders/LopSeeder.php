@@ -17,11 +17,11 @@ class LopSeeder extends Seeder
         DB::table('lop')->insert([
             [
                 'tenLop' => 'NLM01K36',
-                'id_khoa' => 1,
+                'id_khoa' => 2,
             ],
             [
                 'tenLop' => 'KTD01K36',
-                'id_khoa' => 2,
+                'id_khoa' => 1,
             ],
         ]);
     }

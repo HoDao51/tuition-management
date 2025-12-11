@@ -3,20 +3,9 @@
 <div class="max-w-md bg-white">
     <form action="{{ route('namHoc.store') }}" method="POST" enctype="multipart/form-data" class="space-y-3">
         @csrf
-        <!-- Tên năm học -->
-        <div>
-            <label class="block text-lg text-[#4B5563] mb-1" for="tenNamHoc">Tên năm học</label>
-            <input type="text" value="{{old('tenNamHoc')}}"
-            name="tenNamHoc" id="tenNamHoc" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400"
-                placeholder="Nhập tên năm học">
-            @error('tenNamHoc')
+        @error('duplicate')
                 <p class="text-red-500">{{$message}}</p>
-            @enderror
-            @error('duplicate')
-                <p class="text-red-500">{{$message}}</p>
-            @enderror
-        </div>
-
+        @enderror
         <!-- ngày bắt đầu -->
         <div>
             <label class="block text-lg text-[#4B5563] mb-1" for="ngayBatDau">Ngày bắt đầu</label>

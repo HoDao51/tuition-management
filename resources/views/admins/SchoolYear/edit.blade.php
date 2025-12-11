@@ -14,9 +14,16 @@
         <!-- tên Năm học -->
         <div>
             <label for="tenNamHoc" class="block text-lg text-[#4B5563] mb-1">Tên năm học</label>
-            <input type="text" name="tenNamHoc" id="tenNamHoc" value="{{ $namHoc->tenNamHoc }}"
+            <input type="text" name="tenNamHoc" id="tenNamHoc" value="{{ $namHoc->tenNamHoc }}" readonly
+                class="w-full border border-gray-300 bg-gray-100 cursor-not-allowed rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
+        </div>
+
+        <!-- Ngày bắt đầu -->
+        <div>
+            <label for="ngayBatDau" class="block text-lg text-[#4B5563] mb-1">Ngày bắt đầu</label>
+            <input type="date" name="ngayBatDau" id="ngayBatDau" value="{{ old('ngayBatDau', \Carbon\Carbon::parse($namHoc->getRawOriginal('ngayBatDau'))->format('Y-m-d')) }}"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
-            @error('tenNamHoc')
+            @error('ngayBatDau')
                 <p class="text-red-500">{{$message}}</p>
             @enderror
             @error('duplicate')
@@ -24,24 +31,17 @@
             @enderror
         </div>
 
-        <!-- Ngày bắt đầu -->
-        <div>
-            <label for="ngayBatDau" class="block text-lg text-[#4B5563] mb-1">Ngày bắt đầu</label>
-            <input type="date" name="ngayBatDau" id="ngayBatDau" value="{{ \Carbon\Carbon::parse($namHoc->getRawOriginal('ngayBatDau'))->format('Y-m-d') }}" required
-                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
-            @error('ngayBatDau')
-                <p class="text-red-500">{{$message}}</p>
-            @enderror
-        </div>
-
         <!-- Ngày Kết thúc -->
         <div>
             <label for="ngayKetThuc" class="block text-lg text-[#4B5563] mb-1">Ngày kết thúc</label>
-            <input type="date" name="ngayKetThuc" id="ngayKetThuc" value="{{ \Carbon\Carbon::parse($namHoc->getRawOriginal('ngayKetThuc'))->format('Y-m-d') }}" required
+            <input type="date" name="ngayKetThuc" id="ngayKetThuc" value="{{ old('ngayKetThuc', \Carbon\Carbon::parse($namHoc->getRawOriginal('ngayKetThuc'))->format('Y-m-d')) }}"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-400">
             @error('ngayKetThuc')
                 <p class="text-red-500">{{$message}}</p>
             @enderror 
+            @error('duplicate')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Nút submit -->

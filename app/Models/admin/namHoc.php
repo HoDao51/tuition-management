@@ -60,41 +60,51 @@ class namHoc extends Model
     /**
      * AUTO-GENERATE 6 SEMESTERS (HỌC KỲ) WHEN NAM HOC CREATED
      */
-    protected static function booted()
-{
-    static::created(function ($namHoc) {
+    public function regenerateHocKy()
+    {
+        // Xóa hết học kỳ cũ
+        $this->hocKy()->delete();
 
-        $start = Carbon::parse($namHoc->getRawNgayBatDau());
-        $end   = Carbon::parse($namHoc->getRawNgayKetThuc());
+        $start = Carbon::parse($this->getRawNgayBatDau());
+        $end   = Carbon::parse($this->getRawNgayKetThuc());
 
-        $currentStart = $start;
+        $currentStart = $start->copy();
         $hocKyIndex = 1;
 
-        // Mỗi học kỳ = 6 tháng
         while (true) {
+
+            // Nếu thời gian còn lại < 6 tháng thì dừng
+            if ($currentStart->diffInMonths($end, false) < 6) {
+                break;
+            }
 
             $hkStart = $currentStart->copy();
             $hkEnd   = $hkStart->copy()->addMonths(6);
 
-            // Nếu ngày bắt đầu HK > ngày kết thúc năm học -> dừng
-            if ($hkStart->greaterThanOrEqualTo($end)) {
-                break;
-            }
-
-            // Nếu ngày kết thúc HK lớn hơn năm học -> giới hạn lại
             if ($hkEnd->greaterThan($end)) {
                 $hkEnd = $end->copy();
             }
 
-            // Tạo học kỳ
-            $namHoc->hocKy()->create([
-                'tenHocKy'    => "Học kỳ $hocKyIndex",
+            $this->hocKy()->create([
+                'tenHocKy' => "Học kỳ $hocKyIndex",
             ]);
 
-            // Chuẩn bị cho học kỳ tiếp theo
             $hocKyIndex++;
-            $currentStart = $hkEnd->copy()->addDay();
+            $currentStart = $hkEnd->copy();
         }
-    });
-}
+    }
+
+    protected static function booted()
+    {
+        static::created(function ($namHoc) {
+            $namHoc->regenerateHocKy();
+        });
+
+        static::updated(function ($namHoc) {
+
+            if ($namHoc->wasChanged(['ngayBatDau', 'ngayKetThuc'])) {
+                $namHoc->regenerateHocKy();
+            }
+        });
+    }
 }
