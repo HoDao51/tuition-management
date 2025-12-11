@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_nam_hoc');
             $table->integer('tinhTrang')->default('0');
             $table->string('anhDaiDien')->nullable();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unique();
             $table->timestamps();
             $table->foreign('id_lop')->references('id')->on('lop');
             $table->foreign('id_nam_hoc')->references('id')->on('nam_hoc');

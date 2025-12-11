@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('soDienThoai', 20)->notnullable();
             $table->string('anhDaiDien')->nullable();
             $table->integer('tinhTrang')->default('0');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unique();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });
