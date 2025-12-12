@@ -29,7 +29,7 @@
             @error('duplicate')
                 <p class="text-red-500">{{$message}}</p>
             @enderror
-            @error('error')
+            @error('lock')
                 <p class="text-red-500">{{$message}}</p>
             @enderror
         </div>
@@ -45,7 +45,7 @@
             @error('duplicate')
                 <p class="text-red-500">{{$message}}</p>
             @enderror
-            @error('error')
+            @error('lock')
                 <p class="text-red-500">{{$message}}</p>
             @enderror
         </div>

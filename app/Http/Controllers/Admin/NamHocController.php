@@ -94,6 +94,25 @@ class NamHocController extends Controller
         $ngayBatDau = $request->ngayBatDau;
         $ngayKetThuc = $request->ngayKetThuc;
 
+        if (
+            $ngayBatDau == $namHoc->getRawNgayBatDau() &&
+            $ngayKetThuc == $namHoc->getRawNgayKetThuc()
+        ) {
+            return Redirect::route('namHoc.index');
+        }
+    
+        $hasHocPhi = $namHoc->hocKy()
+        ->whereHas('hocPhi', function ($q) {
+            $q->where('deleted', false);
+        })
+        ->exists();
+
+        if ($hasHocPhi) {
+            return redirect()->back()
+                ->withErrors(['lock' => 'Không thể sửa năm học vì học kỳ của năm học này đã có học phí.'])
+                ->withInput();
+        }
+
         // Tự động tạo tên năm học
         $startYear = \Carbon\Carbon::parse($ngayBatDau)->year;
         $endYear   = \Carbon\Carbon::parse($ngayKetThuc)->year;
@@ -109,15 +128,6 @@ class NamHocController extends Controller
             return redirect()->back()
                 ->withErrors(['duplicate' => 'Năm học ' . $existingNamHoc->tenNamHoc . ' đã tồn tại!'])
                 ->withInput();
-        }
-
-        if ($namHoc->hocKy()->whereHas('hocPhi', function ($q) {
-                $q->where('deleted', false);
-            })->exists()) {
-
-            return back()->withErrors([
-                'error' => 'Không thể thay đổi năm học vì học kỳ đã có học phí!'
-            ])->withInput();
         }
 
         $namHoc->update([
