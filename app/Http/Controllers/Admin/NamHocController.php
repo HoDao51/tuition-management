@@ -111,6 +111,15 @@ class NamHocController extends Controller
                 ->withInput();
         }
 
+        if ($namHoc->hocKy()->whereHas('hocPhi', function ($q) {
+                $q->where('deleted', false);
+            })->exists()) {
+
+            return back()->withErrors([
+                'error' => 'Không thể thay đổi năm học vì học kỳ đã có học phí!'
+            ])->withInput();
+        }
+
         $namHoc->update([
             'tenNamHoc' => $tenNamHoc,
             'ngayBatDau' => $ngayBatDau,

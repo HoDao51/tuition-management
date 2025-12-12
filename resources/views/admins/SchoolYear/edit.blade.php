@@ -29,6 +29,9 @@
             @error('duplicate')
                 <p class="text-red-500">{{$message}}</p>
             @enderror
+            @error('error')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- Ngày Kết thúc -->
@@ -40,6 +43,9 @@
                 <p class="text-red-500">{{$message}}</p>
             @enderror 
             @error('duplicate')
+                <p class="text-red-500">{{$message}}</p>
+            @enderror
+            @error('error')
                 <p class="text-red-500">{{$message}}</p>
             @enderror
         </div>

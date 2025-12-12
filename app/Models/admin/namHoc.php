@@ -62,7 +62,14 @@ class namHoc extends Model
      */
     public function regenerateHocKy()
     {
-        // Xóa hết học kỳ cũ
+        // Kiểm tra an toàn: nếu có học phí thì KHÔNG xóa
+        if ($this->hocKy()->whereHas('hocPhi', function ($q) {
+            $q->where('deleted', false);
+        })->exists()) {
+            throw new \Exception('Không thể xóa hoặc tạo lại học kỳ vì đã có học phí!');
+        }
+
+        // xóa
         $this->hocKy()->delete();
 
         $start = Carbon::parse($this->getRawNgayBatDau());

@@ -24,8 +24,7 @@ class HocPhiController extends Controller
         $search = $request->get('search');
 
         // Query cơ bản
-        $query = hocPhi::with('hocKy.namHoc', 'sinhVien')
-                        ->where('deleted', false)->orderBy('tinhTrang', 'asc');
+        $query = hocPhi::with('hocKy.namHoc', 'sinhVien')->where('deleted', false)->orderBy('tinhTrang', 'asc');
 
         // Áp dụng tìm kiếm nếu có từ khóa
         if ($search) {
@@ -55,7 +54,7 @@ class HocPhiController extends Controller
     {
         $sinhVienId = $request->query('sinhVien');
         $sinhVien = sinhVien::with('namHoc')->find($sinhVienId);
-        $hocKy = hocKy::where('id_nam_hoc', $sinhVien->id_nam_hoc)->where('deleted', false)->get();
+        $hocKy = hocKy::where('id_nam_hoc', $sinhVien->id_nam_hoc)->get();
 
         return view('admins.tuition.create', compact('sinhVien', 'hocKy'));
     }
@@ -72,7 +71,6 @@ class HocPhiController extends Controller
 
         $exists = hocPhi::where('id_sinh_vien', $request->id_sinh_vien)
                 ->where('id_hoc_ky', $request->id_hoc_ky)
-                ->where('deleted', false)
                 ->exists();
 
         if ($exists) {
@@ -110,7 +108,7 @@ class HocPhiController extends Controller
     public function edit(hocPhi $hocPhi)
     {
         $sinhVien = sinhVien::with('namHoc')->find($hocPhi->id_sinh_vien);
-        $hocKy = hocKy::where('id_nam_hoc', $sinhVien->id_nam_hoc)->where('deleted', false)->get();
+        $hocKy = hocKy::where('id_nam_hoc', $sinhVien->id_nam_hoc)->get();
 
         return view('admins.tuition.edit', compact('hocPhi', 'sinhVien', 'hocKy'));
     }
@@ -125,7 +123,6 @@ class HocPhiController extends Controller
 
         $exists = hocPhi::where('id_sinh_vien', $hocPhi->id_sinh_vien)
             ->where('id_hoc_ky', $request->id_hoc_ky)
-            ->where('deleted', false)
             ->where('id', '<>', $hocPhi->id)
             ->exists();
             
