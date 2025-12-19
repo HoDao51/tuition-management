@@ -88,7 +88,7 @@
         
         @if (auth()->user()->id == $nhanVien->user_id)
           <button 
-              class="bg-[#DC2626] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded ml-2 mt-3 mb-3">
+              class="bg-[#DC2626] cursor-not-allowed text-white text-[16px] font-semibold px-3 py-2 rounded mt-3 mb-3">
               Vô hiệu hóa
           </button>
         @else
@@ -103,7 +103,7 @@
                         } else {
                             return false;
                         }"
-                      class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded-md hover:bg-red-800 ml-2">
+                      class="bg-[#DC2626] text-white text-[16px] font-semibold px-3 py-2 rounded hover:bg-red-800">
                       Vô hiệu hóa
                   </button>
               </form>
@@ -118,7 +118,7 @@
                         } else {
                             return false;
                         }"
-                      class="bg-[#F97316] text-white text-[16px] font-semibold px-[18px] py-2 rounded-md hover:bg-[#C55E17]">
+                      class="bg-[#F97316] text-white text-[16px] font-semibold px-[18px] py-2 rounded hover:bg-[#C55E17]">
                       Kích hoạt
                   </button>
               </form>
